@@ -41,5 +41,22 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
 
 });
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');
 
-Route::get('/admin/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');
+    // walas controller
+    Route::get('/walas', [AdminController::class, 'show_walas'])->name('show_walas');
+    Route::get('/walas/create', [AdminController::class, 'create_walas'])->name('create_walas');
+    Route::post('/walas/store', [AdminController::class, 'store_walas'])->name('store_walas');
+    Route::post('/walas/destroy/{id}', [AdminController::class, 'destroy_walas'])->name('destroy_walas');
+    Route::post('/walas/update/{id}', [AdminController::class, 'update_walas'])->name('update_walas');
+    Route::get('/walas/edit/{id}', [AdminController::class, 'edit_walas'])->name('edit_walas');
+
+    // guru bk controller
+    Route::get('/guru_bk', [AdminController::class, 'show_guru_bk'])->name('show_guru_bk');
+    Route::get('/guru_bk/create', [AdminController::class, 'create_guru_bk'])->name('create_guru_bk');
+    Route::post('/guru_bk/store', [AdminController::class, 'store_guru_bk'])->name('store_guru_bk');
+    Route::post('/guru_bk/destroy/{id}', [AdminController::class, 'destroy_guru_bk'])->name('destroy_guru_bk');
+    Route::post('/guru_bk/update/{id}', [AdminController::class, 'update_guru_bk'])->name('update_guru_bk');
+    Route::get('/guru_bk/edit/{id}', [AdminController::class, 'edit_guru_bk'])->name('edit_guru_bk');
+});

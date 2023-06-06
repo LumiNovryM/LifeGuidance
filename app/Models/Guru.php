@@ -10,4 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guru extends Model implements AuthenticatableContract
 {
     use HasFactory, Authenticatable;
+    
+    protected $guarded = [];
+
 }
