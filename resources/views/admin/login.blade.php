@@ -6,7 +6,7 @@
     LifeGuidance
 @endsection
 @section('name')
-    Guru
+    Admin
 @endsection
 @section('form')
     <form role="form" class="mb-4" action="{{ route('login_admin_action') }}" method="POST">
@@ -14,7 +14,11 @@
         <label>Email</label>
         <div class="mb-2">
             <input type="email" autocomplete="off" class="form-control" placeholder="Email" aria-label="Email"
-                aria-describedby="email-addon" name="email">
+                aria-describedby="email-addon" name="email"
+                @if(isset($_COOKIE["email"]))                                         
+                    value="{{ $_COOKIE["email"] }}" 
+                @endif
+            >
         </div>
         <label>Password</label>
         <div class="mb-4">

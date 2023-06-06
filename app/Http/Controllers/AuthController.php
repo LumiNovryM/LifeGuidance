@@ -25,7 +25,7 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             Session::flash('status', 'Error');
             Session::flash('message', 'Invalid Login. Try Again');
-            return redirect()->route('login_guru');
+            return redirect()->route('login_admin');
         }
         # Remember Me 
         if ($request->remember === "on") {

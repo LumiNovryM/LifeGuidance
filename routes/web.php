@@ -25,13 +25,12 @@ Route::get('/', function () {
 Route::controller(AuthController::class)->group(function(){
     # Admin
     Route::get('/login_admin', 'login_admin')->name('login_admin');
-    Route::get('/home_admin', 'home_admin')->name('home.admin');
-    Route::post('/logout', 'logout')->name('logout');
-    Route::post('/login_admin', 'login_admin_action')->name('login_admin_action'); 
+    Route::post('/login_admin_action', 'login_admin_action')->name('login_admin_action'); 
+    Route::post('/logout_admin', 'logout_admin')->name('logout_admin');
 
     # Guru
-    Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');
-    Route::post('/login_guru_action', [AuthController::class, 'login_guru_action'])->name('login_guru_action');
+    Route::get('/login_guru', 'login_guru')->name('login_guru');
+    Route::post('/login_guru_action', 'login_guru_action')->name('login_guru_action');
     Route::post('/logout_guru', 'logout_guru')->name('logout_guru');
 
     # Siswa
@@ -41,6 +40,8 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
 
 });
+
+# Admin Handler
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');
 

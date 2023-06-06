@@ -10,18 +10,25 @@ class AdminController extends Controller
 {
     public function home_admin()
     {
-        return view('admin.home_admin');
+        return view('admin.home_admin',[
+            "title" => "Dashboard"
+        ]);
     }
 
-    // walas
+    # Wali Kelas
     public function show_walas()
     {
         $datas = Walas::query()->get();   
-        return view('admin.walas', compact('datas'));
+        return view('admin.walas', [
+            "datas" => $datas,
+            "title" => "Wali Kelas"
+        ]);
     }
     public function create_walas()
     {
-        return view('admin.create_walas');
+        return view('admin.create_walas', [
+            "title" => "Wali Kelas"
+        ]);
     }
     public function store_walas(Request $request)
     {
@@ -44,7 +51,10 @@ class AdminController extends Controller
     public function edit_walas($id)
     {
         $data = Walas::query()->where('id', $id)->first();   
-        return view('admin.edit_walas', compact('data'));
+        return view('admin.edit_walas', [
+            "data" => $data,
+            "title" => "Wali Kelas"
+        ]);
     }
     public function update_walas(Request $request, $id)
     {
@@ -73,15 +83,20 @@ class AdminController extends Controller
 
 
 
-    // guru bk
+    # Guru BK
     public function show_guru_bk()
     {
         $datas = Guru::query()->get();   
-        return view('admin.guru_bk', compact('datas'));
+        return view('admin.guru_bk', [
+            "datas" => $datas,
+            "title" => "Guru BK"
+        ]);
     }
     public function create_guru_bk()
     {
-        return view('admin.create_guru_bk');
+        return view('admin.create_guru_bk', [
+            "title" => "Guru BK"
+        ]);
     }
     public function store_guru_bk(Request $request)
     {
@@ -104,7 +119,10 @@ class AdminController extends Controller
     public function edit_guru_bk($id)
     {
         $data = Guru::query()->where('id', $id)->first();   
-        return view('admin.edit_guru_bk', compact('data'));
+        return view('admin.edit_guru_bk', [
+            "data" => $data,
+            "title" => "Guru BK"
+        ]);
     }
     public function update_guru_bk(Request $request, $id)
     {

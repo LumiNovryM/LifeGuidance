@@ -1,4 +1,7 @@
 @extends('layout.template.dashboard')
+
+@section('title-tab','LifeGuidance')
+
 @section('admin_content')
     <div class="container-fluid py-4">
         <div class="row">
@@ -9,11 +12,11 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
-                                    <form action="/logout" method="POST">
-                                      @csrf
-                                        <button type="submit">logout</button>
-                                      </form>
-                                </div>
+                                    <h5 class="font-weight-bolder mb-0">
+                                      $53,000
+                                      <span class="text-success text-sm font-weight-bolder">+55%</span>
+                                    </h5>
+                                  </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">

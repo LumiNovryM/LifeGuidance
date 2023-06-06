@@ -26,6 +26,7 @@ class WalasSeeder extends Seeder
                 'name' => $val['name'],
                 'nip' => $val['nip'],
                 'email' => $val['email'],
+                'role_id' => $val['role_id'],
                 'password' => $val['password'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
