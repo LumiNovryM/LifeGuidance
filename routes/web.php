@@ -20,12 +20,11 @@ Route::get('/', function () {
     return view('layout.page.landingpage');
 });
 
-Route::get('/dashboard', function () {
-    return view('layout.page.landingpage');
-});
-
-// Route::get('/login', function () {
-//     return view('layout.page.login');
-// });
-
+# Login Page For Admin
 Route::get('/login_admin', [AuthController::class, 'login_admin'])->name('login_admin');
+# Login Page For Wali Kelas
+Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
+# Route Page For Siswa
+Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
+# Route Page For Guru BK
+Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');

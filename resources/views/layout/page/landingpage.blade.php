@@ -24,7 +24,7 @@
 
 
 
-        PositivePathways
+        LifeGuidance
 
 
     </title>
@@ -69,7 +69,7 @@
                     <div class="container-fluid px-0">
                         <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" rel="tooltip"
                             title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-                            PositivePathways
+                            LifeGuidance
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -101,9 +101,9 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li><a class="dropdown-item" href="{{ route('login_admin') }}">Admin</a></li>
-                                            <li><a class="dropdown-item" href="javascript:;">Siswa</a></li>
-                                            <li><a class="dropdown-item" href="javascript:;">Guru</a></li>
-                                            <li><a class="dropdown-item" href="javascript:;">Wali Kelas</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('login_siswa') }}">Siswa</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('login_guru') }}">Guru</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('login_walas') }}">Wali Kelas</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -121,8 +121,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 text-center mx-auto">
-                        <h1 class="text-white pt-3 mt-n5">PositivePathways</h1>
-                        <p class="lead text-white mt-2">PositivePathways adalah aplikasi bimbingan konseling sekolah
+                        <h1 class="text-white pt-3 mt-n5">LifeGuidance</h1>
+                        <p class="lead text-white mt-2">LifeGuidance adalah aplikasi bimbingan konseling sekolah
                             yang membantu siswa mengembangkan pemikiran positif, mengatasi tantangan, dan mencapai
                             potensi penuh mereka.
                     </div>
@@ -163,7 +163,7 @@
                                 <h1 class="text-gradient text-primary"><span id="state1" countTo="132">0</span>+
                                 </h1>
                                 <h5 class="mt-3">Siswa Terbantu</h5>
-                                <p class="text-sm">Ratusan siswa sudah berhasil terbantu dengan adanya PositivePathways
+                                <p class="text-sm">Ratusan siswa sudah berhasil terbantu dengan adanya LifeGuidance
                                 </p>
                             </div>
                             <hr class="vertical dark">
@@ -173,7 +173,7 @@
                                 <h1 class="text-gradient text-primary"> <span id="state2" countTo="15">0</span>+
                                 </h1>
                                 <h5 class="mt-3">Jenis Kasus</h5>
-                                <p class="text-sm">Belasan kasus berhasil ditangani oleh PositivePathways</p>
+                                <p class="text-sm">Belasan kasus berhasil ditangani oleh LifeGuidance</p>
                             </div>
                             <hr class="vertical dark">
                         </div>
@@ -221,7 +221,7 @@
                                     </svg>
                                 </div>
                                 <h5 class="font-weight-bolder mt-3">Dokumentasi Terstruktur</h5>
-                                <p class="pe-5">PositivePathways menyediakan dokumentasi terstruktur untuk setiap
+                                <p class="pe-5">LifeGuidance menyediakan dokumentasi terstruktur untuk setiap
                                     sesi konseling.</p>
 
                             </div>
@@ -252,7 +252,7 @@
                                 </div>
 
                                 <h5 class="font-weight-bolder mt-3">Akses ke Sumber Daya dan Materi Bermanfaat</h5>
-                                <p class="pe-3"> PositivePathways menyediakan "toko" digital yang berisi sumber daya
+                                <p class="pe-3"> LifeGuidance menyediakan "toko" digital yang berisi sumber daya
                                     dan materi bermanfaat terkait dengan kesehatan mental, pengembangan diri, dan
                                     keterampilan hidup.</p>
 
@@ -289,7 +289,7 @@
                                 </div>
 
                                 <h5 class="font-weight-bolder mt-3">Urgensi dan Prioritas</h5>
-                                <p class="pe-5">Dalam PositivePathways, kami memahami bahwa beberapa isu kesehatan
+                                <p class="pe-5">Dalam LifeGuidance, kami memahami bahwa beberapa isu kesehatan
                                     mental membutuhkan perhatian segera dan penanganan yang tepat.</p>
 
                             </div>
@@ -357,7 +357,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <h2 class="text-white up mb-0">Mari Kembangkan<br /> Dirimu Bersama PositivePathways</h2>
+                            <h2 class="text-white up mb-0">Mari Kembangkan<br /> Dirimu Bersama LifeGuidance</h2>
                             <a href="#" class="btn btn-outline-white mt-5 up btn-round">Sign In</a>
                         </div>
                     </div>
@@ -428,7 +428,7 @@
                 <div class="col-md-3 mx-auto mt-md-0 mt-5">
                     <div class="position-sticky" style="top:100px !important">
                         <h4 class="">Bersama Fasilitator Berpengalaman</h4>
-                        <h6 class="text-secondary">Bersama PositivePathways anda dapat merasa yakin bahwa mereka akan
+                        <h6 class="text-secondary">Bersama LifeGuidance anda dapat merasa yakin bahwa mereka akan
                             mendapatkan panduan dan bimbingan dari ahli yang terlatih secara profesional.</h6>
                     </div>
                 </div>
@@ -459,7 +459,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-4">"PositivePathways mengubah hidup saya. Dengan bantuan fasilitator
+                            <p class="mt-4">"LifeGuidance mengubah hidup saya. Dengan bantuan fasilitator
                                 berpengalaman, saya mengatasi kecemasan dan meraih kepercayaan diri yang lebih besar."
                             </p>
                             <div class="rating mt-3">
@@ -484,7 +484,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-4 text-white">"Terima kasih PositivePathways! Fasilitator yang penuh
+                            <p class="mt-4 text-white">"Terima kasih LifeGuidance! Fasilitator yang penuh
                                 pengertian membantu saya menemukan potensi diri dan memperluas pandangan hidup saya."
                             </p>
                             <div class="rating mt-3">
@@ -509,7 +509,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-4">"Aplikasi ini adalah teman sejati. Fasilitator di PositivePathways
+                            <p class="mt-4">"Aplikasi ini adalah teman sejati. Fasilitator di LifeGuidance
                                 memberikan pendekatan pribadi dan alat praktis untuk mengatasi situasi yang menantang."
                             </p>
                             <div class="rating mt-3">
@@ -559,10 +559,10 @@
                 <div class="row">
                     <div class="col-md-7 mx-auto text-center">
                         <h3 class="text-white mb-0">Berkembang Bersama</h3>
-                        <h3 class="text-primary text-gradient mb-4">PositivePathways</h3>
+                        <h3 class="text-primary text-gradient mb-4">LifeGuidance</h3>
                         <p class="text-white mb-5">Kami percaya bahwa dengan menciptakan jalur positif dalam hidup
                             siswa, kami dapat membantu mereka mengatasi rintangan, meningkatkan kesejahteraan emosional
-                            mereka, dan mencapai kesuksesan akademik. PositivePathways hadir untuk mendukung siswa dalam
+                            mereka, dan mencapai kesuksesan akademik. LifeGuidance hadir untuk mendukung siswa dalam
                             perjalanan mereka menuju kehidupan yang lebih baik dan lebih bahagia.</p>
                         <a href="#" class="btn btn-primary btn-lg mb-3 mb-sm-0">Sign In</a>
                     </div>
@@ -607,7 +607,7 @@
                 <div class=" row">
                     <div class="col-md-3 mb-4 ms-auto">
                         <div>
-                            <h6 class="text-gradient text-primary font-weight-bolder">PositivePathways</h6>
+                            <h6 class="text-gradient text-primary font-weight-bolder">LifeGuidance</h6>
                         </div>
                         <div>
                             <h6 class="mt-3 mb-2 opacity-8">Social</h6>
@@ -780,7 +780,7 @@
                                 All rights reserved. Copyright ©
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> PositivePathways by <a href="https://www.creative-tim.com"
+                                </script> LifeGuidance by <a href="https://www.creative-tim.com"
                                     target="_blank">Lumi Novry M</a>.
                             </p>
                         </div>
