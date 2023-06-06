@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\landingpageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout.page.landingpage');
 });
+
+//dashboard
+Route::get('/dashboard',[dashboardController::class,'dashboard'])->name('dashboard');
