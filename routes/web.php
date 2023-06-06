@@ -20,11 +20,22 @@ Route::get('/', function () {
     return view('layout.page.landingpage');
 });
 
-# Login Page For Admin
-Route::get('/login_admin', [AuthController::class, 'login_admin'])->name('login_admin');
-# Login Page For Wali Kelas
-Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
-# Route Page For Siswa
-Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
-# Route Page For Guru BK
-Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');
+# Login Handler
+Route::controller(AuthController::class)->group(function(){
+    # Admin
+    Route::get('/login_admin', 'login_admin')->name('login_admin');
+    Route::get('/tes', 'tes')->name('tes');
+    Route::post('/logout', 'logout')->name('logout');
+    Route::post('/login_admin', 'login_admin_action')->name('login_admin_action'); 
+
+    # Wali Kelas
+    Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
+
+    # Siswa
+    Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
+
+    # Guru
+    Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');
+
+});
+
