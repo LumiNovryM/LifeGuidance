@@ -19,7 +19,7 @@ class GuruSeeder extends Seeder
 
         # Seeder Loop
         $data = [
-            ['name' => 'Hitler', 'nip' => '505404', 'email' => 'hitler@gmail.com', 'password' => Hash::make('12345678'),],
+            ['name' => 'Hitler', 'nip' => '505404', 'email' => 'hitler@gmail.com', 'role_id' => 3, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop
