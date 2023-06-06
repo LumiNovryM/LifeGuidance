@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\landingpageController;
@@ -23,6 +24,8 @@ Route::get('/dashboard', function () {
     return view('layout.page.landingpage');
 });
 
-Route::get('/login', function () {
-    return view('layout.page.login');
-});
+// Route::get('/login', function () {
+//     return view('layout.page.login');
+// });
+
+Route::get('/login_admin', [AuthController::class, 'login_admin'])->name('login_admin');

@@ -94,22 +94,13 @@
                                 </li>
                                 <li class="nav-item my-auto ms-5 ms-lg-0">
 
-                                    {{-- <a href="{{ route('login_admin') }}"
-                                        class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Login As Admin</a>
-
-                                    <a href="{{ route('login_admin') }}"
-                                        class="btn btn-sm   bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Login As Siswa</a>
-
-                                    <a href="{{ route('login_admin') }}"
-                                        class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Login As Guru</a> --}}
-
                                     <div class="dropdown">
                                         <button class="btn btn-sm bg-gradient-primary dropdown-toggle" type="button"
                                             id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                             Login As
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="">Admin</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('login_admin') }}">Admin</a></li>
                                             <li><a class="dropdown-item" href="javascript:;">Siswa</a></li>
                                             <li><a class="dropdown-item" href="javascript:;">Guru</a></li>
                                             <li><a class="dropdown-item" href="javascript:;">Wali Kelas</a></li>
