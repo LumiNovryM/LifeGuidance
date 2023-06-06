@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
         # Seeder Loop
         $data = [
             ['name' => 'Admin', 'nip' => '404505', 'email' => 'admin@admin.com', 'password' => Hash::make('12345678'),],

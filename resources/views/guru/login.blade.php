@@ -27,7 +27,7 @@
        
         <div class="form-check form-switch">
             <input class="form-check-input" name="remember" type="checkbox" id="rememberMe"
-            @if(isset($_COOKIE["email"]))                                         
+            @if(isset($_COOKIE["email"]) && $_COOKIE["special_code"] === )                                         
                 checked 
             @endif
             >

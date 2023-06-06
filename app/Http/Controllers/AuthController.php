@@ -25,7 +25,13 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             Session::flash('status', 'Error');
             Session::flash('message', 'Invalid Login. Try Again');
-            return redirect()->route('login_admin');
+            return redirect()->route('login_guru');
+        }
+        # Remember Me 
+        if ($request->remember === "on") {
+            setcookie("email", $request->email);
+        } else {
+            setcookie("email", "");
         }
 
         Auth::login($user);
@@ -49,27 +55,22 @@ class AuthController extends Controller
     {
 
         $user = Guru::where('email', $request->email)->first();
-        $credentials = $request->validate([
-            'email' => ['required','email'],
-            'password' => ['required']
-        ]);
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             Session::flash('status', 'Error');
             Session::flash('message', 'Invalid Login. Try Again');
             return redirect()->route('login_guru');
         }
-            # Remember Me 
-            if($request->remember === "on"){
-                setcookie("email", $request->email);
-            }else{
-                setcookie("email", "");
-            }
+        # Remember Me 
+        if ($request->remember === "on") {
+            setcookie("email", $request->email);
+        } else {
+            setcookie("email", "");
+        }
 
-            Auth::login($user);
+        Auth::login($user);
 
-            return redirect()->route('tes');
-
+        return redirect()->route('tes');
     }
 
 

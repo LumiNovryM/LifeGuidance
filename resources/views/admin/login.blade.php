@@ -21,6 +21,14 @@
             <input type="password" class="form-control" placeholder="Password" aria-label="Password"
                 aria-describedby="password-addon" name="password">
         </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" name="remember" type="checkbox" id="rememberMe"
+            @if(isset($_COOKIE["email"]))                                         
+                checked 
+            @endif
+            >
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
         @if (Session::has('status'))
                 <button type="button" disabled  class="btn bg-gradient-danger w-100">{{ Session::get('message') }}</button>
         @endif
