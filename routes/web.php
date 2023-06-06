@@ -39,5 +39,12 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');
 
 });
-
-Route::get('/admin/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');
+    Route::get('/walas', [AdminController::class, 'show_walas'])->name('show_walas');
+    Route::get('/walas/create', [AdminController::class, 'create_walas'])->name('create_walas');
+    Route::post('/walas/store', [AdminController::class, 'store_walas'])->name('store_walas');
+    Route::post('/walas/destroy/{id}', [AdminController::class, 'destroy_walas'])->name('destroy_walas');
+    Route::post('/walas/update/{id}', [AdminController::class, 'update_walas'])->name('update_walas');
+    Route::get('/walas/edit/{id}', [AdminController::class, 'edit_walas'])->name('edit_walas');
+});
