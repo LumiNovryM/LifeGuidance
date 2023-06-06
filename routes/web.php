@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\landingpageController;
 
@@ -24,7 +25,7 @@ Route::get('/', function () {
 Route::controller(AuthController::class)->group(function(){
     # Admin
     Route::get('/login_admin', 'login_admin')->name('login_admin');
-    Route::get('/tes', 'tes')->name('tes');
+    Route::get('/home_admin', 'home_admin')->name('home.admin');
     Route::post('/logout', 'logout')->name('logout');
     Route::post('/login_admin', 'login_admin_action')->name('login_admin_action'); 
 
@@ -41,3 +42,4 @@ Route::controller(AuthController::class)->group(function(){
 
 });
 
+Route::get('/admin/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');

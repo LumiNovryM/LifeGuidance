@@ -30,12 +30,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('tes');
-    }
-
-    public function tes()
-    {
-        return view('tes');
+        return redirect()->route('home_admin');
     }
 
     public function logout()
