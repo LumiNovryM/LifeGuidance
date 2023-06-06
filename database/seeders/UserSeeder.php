@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Guru;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class GuruSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,12 +17,12 @@ class GuruSeeder extends Seeder
     {
         # Seeder Loop
         $data = [
-            ['name' => 'Hitler', 'nip' => '505404', 'email' => 'hitler@gmail.com', 'password' => Hash::make('12345678'),],
+            ['name' => 'Admin', 'nip' => '404505', 'email' => 'admin@admin.com', 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop
         foreach ($data as $val) {
-            Guru::insert([
+            User::insert([
                 'name' => $val['name'],
                 'nip' => $val['nip'],
                 'email' => $val['email'],

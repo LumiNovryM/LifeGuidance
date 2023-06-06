@@ -28,14 +28,16 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/logout', 'logout')->name('logout');
     Route::post('/login_admin', 'login_admin_action')->name('login_admin_action'); 
 
-    # Wali Kelas
-    Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
+    # Guru
+    Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');
+    Route::post('/login_guru_action', [AuthController::class, 'login_guru_action'])->name('login_guru_action');
+    Route::post('/logout_guru', 'logout_guru')->name('logout_guru');
 
     # Siswa
     Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
 
-    # Guru
-    Route::get('/login_guru', [AuthController::class, 'login_guru'])->name('login_guru');
+    # Wali Kelas
+    Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
 
 });
 

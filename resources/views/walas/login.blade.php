@@ -6,13 +6,13 @@
     LifeGuidance
 @endsection
 @section('name')
-    Guru
+    Wali Kelas
 @endsection
 @section('form')
     <form role="form" class="mb-4">
         <label>Email</label>
         <div class="mb-2">
-            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+            <input type="email" class="form-control" autocomplete="off" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
         </div>
         <label>Password</label>
         <div class="mb-4">
