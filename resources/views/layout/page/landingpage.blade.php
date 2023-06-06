@@ -19,21 +19,38 @@
 
     <link rel="apple-touch-icon" sizes="76x76" href="./assets_landing/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets_landing/img/favicon.png">
-    <title>PositivePathways</title>
+
+    <title>
+
+
+
+        PositivePathways
+
+
+    </title>
+
+
 
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
     <!-- Nucleo Icons -->
-    <link href="/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="./assets_landing/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="./assets_landing/css/nucleo-svg.css" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="./assets_landing/css/nucleo-svg.css" rel="stylesheet" />
 
     <!-- CSS Files -->
-    <link id="pagestyle" href="/css/soft-design-system.css?v=1.0.9" rel="stylesheet" />
+
+
+
+    <link id="pagestyle" href="./assets_landing/css/soft-design-system.css?v=1.0.9" rel="stylesheet" />
+
+
+
+
 
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
@@ -41,6 +58,8 @@
 </head>
 
 <body class="index-page">
+
+
     <!-- Navbar -->
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
@@ -62,19 +81,40 @@
                             </span>
                         </button>
                         <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
-                            <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
+                            <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100 mt-3">
+
+
                                 <li class="nav-item ms-lg-auto">
                                     <a class="nav-link nav-link-icon me-2" href="https://github.com/LumiNovryM"
                                         target="_blank">
                                         <i class="fa fa-github me-1"></i>
                                         <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="Lumi Novry M">Github</p>
+                                            data-bs-placement="bottom" title="https://github.com/LumiNovryM/LifeGuidance">Github</p>
                                     </a>
                                 </li>
-                                <li class="nav-item my-auto ms-3 ms-lg-0">
-                                    <a href=""
-                                        class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Sign
-                                        In</a>
+                                <li class="nav-item my-auto ms-5 ms-lg-0">
+
+                                    {{-- <a href="{{ route('login_admin') }}"
+                                        class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Login As Admin</a>
+
+                                    <a href="{{ route('login_admin') }}"
+                                        class="btn btn-sm   bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Login As Siswa</a>
+
+                                    <a href="{{ route('login_admin') }}"
+                                        class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1 mt-2 mt-md-0">Login As Guru</a> --}}
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm bg-gradient-primary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Login As
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="">Admin</a></li>
+                                            <li><a class="dropdown-item" href="javascript:;">Siswa</a></li>
+                                            <li><a class="dropdown-item" href="javascript:;">Guru</a></li>
+                                            <li><a class="dropdown-item" href="javascript:;">Wali Kelas</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -84,15 +124,14 @@
             </div>
         </div>
     </div>
-
     <header class="header-2">
         <div class="page-header min-vh-75 relative"
-            style="background-image: url('/img/curved-images/curved.jpg')">
+            style="background-image: url('./assets_landing/img/curved-images/curved.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 text-center mx-auto">
                         <h1 class="text-white pt-3 mt-n5">PositivePathways</h1>
-                        <p class="lead text-white">PositivePathways adalah aplikasi bimbingan konseling sekolah
+                        <p class="lead text-white mt-2">PositivePathways adalah aplikasi bimbingan konseling sekolah
                             yang membantu siswa mengembangkan pemikiran positif, mengatasi tantangan, dan mencapai
                             potensi penuh mereka.
                     </div>
@@ -109,15 +148,19 @@
                     <g class="moving-waves">
                         <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
                         <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
-                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
-                        <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
-                        <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5"
+                            fill="rgba(255,255,255,0.25)" />
+                        <use xlink:href="#gentle-wave" x="48" y="8"
+                            fill="rgba(255,255,255,0.20)" />
+                        <use xlink:href="#gentle-wave" x="48" y="13"
+                            fill="rgba(255,255,255,0.15)" />
                         <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95" />
                     </g>
                 </svg>
             </div>
         </div>
     </header>
+
 
     <section class="pt-3 pb-4" id="count-stats">
         <div class="container">
@@ -324,8 +367,7 @@
                                 </svg>
                             </div>
                             <h2 class="text-white up mb-0">Mari Kembangkan<br /> Dirimu Bersama PositivePathways</h2>
-                            <a href="#" target="_blank"
-                                class="btn btn-outline-white mt-5 up btn-round">Sign In</a>
+                            <a href="#" class="btn btn-outline-white mt-5 up btn-round">Sign In</a>
                         </div>
                     </div>
                 </div>
@@ -351,9 +393,9 @@
                 <div class="col-md-8">
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <a href="/pages/about-us.html">
+                            <a href="./pages/about-us.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="/img/dokumentasi_1.jpg" alt="">
+                                    <img class="w-100" src="./assets_landing/img/dokumentasi_1.jpg" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
                                     <h6 class="mb-3">Bu Clara & Bu Rose</h6>
@@ -363,7 +405,7 @@
                         <div class="col-md-6 mt-md-0 mt-5">
                             <a href="./pages/contact-us.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="/img/dokumentasi_2.jpg" alt="">
+                                    <img class="w-100" src="./assets_landing/img/dokumentasi_2.jpg" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
                                     <h6 class="mb-3">Bu Dinda & Bu Wong</h6>
@@ -373,7 +415,7 @@
                         <div class="col-md-6 mt-md-0 mt-6">
                             <a href="./pages/sign-in.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="/img/dokumentasi_3.jpg" alt="">
+                                    <img class="w-100" src="./assets_landing/img/dokumentasi_3.jpg" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
                                     <h6 class="mb-3">Bu Reva & Bu Gita</h6>
@@ -383,7 +425,7 @@
                         <div class="col-md-6 mt-md-0 mt-6">
                             <a href="./pages/author.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="/img/dokumentasi_4.jpg" alt="">
+                                    <img class="w-100" src="./assets_landing/img/dokumentasi_4.jpg" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
                                     <h6 class="mb-3">Bu Amber & Bu Agatha</h6>
@@ -494,23 +536,23 @@
             <hr class="horizontal dark my-5">
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-6 ms-auto">
-                    <img class="w-100 opacity-6" src="/img/logos/gray-logos/logo-apple.svg"
+                    <img class="w-100 opacity-6" src="./assets_landing/img/logos/gray-logos/logo-apple.svg"
                         alt="Logo">
                 </div>
                 <div class="col-lg-2 col-md-4 col-6">
-                    <img class="w-100 opacity-6" src="/img/logos/gray-logos/logo-facebook.svg"
+                    <img class="w-100 opacity-6" src="./assets_landing/img/logos/gray-logos/logo-facebook.svg"
                         alt="Logo">
                 </div>
                 <div class="col-lg-2 col-md-4 col-6">
-                    <img class="w-100 opacity-6" src="/img/logos/gray-logos/logo-nasa.svg"
+                    <img class="w-100 opacity-6" src="./assets_landing/img/logos/gray-logos/logo-nasa.svg"
                         alt="Logo">
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 ms-lg-0 ms-md-auto">
-                    <img class="w-100 opacity-6" src="/img/logos/gray-logos/logo-vodafone.svg"
+                    <img class="w-100 opacity-6" src="./assets_landing/img/logos/gray-logos/logo-vodafone.svg"
                         alt="Logo">
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 me-md-auto mx-md-0 mx-auto">
-                    <img class="w-100 opacity-6" src="/img/logos/gray-logos/logo-digitalocean.svg"
+                    <img class="w-100 opacity-6" src="./assets_landing/img/logos/gray-logos/logo-digitalocean.svg"
                         alt="Logo">
                 </div>
             </div>
@@ -520,7 +562,7 @@
 
     <section class="py-sm-7" id="download-soft-ui">
         <div class="bg-gradient-dark position-relative m-3 border-radius-xl overflow-hidden">
-            <img src="/img/shapes/waves-white.svg" alt="pattern-lines"
+            <img src="./assets_landing/img/shapes/waves-white.svg" alt="pattern-lines"
                 class="position-absolute start-0 top-md-0 w-100 opacity-6">
             <div class="container py-7 postion-relative z-index-2 position-relative">
                 <div class="row">
@@ -531,8 +573,7 @@
                             siswa, kami dapat membantu mereka mengatasi rintangan, meningkatkan kesejahteraan emosional
                             mereka, dan mencapai kesuksesan akademik. PositivePathways hadir untuk mendukung siswa dalam
                             perjalanan mereka menuju kehidupan yang lebih baik dan lebih bahagia.</p>
-                        <a href="#"
-                            class="btn btn-primary btn-lg mb-3 mb-sm-0">Sign In</a>
+                        <a href="#" class="btn btn-primary btn-lg mb-3 mb-sm-0">Sign In</a>
                     </div>
                 </div>
             </div>
@@ -564,6 +605,10 @@
             </div>
         </div>
         <!-- -------   END PRE-FOOTER 2 - simple social line w/ title & 3 buttons    -------- -->
+
+
+
+
 
         <footer class="footer pt-5 mt-5">
             <hr class="horizontal dark mb-5">
@@ -744,36 +789,86 @@
                                 All rights reserved. Copyright ©
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> PositivePathways by <a
-                                    href="https://www.creative-tim.com" target="_blank">Lumi Novry M</a>.
+                                </script> PositivePathways by <a href="https://www.creative-tim.com"
+                                    target="_blank">Lumi Novry M</a>.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!--   Core JS Files   -->
-        <script src="/js/core/popper.min.js" type="text/javascript"></script>
-        <script src="/js/core/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="./assets_landing/js/core/popper.min.js" type="text/javascript"></script>
+        <script src="./assets_landing/js/core/bootstrap.min.js" type="text/javascript"></script>
+        <script src="./assets_landing/js/plugins/perfect-scrollbar.min.js"></script>
+
+
+
+
         <!--  Plugin for TypedJS, full documentation here: https://github.com/inorganik/CountUp.js -->
-        <script src="/js/plugins/countup.min.js"></script>
-        <script src="/js/plugins/choices.min.js"></script>
-        <script src="/js/plugins/prism.min.js"></script>
-        <script src="/js/plugins/highlight.min.js"></script>
+        <script src="./assets_landing/js/plugins/countup.min.js"></script>
+
+
+
+
+
+        <script src="./assets_landing/js/plugins/choices.min.js"></script>
+
+
+
+
+
+        <script src="./assets_landing/js/plugins/prism.min.js"></script>
+        <script src="./assets_landing/js/plugins/highlight.min.js"></script>
+
+
+
+
+
         <!--  Plugin for Parallax, full documentation here: https://github.com/dixonandmoe/rellax -->
-        <script src="/js/plugins/rellax.min.js"></script>
+        <script src="./assets_landing/js/plugins/rellax.min.js"></script>
         <!--  Plugin for TiltJS, full documentation here: https://gijsroge.github.io/tilt.js/ -->
-        <script src="/js/plugins/tilt.min.js"></script>
+        <script src="./assets_landing/js/plugins/tilt.min.js"></script>
         <!--  Plugin for Selectpicker - ChoicesJS, full documentation here: https://github.com/jshjohnson/Choices -->
-        <script src="/js/plugins/choices.min.js"></script>
+        <script src="./assets_landing/js/plugins/choices.min.js"></script>
+
+
         <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
-        <script src="/js/plugins/parallax.min.js"></script>
+        <script src="./assets_landing/js/plugins/parallax.min.js"></script>
+
+
+
+
+
+
+
+
         <!-- Control Center for Soft UI Kit: parallax effects, scripts for the example pages etc -->
         <!--  Google Maps Plugin    -->
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
-        <script src="/js/soft-design-system.min.js?v=1.0.9" type="text/javascript"></script>
+        <script src="./assets_landing/js/soft-design-system.min.js?v=1.0.9" type="text/javascript"></script>
 
 
         <script type="text/javascript">
@@ -802,36 +897,6 @@
                 };
             }
         </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>

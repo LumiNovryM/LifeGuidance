@@ -19,8 +19,9 @@ Route::get('/', function () {
     return view('layout.page.landingpage');
 });
 
-//dashboard
-Route::get('/dashboard',[dashboardController::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('layout.page.landingpage');
+});
 
 Route::get('/login', function () {
     return view('layout.page.login');
