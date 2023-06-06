@@ -21,3 +21,7 @@ Route::get('/', function () {
 
 //dashboard
 Route::get('/dashboard',[dashboardController::class,'dashboard'])->name('dashboard');
+
+Route::get('/login', function () {
+    return view('layout.page.login');
+});
