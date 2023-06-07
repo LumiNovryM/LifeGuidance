@@ -23,14 +23,14 @@ class AdminController extends Controller
     public function show_walas()
     {
         $datas = Walas::query()->get();   
-        return view('admin.walas', [
+        return view('admin.walas.walas', [
             "datas" => $datas,
             "title" => "Wali Kelas"
         ]);
     }
     public function create_walas()
     {
-        return view('admin.create_walas', [
+        return view('admin.walas.create_walas', [
             "title" => "Wali Kelas"
         ]);
     }
@@ -38,9 +38,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'nip' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         Walas::insert([
@@ -58,7 +58,7 @@ class AdminController extends Controller
     public function edit_walas($id)
     {
         $data = Walas::query()->where('id', $id)->first();   
-        return view('admin.edit_walas', [
+        return view('admin.walas.edit_walas', [
             "data" => $data,
             "title" => "Wali Kelas"
         ]);
@@ -67,9 +67,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'nip' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         $data = [
@@ -95,24 +95,25 @@ class AdminController extends Controller
     public function show_guru_bk()
     {
         $datas = Guru::query()->get();   
-        return view('admin.guru_bk', [
+        return view('admin.guru.guru_bk', [
             "datas" => $datas,
             "title" => "Guru BK"
         ]);
     }
     public function create_guru_bk()
     {
-        return view('admin.create_guru_bk', [
+        return view('admin.guru.create_guru_bk', [
             "title" => "Guru BK"
         ]);
     }
     public function store_guru_bk(Request $request)
     {
+        
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'nip' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         Guru::insert([
@@ -130,7 +131,7 @@ class AdminController extends Controller
     public function edit_guru_bk($id)
     {
         $data = Guru::query()->where('id', $id)->first();   
-        return view('admin.edit_guru_bk', [
+        return view('admin.guru.edit_guru_bk', [
             "data" => $data,
             "title" => "Guru BK"
         ]);
@@ -139,9 +140,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'nip' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         $data = [
@@ -165,14 +166,14 @@ class AdminController extends Controller
     public function show_siswa()
     {
         $datas = Siswa::query()->get();   
-        return view('admin.siswa', [
+        return view('admin.siswa.siswa', [
             "datas" => $datas,
             "title" => "Siswa"
         ]);
     }
     public function create_siswa()
     {
-        return view('admin.create_siswa', [
+        return view('admin.siswa.create_siswa', [
             "title" => "Siswa"
         ]);
     }
@@ -180,9 +181,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'nisn' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         Siswa::insert([
@@ -200,7 +201,7 @@ class AdminController extends Controller
     public function edit_siswa($id)
     {
         $data = Siswa::query()->where('id', $id)->first();   
-        return view('admin.edit_siswa', [
+        return view('admin.siswa.edit_siswa', [
             "data" => $data,
             "title" => "Siswa"
         ]);
@@ -209,9 +210,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'nisn' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         $data = [

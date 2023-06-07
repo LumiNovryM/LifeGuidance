@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             GuruSeeder::class,
             WalasSeeder::class,
+            SiswaSeeder::class,
         ]);
         User::create([
             'name' => 'admin1',

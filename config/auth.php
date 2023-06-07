@@ -69,6 +69,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Guru::class,
         ],
+
+        'walas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Walas::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
