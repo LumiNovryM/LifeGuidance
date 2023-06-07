@@ -60,4 +60,12 @@ Route::prefix('admin')->group(function () {
     Route::post('/guru_bk/destroy/{id}', [AdminController::class, 'destroy_guru_bk'])->name('destroy_guru_bk');
     Route::post('/guru_bk/update/{id}', [AdminController::class, 'update_guru_bk'])->name('update_guru_bk');
     Route::get('/guru_bk/edit/{id}', [AdminController::class, 'edit_guru_bk'])->name('edit_guru_bk');
+
+    // siswa controller
+    Route::get('/siswa', [AdminController::class, 'show_siswa'])->name('show_siswa');
+    Route::get('/siswa/create', [AdminController::class, 'create_siswa'])->name('create_siswa');
+    Route::post('/siswa/store', [AdminController::class, 'store_siswa'])->name('store_siswa');
+    Route::post('/siswa/destroy/{id}', [AdminController::class, 'destroy_siswa'])->name('destroy_siswa');
+    Route::post('/siswa/update/{id}', [AdminController::class, 'update_siswa'])->name('update_siswa');
+    Route::get('/siswa/edit/{id}', [AdminController::class, 'edit_siswa'])->name('edit_siswa');
 });
