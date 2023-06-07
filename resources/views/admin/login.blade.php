@@ -20,21 +20,19 @@
                 @endif
             >
         </div>
-            @error('email')
-                <div style="color: white;" class="alert alert-danger">
-                    {{ $message }} 
-                </div>
-            @enderror
+        @error('email')
+            <p style="color: red; font-size: 12px">*{{ $message }}</p>
+        @enderror
+
         <label>Password</label>
         <div class="mb-4">
             <input type="password" class="form-control" placeholder="Password" aria-label="Password"
                 aria-describedby="password-addon" name="password">
         </div>
+        
         @error('password')
-        <div style="color: white;" class="alert alert-danger">
-            {{ $message }} 
-        </div>
-    @enderror
+            <p style="color: red; font-size: 12px">*{{ $message }}</p>
+        @enderror
         <div class="form-check form-switch">
             <input class="form-check-input" name="remember" type="checkbox" id="rememberMe"
             @if(isset($_COOKIE["email"]))                                         
