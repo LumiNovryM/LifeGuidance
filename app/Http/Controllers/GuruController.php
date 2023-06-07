@@ -11,4 +11,16 @@ class GuruController extends Controller
             "title" => "Dashboard"
         ]);
     }
+
+    public function show_kelas(){
+        return view('guru.kelas',[
+            "title" => "Kelas"
+        ]);
+    }
+
+    public function show_siswa(){
+        return view('guru.kelas',[
+            "title" => "Siswa"
+        ]);
+    }
 }

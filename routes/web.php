@@ -86,4 +86,6 @@ Route::prefix('walas')->group(function () {
 # guru Handler
 Route::prefix('guru')->group(function () {
     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
+    Route::get('/kelas', [GuruController::class, 'show_kelas'])->name('show_kelas');
+    Route::get('/siswa', [GuruController::class, 'show_siswa'])->name('show_siswa');
 });
