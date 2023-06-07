@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WalasController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\landingpageController;
 
@@ -38,6 +39,8 @@ Route::controller(AuthController::class)->group(function(){
 
     # Wali Kelas
     Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
+    Route::post('/login_walas_action', [AuthController::class, 'login_walas_action'])->name('login_walas_action');
+    
 
 });
 
@@ -68,4 +71,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/siswa/destroy/{id}', [AdminController::class, 'destroy_siswa'])->name('destroy_siswa');
     Route::post('/siswa/update/{id}', [AdminController::class, 'update_siswa'])->name('update_siswa');
     Route::get('/siswa/edit/{id}', [AdminController::class, 'edit_siswa'])->name('edit_siswa');
+});
+
+# Walas Handler
+Route::prefix('walas')->group(function () {
+    Route::get('/dashboard', [WalasController::class, 'home_walas'])->name('home_walas');
 });

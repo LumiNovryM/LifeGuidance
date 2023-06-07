@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\User;
+use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -57,7 +58,11 @@ class AuthController extends Controller
 
     public function login_guru_action(Request $request)
     {
-
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        
         $user = Guru::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -88,5 +93,31 @@ class AuthController extends Controller
     public function login_walas()
     {
         return view('walas.login');
+    }
+
+    public function login_walas_action(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = Walas::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            Session::flash('status', 'Error');
+            Session::flash('message', 'Invalid Login. Try Again');
+            return redirect()->route('login_walas');
+        }
+        # Remember Me 
+        if ($request->remember === "on") {
+            setcookie("email", $request->email);
+        } else {
+            setcookie("email", "");
+        }
+
+        Auth::login($user);
+
+        return redirect()->route('home_walas');
     }
 }
