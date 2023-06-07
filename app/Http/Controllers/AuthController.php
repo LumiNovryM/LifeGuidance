@@ -79,7 +79,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('tes');
+        return redirect()->route('home_guru');
     }
 
 

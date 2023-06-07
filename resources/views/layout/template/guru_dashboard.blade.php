@@ -39,7 +39,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-    @include('walas.walas_partials.leftbar_walas')
+    @include('guru.guru_partials.leftbar_guru')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
@@ -175,7 +175,7 @@
             @yield('admin_content')
           </div>
     </main>
-    @include('walas. walas_partials.rightbar_walas')
+    @include('guru.guru_partials.rightbar_guru')
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>

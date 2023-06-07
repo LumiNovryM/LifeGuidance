@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WalasController;
 use App\Http\Controllers\dashboardController;
@@ -80,4 +81,9 @@ Route::prefix('admin')->group(function () {
 # Walas Handler
 Route::prefix('walas')->group(function () {
     Route::get('/dashboard', [WalasController::class, 'home_walas'])->name('home_walas');
+});
+
+# guru Handler
+Route::prefix('guru')->group(function () {
+    Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
 });
