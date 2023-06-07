@@ -8,6 +8,7 @@ use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -47,7 +48,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'role_id' => 4,
             'nip' => $request->nip,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -68,13 +69,14 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required',
             'nip' => 'required',
+            'password' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
             'nip' => $request->nip,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ];
 
         Walas::where('id', $id)->update($data);
@@ -118,7 +120,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'role_id' => 3,
             'nip' => $request->nip,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -139,13 +141,14 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required',
             'nip' => 'required',
+            'password' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
             'nip' => $request->nip,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ];
 
         Guru::where('id', $id)->update($data);
@@ -187,7 +190,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'nisn' => $request->nisn,
             'role_id'=> 2,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -208,13 +211,14 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required',
             'nisn' => 'required',
+            'password' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
             'nisn' => $request->nisn,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ];
 
         Siswa::where('id', $id)->update($data);
