@@ -30,6 +30,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/login_admin_action', 'login_admin_action')->name('login_admin_action'); 
     Route::post('/logout_admin', 'logout')->name('logout_admin');
     Route::post('/logout_walas', 'logout')->name('logout_walas');
+    Route::post('/logout_guru', 'logout')->name('logout_guru');
 
     # Guru
     Route::get('/login_guru', 'login_guru')->name('login_guru');
@@ -89,8 +90,8 @@ Route::prefix('walas')->group(function () {
 });
 
 # guru Handler
-Route::prefix('guru')->group(function () {
-    Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
-    Route::get('/kelas', [GuruController::class, 'show_kelas'])->name('show_kelas');
-    Route::get('/siswa', [GuruController::class, 'show_siswa'])->name('show_siswa');
-});
+// Route::prefix('guru')->group(function () {
+//     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
+//     Route::get('/kelas', [GuruController::class, 'show_kelas'])->name('show_kelas');
+//     Route::get('/siswa', [GuruController::class, 'show_siswa'])->name('show_siswa');
+// });
