@@ -30,10 +30,12 @@
                         @csrf
                         <button type="submit" class="btn btn-danger mr-2">Delete</button>
                     </form>
-                    <form action="{{ route('edit_kelas', $data->id) }}" method="get">
-                        @csrf
+                    <a href="{{ route('edit_kelas', $data->id) }}" style="margin-right: 10px">
                         <button type="submit" class="btn btn-warning">Edit</button>
-                    </form>
+                    </a>
+                    <a href="{{ route('show_siswa') }}">
+                        <button type="button" class="btn btn-info">View</button>
+                    </a>
                 </div>
             </div>
         </div>

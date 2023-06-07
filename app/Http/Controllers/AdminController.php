@@ -169,13 +169,15 @@ class AdminController extends Controller
         $datas = Siswa::query()->get();   
         return view('admin.siswa.siswa', [
             "datas" => $datas,
-            "title" => "Siswa"
+            "title" => "Kelas"
         ]);
     }
     public function create_siswa()
     {
+        $datas = Kelas::query()->get();   
         return view('admin.siswa.create_siswa', [
-            "title" => "Siswa"
+            "datas" => $datas,
+            "title" => "Kelas"
         ]);
     }
     public function store_siswa(Request $request)
@@ -184,6 +186,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'nisn' => 'required',
+            'kelas_id' => 'required',
             'password' => 'required|min:8',
         ]);
 
@@ -191,6 +194,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'nisn' => $request->nisn,
+            'kelas_id' => $request->kelas_id,
             'role_id'=> 2,
             'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
@@ -201,10 +205,12 @@ class AdminController extends Controller
     }
     public function edit_siswa($id)
     {
+        $datas = Kelas::query()->get();   
         $data = Siswa::query()->where('id', $id)->first();   
         return view('admin.siswa.edit_siswa', [
+            "datas" => $datas,
             "data" => $data,
-            "title" => "Siswa"
+            "title" => "Kelas"
         ]);
     }
     public function update_siswa(Request $request, $id)
@@ -213,6 +219,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'nisn' => 'required',
+            'kelas_id' => 'required',
             'password' => 'required|min:8',
         ]);
 
@@ -220,6 +227,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'nisn' => $request->nisn,
+            'kelas_id' => $request->kelas_id,
             'password' => Hash::make($request->password),
         ];
 
@@ -245,7 +253,7 @@ class AdminController extends Controller
     public function create_kelas()
     {
         return view('admin.kelas.create_kelas', [
-            "title" => "Siswa"
+            "title" => "Kelas"
         ]);
     }
     public function store_kelas(Request $request)

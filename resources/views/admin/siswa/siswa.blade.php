@@ -23,6 +23,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NISN</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kelas</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
                                     </th>
                                 </tr>
@@ -49,6 +50,11 @@
                                             <div class="text-secondary">
                                                 <p class="text-secondary">{{ $data->nisn }}</p>
                                             </div>
+                                        </td>
+                                        <td>
+                                            {{-- <div class="text-secondary">
+                                                <p class="text-secondary">{{ $data->siswa->name }}</p>
+                                            </div> --}}
                                         </td>
                                         <td>
                                             <div class="text-secondary d-flex">
