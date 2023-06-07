@@ -236,11 +236,56 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
-        $datas = Kelas::all();
+        $datas = Kelas::paginate(2);
         return view('admin.kelas.kelas', [
             "title" => "Kelas",
             "datas" => $datas
         ]);
     }
+    public function create_kelas()
+    {
+        return view('admin.kelas.create_kelas', [
+            "title" => "Siswa"
+        ]);
+    }
+    public function store_kelas(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            
+        ]);
 
+        Kelas::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('admin/kelas');
+    }
+    public function update_kelas(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+        ];
+
+        Kelas::where('id', $id)->update($data);
+
+        return redirect('admin/kelas');
+    }
+    public function edit_kelas($id)
+    {
+        $data = Kelas::query()->where('id', $id)->first();   
+        return view('admin.kelas.edit_kelas', [
+            "data" => $data,
+            "title" => "Wali Kelas"
+        ]);
+    }
+    public function destroy_kelas($id)
+    {
+        Kelas::find($id)->delete();
+        return redirect()->route('show_kelas');
+    }
 }

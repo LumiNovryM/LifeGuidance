@@ -76,6 +76,11 @@ Route::prefix('admin')->group(function () {
 
     // kelas
     Route::get('/kelas', [AdminController::class, 'show_kelas'])->name('show_kelas');
+    Route::get('/kelas/create', [AdminController::class, 'create_kelas'])->name('create_kelas');
+    Route::post('/kelas/store', [AdminController::class, 'store_kelas'])->name('store_kelas');
+    Route::post('/kelas/destroy/{id}', [AdminController::class, 'destroy_kelas'])->name('destroy_kelas');
+    Route::post('/kelas/update/{id}', [AdminController::class, 'update_kelas'])->name('update_kelas');
+    Route::get('/kelas/edit/{id}', [AdminController::class, 'edit_kelas'])->name('edit_kelas');
 });
 
 # Walas Handler
