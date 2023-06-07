@@ -9,4 +9,9 @@ class Siswa extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function siswa()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

@@ -10,4 +10,9 @@ class Walas extends Model implements AuthenticatableContract
 {
     use HasFactory, Authenticatable;
     protected $guarded = [];
+    
+    public function walas()
+    {
+        return $this->hasOne(Kelas::class);
+    }
 }

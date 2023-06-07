@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Walas;
@@ -235,8 +236,10 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
+        $datas = Kelas::all();
         return view('admin.kelas.kelas', [
-            "title" => "Kelas"
+            "title" => "Kelas",
+            "datas" => $datas
         ]);
     }
 

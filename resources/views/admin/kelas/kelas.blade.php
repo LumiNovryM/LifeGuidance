@@ -3,7 +3,7 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('admin_content')
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
@@ -22,7 +22,6 @@
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NISN</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
                                     </th>
                                 </tr>
@@ -42,14 +41,10 @@
                                         </td>
                                         <td>
                                             <div class="text-secondary">
-                                                <p class="text-secondary">{{ $data->email }}</p>
+                                                <p class="text-secondary">{{ $data->walas->name }}</p>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="text-secondary">
-                                                <p class="text-secondary">{{ $data->nisn }}</p>
-                                            </div>
-                                        </td>
+                                        
                                         <td>
                                             <div class="text-secondary d-flex">
                                                 <form action="siswa/destroy/{{ $data->id }}" method="POST"
@@ -83,5 +78,5 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
