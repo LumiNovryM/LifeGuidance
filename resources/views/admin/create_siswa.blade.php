@@ -11,8 +11,8 @@
             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nisn</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="nip">
+            <label for="exampleFormControlInput1" class="form-label">NISN</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="nisn">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>

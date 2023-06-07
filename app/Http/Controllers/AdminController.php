@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\User;
+use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -40,11 +42,14 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        Walas::create([
+        Walas::insert([
             'name' => $request->name,
             'email' => $request->email,
+            'role_id' => 4,
             'nip' => $request->nip,
             'password' => $request->password,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->route('show_walas');
@@ -108,11 +113,14 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        Guru::create([
+        Guru::insert([
             'name' => $request->name,
             'email' => $request->email,
+            'role_id' => 3,
             'nip' => $request->nip,
             'password' => $request->password,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->route('show_guru_bk');
@@ -153,16 +161,16 @@ class AdminController extends Controller
     # siswa
     public function show_siswa()
     {
-        $datas = User::query()->get();   
+        $datas = Siswa::query()->get();   
         return view('admin.siswa', [
             "datas" => $datas,
-            "title" => "Guru BK"
+            "title" => "Siswa"
         ]);
     }
     public function create_siswa()
     {
         return view('admin.create_siswa', [
-            "title" => "Guru BK"
+            "title" => "Siswa"
         ]);
     }
     public function store_siswa(Request $request)
@@ -170,26 +178,28 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'nip' => 'required',
+            'nisn' => 'required',
             'password' => 'required',
         ]);
 
-        User::create([
+        Siswa::insert([
             'name' => $request->name,
             'email' => $request->email,
-            'nip' => $request->nip,
+            'nisn' => $request->nisn,
             'role_id'=> 2,
             'password' => $request->password,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         return redirect()->route('show_siswa');
     }
     public function edit_siswa($id)
     {
-        $data = User::query()->where('id', $id)->first();   
+        $data = Siswa::query()->where('id', $id)->first();   
         return view('admin.edit_siswa', [
             "data" => $data,
-            "title" => "Guru BK"
+            "title" => "Siswa"
         ]);
     }
     public function update_siswa(Request $request, $id)
@@ -197,23 +207,23 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'nip' => 'required',
+            'nisn' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'nip' => $request->nip,
+            'nisn' => $request->nisn,
             'password' => $request->password,
         ];
 
-        User::where('id', $id)->update($data);
+        Siswa::where('id', $id)->update($data);
 
         return redirect()->route('show_siswa');
     }
     public function destroy_siswa($id)
     {
-        User::find($id)->delete();
+        Siswa::find($id)->delete();
         return redirect()->route('show_siswa');
     }
 }

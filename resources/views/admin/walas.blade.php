@@ -9,8 +9,8 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                    <h6>Guru Bimbingan Konseling</h6>
-                    <a href="{{ route('create_guru_bk') }}">
+                    <h6>Wali Kelas</h6>
+                    <a href="{{ route('create_walas') }}">
                         <button type="button" class="btn bg-gradient-info btn-sm">Create</button>
                     </a>
                 </div>
@@ -55,14 +55,14 @@
                                         </td>
                                         <td>
                                             <div class="text-secondary d-flex">
-                                                <form action="guru_bk/destroy/{{ $data->id }}" method="POST"
+                                                <form action="walas/destroy/{{ $data->id }}" method="POST"
                                                     >
                                                     @csrf
                                                     <button class="btn btn-icon btn-2 bg-gradient-danger me-3" type="submit">
                                                         <span class="btn-inner--icon"><i class="ni ni-basket"></i></span>
                                                     </button>
                                                 </form>
-                                                <a href="{{ route('edit_guru_bk', $data->id) }}">
+                                                <a href="{{ route('edit_walas', $data->id) }}">
                                                     <button class="btn btn-icon btn-2 bg-gradient-warning" type="button">
                                                         <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
                                                     </button>

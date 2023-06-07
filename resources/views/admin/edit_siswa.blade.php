@@ -11,8 +11,8 @@
             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" value="{{ $data->email }}">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">NIP</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="nip" value="{{ $data->nip }}">
+            <label for="exampleFormControlInput1" class="form-label">NISN</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="nisn" value="{{ $data->nisn     }}">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
