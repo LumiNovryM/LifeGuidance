@@ -19,6 +19,10 @@ class AuthController extends Controller
 
     public function login_admin_action(Request $request)
     {
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
         $user = User::where('email', $request->email)->first();
 
