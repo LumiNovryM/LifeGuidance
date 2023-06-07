@@ -231,4 +231,13 @@ class AdminController extends Controller
         Siswa::find($id)->delete();
         return redirect()->route('show_siswa');
     }
+
+    // kelas handler
+    public function show_kelas()
+    {
+        return view('admin.kelas.kelas', [
+            "title" => "Kelas"
+        ]);
+    }
+
 }

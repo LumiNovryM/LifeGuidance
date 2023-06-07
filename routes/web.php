@@ -28,6 +28,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/login_admin', 'login_admin')->name('login_admin');
     Route::post('/login_admin_action', 'login_admin_action')->name('login_admin_action'); 
     Route::post('/logout_admin', 'logout')->name('logout_admin');
+    Route::post('/logout_walas', 'logout')->name('logout_walas');
 
     # Guru
     Route::get('/login_guru', 'login_guru')->name('login_guru');
@@ -71,6 +72,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/siswa/destroy/{id}', [AdminController::class, 'destroy_siswa'])->name('destroy_siswa');
     Route::post('/siswa/update/{id}', [AdminController::class, 'update_siswa'])->name('update_siswa');
     Route::get('/siswa/edit/{id}', [AdminController::class, 'edit_siswa'])->name('edit_siswa');
+
+    // kelas
+    Route::get('/kelas', [AdminController::class, 'show_kelas'])->name('show_kelas');
 });
 
 # Walas Handler
