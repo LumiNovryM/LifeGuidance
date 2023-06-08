@@ -75,8 +75,8 @@ return [
             'model' => App\Models\Walas::class,
         ],
         'siswas' => [
-            'driver' => 'database',
-            'table' => 'siswas',
+            'driver' => 'eloquent',
+            'model' => App\Models\Siswa::class,
         ],
     ],
 

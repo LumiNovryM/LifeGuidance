@@ -13,13 +13,19 @@
         @csrf
         <label>Email</label>
         <div class="mb-2">
-            <input type="email" class="form-control" autocomplete="off" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+            <input type="email" class="form-control" autocomplete="off" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="email">
         </div>
+        @error('email')
+        <p style="color: red; font-size: 12px">*{{ $message }}</p>
+    @enderror
         <label>Password</label>
         <div class="mb-4">
-            <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password"
                 aria-describedby="password-addon">
         </div>
+        @error('password')
+        <p style="color: red; font-size: 12px">*{{ $message }}</p>
+    @enderror
        
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
