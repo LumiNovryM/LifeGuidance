@@ -68,7 +68,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/guru_bk/edit/{id}', [AdminController::class, 'edit_guru_bk'])->name('edit_guru_bk');
 
     // siswa controller
-    Route::get('kelas/siswa', [AdminController::class, 'show_siswa'])->name('show_siswa');
+    Route::get('kelas/siswa/{id}', [AdminController::class, 'show_siswa'])->name('show_siswa');
     Route::get('kelas/siswa/create', [AdminController::class, 'create_siswa'])->name('create_siswa');
     Route::post('kelas/siswa/store', [AdminController::class, 'store_siswa'])->name('store_siswa');
     Route::post('kelas/siswa/destroy/{id}', [AdminController::class, 'destroy_siswa'])->name('destroy_siswa');

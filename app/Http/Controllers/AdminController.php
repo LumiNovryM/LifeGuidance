@@ -164,7 +164,7 @@ class AdminController extends Controller
     }
 
     # siswa
-    public function show_siswa()
+    public function show_siswa($id)
     {
         $datas = Siswa::with('kelas')->get();   
         // dd($datas[1]);
