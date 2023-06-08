@@ -13,7 +13,9 @@
         @csrf
         <label>Email</label>
         <div class="mb-2">
-            <input type="email" class="form-control" autocomplete="off" placeholder="Email" aria-label="Email" aria-describedby="email-addon" name="email">
+            <input type="email" autocomplete="off" class="form-control" placeholder="Email" aria-label="Email"
+                aria-describedby="email-addon" name="email"
+                @if (isset($_COOKIE['email'])) value="{{ $_COOKIE['email'] }}" @endif>
         </div>
         @error('email')
         <p style="color: red; font-size: 12px">*{{ $message }}</p>
@@ -26,10 +28,14 @@
         <p style="color: red; font-size: 12px">*{{ $message }}</p>
     @enderror
        
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-            <label class="form-check-label" for="rememberMe">Remember me</label>
-        </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" name="remember" type="checkbox" id="rememberMe"
+        @if(isset($_COOKIE["email"]))                                         
+            checked 
+        @endif
+        >
+        <label class="form-check-label" for="rememberMe">Remember me</label>
+    </div>
         <div class="text-center">
             <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
         </div>
