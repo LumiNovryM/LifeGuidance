@@ -11,4 +11,23 @@ class SiswaController extends Controller
             'title' => 'Dashboard',
         ]);
     }
+
+    #bimbiangan_pribadi
+    public function show_bimbingan_pribadi(){
+        return view('siswa.bimbingan_pribadi',[
+            'title' => 'Bimbingan Pribadi',
+        ]);   
+    }
+
+    public function show_list_bimbingan_pribadi(){
+        return view('siswa.list_bimbingan_pribadi',[
+            'title' => 'Bimbingan Pribadi',
+        ]);
+    }
+
+    public function show_form_bimbingan_pribadi(){
+        return view('siswa.form_bimbingan_pribadi',[
+            'title' => 'Bimbingan Pribadi',
+        ]);
+    }
 }

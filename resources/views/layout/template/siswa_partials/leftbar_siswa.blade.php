@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('show_walas') }}">
+          <a class="nav-link {{ ($title == "Bimbingan Pribadi") ? 'active' : '' }} " href="{{ route('show_bimbingan_pribadi') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -46,11 +46,11 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Wali Kelas</span>
+            <span class="nav-link-text ms-1">Bimbingan Pribadi</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{ route('show_guru_bk') }}">
+          <a class="nav-link {{ ($title == "Guru BK") ? 'active' : '' }} " href="">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -70,7 +70,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="">
+          <a class="nav-link {{ ($title == "Siswa") ? 'active' : '' }} " href="">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>

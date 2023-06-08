@@ -94,11 +94,18 @@ Route::prefix('walas')->group(function () {
 # Siswa Handler
 Route::prefix('siswa')->group(function () {
     Route::get('/dashboard', [SiswaController::class, 'home_siswa'])->name('home_siswa');
+
+    //bimbingan pribadi
+    Route::get('/bimbingan_pribadi', [SiswaController::class, 'show_bimbingan_pribadi'])->name('show_bimbingan_pribadi');
+    Route::get('/list_bimbingan_pribadi', [SiswaController::class, 'show_list_bimbingan_pribadi'])->name('show_list_bimbingan_pribadi');
+    Route::get('/form_bimbingan_pribadi/create', [SiswaController::class, 'show_form_bimbingan_pribadi'])->name('show_form_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/store', [SiswaController::class, 'store_bimbingan_pribadi'])->name('store_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/destroy/{id}', [SiswaController::class, 'destroy_bimbingan_pribadi'])->name('destroy_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/update/{id}', [SiswaController::class, 'update_bimbingan_pribadi'])->name('update_bimbingan_pribadi');
+    Route::get('/bimbingan_pribadi/edit/{id}', [SiswaController::class, 'edit_bimbingan_pribadi'])->name('edit_bimbingan_pribadi');
 });
 
 # guru Handler
 Route::prefix('guru')->group(function () {
     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
-   
-    
 });
