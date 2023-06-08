@@ -134,7 +134,7 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             Session::flash('status', 'Error');
             Session::flash('message', 'Invalid Login. Try Again');
-            return redirect()->route('login_walas');
+            return redirect()->route('login_siswa');
         }
         # Remember Me 
         if ($request->remember === "on") {

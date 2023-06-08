@@ -31,6 +31,9 @@
             <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
             <label class="form-check-label" for="rememberMe">Remember me</label>
         </div>
+        @if (Session::has('status'))
+        <button type="button" disabled  class="btn bg-gradient-danger w-100">{{ Session::get('message') }}</button>
+@endif
         <div class="text-center">
             <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
         </div>
