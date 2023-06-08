@@ -58,7 +58,7 @@
                                         </td>
                                         <td>
                                             <div class="text-secondary d-flex">
-                                                <form action="siswa/destroy/{{ $data->id }}" method="POST"
+                                                <form action="{{ route('destroy_siswa', $data->id) }}" method="POST"
                                                     >
                                                     @csrf
                                                     <button class="btn btn-icon btn-2 bg-gradient-danger me-3" type="submit">

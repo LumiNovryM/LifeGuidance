@@ -177,11 +177,13 @@ class AdminController extends Controller
     }
     public function create_siswa(Request $request,$id)
     {
-        $datas = Kelas::query()->get();   
+        $datas = Kelas::query()->get();
+        $kelas = Kelas::where('id', $id)->get();
         return view('admin.siswa.create_siswa', [
             "datas" => $datas,
             "title" => "Kelas",
-            "id" => $id
+            "id" => $id,
+            "kelas" => $kelas,
         ]);
     }
     public function store_siswa(Request $request)
@@ -209,10 +211,10 @@ class AdminController extends Controller
     }
     public function edit_siswa($id)
     {
-        $datas = Kelas::query()->get();   
+        $kelas = Kelas::where('id', $id)->first();
         $data = Siswa::query()->where('id', $id)->first();   
         return view('admin.siswa.edit_siswa', [
-            "datas" => $datas,
+            "kelas" => $kelas,
             "data" => $data,
             "title" => "Kelas"
         ]);
@@ -237,12 +239,12 @@ class AdminController extends Controller
 
         Siswa::where('id', $id)->update($data);
 
-        return redirect()->route('show_siswa');
+        return redirect()->route('show_siswa', $id);
     }
     public function destroy_siswa($id)
     {
-        Siswa::find($id)->delete();
-        return redirect()->route('show_siswa');
+        Siswa::where('id', $id)->delete();
+        return redirect()->route('show_kelas');
     }
 
     // kelas handler

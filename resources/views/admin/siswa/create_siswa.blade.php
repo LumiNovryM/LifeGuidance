@@ -28,7 +28,8 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Kelas</label>
-            <input class="form-control" type="text" name="kelas_id" value={{ $id }} readonly>
+            <input class="form-control" type="text" value={{ $kelas[0]->name }} readonly>
+            <input class="form-control" type="hidden" name="kelas_id" value={{ $kelas[0]->id }} readonly>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>

@@ -17,13 +17,14 @@ class SiswaSeeder extends Seeder
     {
          # Seeder Loop
          $data = [
-            ['name' => 'Solokov', 'nisn' => '20229232', 'email' => 'solokov@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
+            ['name' => 'Solokov', 'kelas_id' => 1, 'nisn' => '20229232', 'email' => 'solokov@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop
         foreach ($data as $val) {
             Siswa::insert([
                 'name' => $val['name'],
+                'kelas_id' => $val['kelas_id'],
                 'nisn' => $val['nisn'],
                 'email' => $val['email'],
                 'role_id' => $val['role_id'],

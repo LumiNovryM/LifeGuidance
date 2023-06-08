@@ -16,7 +16,7 @@ class KelasSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'Solokov'],
+            ['name' => 'PPLG 3'],
         ];
 
         # Run Seeder Loop
