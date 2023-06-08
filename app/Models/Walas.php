@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Walas extends Model implements AuthenticatableContract
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Model;
+// use Illuminate\Database\Eloquent\Model;
+
+class Walas extends Model
 {
-    use HasFactory, Authenticatable;
+    use HasFactory;
+    
     protected $guarded = [];
     
     public function walas()

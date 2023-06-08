@@ -45,12 +45,6 @@ class AuthController extends Controller
         return redirect()->route('home_admin');
     }
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
-    }
-
     # Login Handler For Guru
     public function login_guru()
     {
@@ -59,28 +53,22 @@ class AuthController extends Controller
 
     public function login_guru_action(Request $request)
     {
-        $validated = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+    
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
-        
-        $user = Guru::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            Session::flash('status', 'Error');
-            Session::flash('message', 'Invalid Login. Try Again');
-            return redirect()->route('login_guru');
-        }
-        # Remember Me 
-        if ($request->remember === "on") {
-            setcookie("email", $request->email);
-        } else {
-            setcookie("email", "");
+        if(Auth::guard('guru')->attempt($credentials)){
+            $request->session()->regenerate();
+            
+            return redirect()->route('home_guru');
         }
 
-        Auth::login($user);
+        Session::flash('status', 'Error');
+        Session::flash('message', 'Invalid Login. Try Again');
+        return redirect()->route('login_walas');
 
-        return redirect()->route('home_guru');
     }
 
 
@@ -88,6 +76,26 @@ class AuthController extends Controller
     public function login_siswa()
     {
         return view('siswa.login');
+    }
+
+    public function login_siswa_action(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if(Auth::guard('walas')->attempt($credentials)){
+            $request->session()->regenerate();
+            
+            return redirect()->route('home_siswa
+            ');
+        }
+
+        Session::flash('status', 'Error');
+        Session::flash('message', 'Invalid Login. Try Again');
+
+        return redirect()->route('home_siswa');
     }
 
     # Login Page For Guru BK
@@ -98,53 +106,30 @@ class AuthController extends Controller
 
     public function login_walas_action(Request $request)
     {
-        $validated = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        $user = Walas::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            Session::flash('status', 'Error');
-            Session::flash('message', 'Invalid Login. Try Again');
-            return redirect()->route('login_walas');
-        }
-        # Remember Me 
-        if ($request->remember === "on") {
-            setcookie("email", $request->email);
-        } else {
-            setcookie("email", "");
+        if(Auth::guard('walas')->attempt($credentials)){
+            $request->session()->regenerate();
+            
+            return redirect()->route('home_walas');
         }
 
-        Auth::login($user);
-
-        return redirect()->route('home_walas');
+        Session::flash('status', 'Error');
+        Session::flash('message', 'Invalid Login. Try Again');
+        return redirect()->route('login_walas');
     }
 
-    public function login_siswa_action(Request $request)
+    # Login For All User
+    public function logout(Request $request)
     {
-        $validated = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
-        $user = Siswa::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            Session::flash('status', 'Error');
-            Session::flash('message', 'Invalid Login. Try Again');
-            return redirect()->route('login_siswa');
-        }
-        # Remember Me 
-        if ($request->remember === "on") {
-            setcookie("email", $request->email);
-        } else {
-            setcookie("email", "");
-        }
-
-        Auth::login($user);
-
-        return redirect()->route('home_siswa');
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
+
+
 }

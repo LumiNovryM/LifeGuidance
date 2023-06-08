@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Model;
+// use Illuminate\Database\Eloquent\Model;
 
-class Guru extends Model implements AuthenticatableContract
+class Guru extends Model
 {
-    use HasFactory, Authenticatable;
+    use HasFactory;
     
     protected $guarded = [];
+
+    protected $table = 'gurus';
 
 }

@@ -6,8 +6,6 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WalasController;
-use App\Http\Controllers\dashboardController;
-use App\Http\Controllers\landingpageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,35 +20,35 @@ use App\Http\Controllers\landingpageController;
 
 Route::get('/', function () {
     return view('layout.page.landingpage');
-});
+})->name('dashboard');
 
 # Login Handler
 Route::controller(AuthController::class)->group(function(){
+
     # Admin
     Route::get('/login_admin', 'login_admin')->name('login_admin');
     Route::post('/login_admin_action', 'login_admin_action')->name('login_admin_action'); 
     Route::post('/logout_admin', 'logout')->name('logout_admin');
-    Route::post('/logout_walas', 'logout')->name('logout_walas');
-    Route::post('/logout_guru', 'logout')->name('logout_guru');
 
     # Guru
     Route::get('/login_guru', 'login_guru')->name('login_guru');
     Route::post('/login_guru_action', 'login_guru_action')->name('login_guru_action');
     Route::post('/logout_guru', 'logout')->name('logout_guru');
-
+    
     # Siswa
     Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
     Route::post('/login_siswa_action', [AuthController::class, 'login_siswa_action'])->name('login_siswa_action');
+    Route::post('/logout_siswa', 'logout')->name('logout_siswa');
 
     # Wali Kelas
     Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
     Route::post('/login_walas_action', [AuthController::class, 'login_walas_action'])->name('login_walas_action');
-    
+    Route::post('/logout_walas', 'logout')->name('logout_walas');
 
 });
 
 # Admin Handler
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'home_admin'])->name('home_admin');
 
     // walas controller
@@ -87,12 +85,12 @@ Route::prefix('admin')->group(function () {
 });
 
 # Walas Handler
-Route::prefix('walas')->group(function () {
+Route::prefix('walas')->middleware('auth:walas')->group(function () {
     Route::get('/dashboard', [WalasController::class, 'home_walas'])->name('home_walas');
 });
 
 # Siswa Handler
-Route::prefix('siswa')->group(function () {
+Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
     Route::get('/dashboard', [SiswaController::class, 'home_siswa'])->name('home_siswa');
 
     //bimbingan pribadi
@@ -112,6 +110,6 @@ Route::prefix('siswa')->group(function () {
 });
 
 # guru Handler
-Route::prefix('guru')->group(function () {
+Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
 });
