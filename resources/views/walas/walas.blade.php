@@ -1,8 +1,8 @@
-@extends('layout.template.dashboard')
+@extends('layout.template.walas_dashboard')
 
 @section('title-tab','LifeGuidance')
 
-@section('admin_content')
+@section('walas_content')
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">

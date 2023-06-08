@@ -36,7 +36,7 @@ Route::controller(AuthController::class)->group(function(){
     # Guru
     Route::get('/login_guru', 'login_guru')->name('login_guru');
     Route::post('/login_guru_action', 'login_guru_action')->name('login_guru_action');
-    Route::post('/logout_guru', 'logout_guru')->name('logout_guru');
+    Route::post('/logout_guru', 'logout')->name('logout_guru');
 
     # Siswa
     Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
