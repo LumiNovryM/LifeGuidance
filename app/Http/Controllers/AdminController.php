@@ -164,21 +164,24 @@ class AdminController extends Controller
     }
 
     # siswa
-    public function show_siswa()
+    public function show_siswa(Request $request, $id)
     {
-        $datas = Siswa::with('kelas')->get();   
+        $datas = Siswa::with('kelas')->where('kelas_id',$id)->get();  
+        
         // dd($datas[1]);
         return view('admin.siswa.siswa', [
             "datas" => $datas,
-            "title" => "Kelas"
+            "title" => "Kelas",
+            "id" => $id
         ]);
     }
-    public function create_siswa()
+    public function create_siswa(Request $request,$id)
     {
         $datas = Kelas::query()->get();   
         return view('admin.siswa.create_siswa', [
             "datas" => $datas,
-            "title" => "Kelas"
+            "title" => "Kelas",
+            "id" => $id
         ]);
     }
     public function store_siswa(Request $request)
@@ -202,7 +205,7 @@ class AdminController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('show_siswa');
+        return redirect()->route('show_siswa',$request->kelas_id);
     }
     public function edit_siswa($id)
     {

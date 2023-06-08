@@ -33,7 +33,7 @@
                     <a href="{{ route('edit_kelas', $data->id) }}" style="margin-right: 10px">
                         <button type="submit" class="btn btn-warning">Edit</button>
                     </a>
-                    <a href="{{ route('show_siswa') }}">
+                    <a href="{{ route('show_siswa',$data->id) }}">
                         <button type="button" class="btn btn-info">View</button>
                     </a>
                 </div>

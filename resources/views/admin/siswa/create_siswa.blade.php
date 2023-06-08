@@ -27,15 +27,8 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="kelas_id">
-                @foreach ($datas as $data)
-                    <option value="{{ $data->id }}">{{ $data->name }}</option>
-                @endforeach
-              </select>
-            @error('kelas_id')
-            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-            @enderror
+            <label class="form-label">Kelas</label>
+            <input class="form-control" type="text" name="kelas_id" value={{ $id }} readonly>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
