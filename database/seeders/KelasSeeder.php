@@ -17,6 +17,7 @@ class KelasSeeder extends Seeder
     {
         $data = [
             ['name' => 'XI PPLG 1'],
+            ['name' => 'XI PPLG 2'],
         ];
 
         # Run Seeder Loop

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WalasController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\landingpageController;
@@ -39,6 +40,7 @@ Route::controller(AuthController::class)->group(function(){
 
     # Siswa
     Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
+    Route::post('/login_siswa_action', [AuthController::class, 'login_siswa_action'])->name('login_siswa_action');
 
     # Wali Kelas
     Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
@@ -69,7 +71,7 @@ Route::prefix('admin')->group(function () {
 
     // siswa controller
     Route::get('kelas/siswa/{id}', [AdminController::class, 'show_siswa'])->name('show_siswa');
-    Route::get('kelas/siswa/create', [AdminController::class, 'create_siswa'])->name('create_siswa');
+    Route::get('kelas/siswa/create/{id}', [AdminController::class, 'create_siswa'])->name('create_siswa');
     Route::post('kelas/siswa/store', [AdminController::class, 'store_siswa'])->name('store_siswa');
     Route::post('kelas/siswa/destroy/{id}', [AdminController::class, 'destroy_siswa'])->name('destroy_siswa');
     Route::post('kelas/siswa/update/{id}', [AdminController::class, 'update_siswa'])->name('update_siswa');
@@ -89,9 +91,14 @@ Route::prefix('walas')->group(function () {
     Route::get('/dashboard', [WalasController::class, 'home_walas'])->name('home_walas');
 });
 
+# Siswa Handler
+Route::prefix('siswa')->group(function () {
+    Route::get('/dashboard', [SiswaController::class, 'home_siswa'])->name('home_siswa');
+});
+
 # guru Handler
-// Route::prefix('guru')->group(function () {
-//     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
-//     Route::get('/kelas', [GuruController::class, 'show_kelas'])->name('show_kelas');
-//     Route::get('/siswa', [GuruController::class, 'show_siswa'])->name('show_siswa');
-// });
+Route::prefix('guru')->group(function () {
+    Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
+   
+    
+});

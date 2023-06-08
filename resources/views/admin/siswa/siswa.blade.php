@@ -8,7 +8,7 @@
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                     <h6>Siswa</h6>
-                    <a href="{{ route('create_siswa') }}">
+                    <a href="{{ route('create_siswa',$id) }}">
                         <button type="button" class="btn bg-gradient-info btn-sm">Create</button>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
                                         </td>
                                         <td>
                                             <div class="text-secondary d-flex">
-                                                <form action="siswa/destroy/{{ $data->id }}" method="POST"
+                                                <form action="{{ route('destroy_siswa', $data->id) }}" method="POST"
                                                     >
                                                     @csrf
                                                     <button class="btn btn-icon btn-2 bg-gradient-danger me-3" type="submit">
