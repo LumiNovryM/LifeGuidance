@@ -18,15 +18,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             GuruSeeder::class,
+            KelasSeeder::class,
             WalasSeeder::class,
             SiswaSeeder::class,
-        ]);
-        User::create([
-            'name' => 'admin1',
-            'nip' => '505404',
-            'email' => 'admin1@gmail.com',
-            'role_id' => 1,
-            'password' => bcrypt('12345678')
         ]);
     }
 }

@@ -166,8 +166,8 @@ class AdminController extends Controller
     # siswa
     public function show_siswa($id)
     {
-        $datas = Siswa::with('kelas')->get();   
-        // dd($datas[1]);
+        $datas = Siswa::where('kelas_id', $id)->with('kelas')->get();
+        // dd($datas);   
         return view('admin.siswa.siswa', [
             "datas" => $datas,
             "title" => "Kelas"
