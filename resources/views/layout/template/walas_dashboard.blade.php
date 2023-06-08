@@ -175,7 +175,7 @@
             @yield('admin_content')
           </div>
     </main>
-    @include('walas. walas_partials.rightbar_walas')
+    @include('walas.walas_partials.rightbar_walas')
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>

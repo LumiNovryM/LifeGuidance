@@ -168,7 +168,6 @@ class AdminController extends Controller
     {
         $datas = Siswa::with('kelas')->where('kelas_id',$id)->get();  
         
-        // dd($datas[1]);
         return view('admin.siswa.siswa', [
             "datas" => $datas,
             "title" => "Kelas",

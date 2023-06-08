@@ -8,6 +8,8 @@ class WalasController extends Controller
 {
     public function home_walas()
     {
-        return view('walas.walas');
+        return view('walas.walas', [
+            "title" => "Dashboard"
+        ]);
     }
 }

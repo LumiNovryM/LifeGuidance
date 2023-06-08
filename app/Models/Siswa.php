@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Siswa extends Authenticatable
 {
     use HasFactory;
+    
     protected $guarded = [];
 
     public function kelas()
