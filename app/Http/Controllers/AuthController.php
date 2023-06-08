@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\User;
+use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -119,5 +120,31 @@ class AuthController extends Controller
         Auth::login($user);
 
         return redirect()->route('home_walas');
+    }
+
+    public function login_siswa_action(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = Siswa::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            Session::flash('status', 'Error');
+            Session::flash('message', 'Invalid Login. Try Again');
+            return redirect()->route('login_walas');
+        }
+        # Remember Me 
+        if ($request->remember === "on") {
+            setcookie("email", $request->email);
+        } else {
+            setcookie("email", "");
+        }
+
+        Auth::login($user);
+
+        return redirect()->route('home_siswa');
     }
 }

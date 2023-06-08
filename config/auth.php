@@ -74,10 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Walas::class,
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'siswas' => [
+            'driver' => 'database',
+            'table' => 'siswas',
+        ],
     ],
 
     /*
