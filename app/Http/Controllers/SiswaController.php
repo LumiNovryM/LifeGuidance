@@ -7,7 +7,9 @@ use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Bimbingan_Belajar;
+use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Pribadi;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
@@ -135,6 +137,72 @@ class SiswaController extends Controller
         $data = Bimbingan_Belajar::where('id', $id)->first();
         return view('siswa.detail_bimbingan_belajar', [
             'title' => 'Belajar',
+            'data' => $data,
+        ]);
+    }
+
+    // bimbingan sosial
+    public function bimbingan_sosial(){
+        return view('siswa.bimbingan_sosial', [
+            'title' => 'Sosial',
+        ]);
+    }
+    public function create_bimbingan_sosial(){
+        $id = Auth::user()->id;
+        $data = Siswa::where('id', $id)->first();
+        $data2 = Walas::where('kelas_id', $data->kelas->id)->first();
+        $diajak = Siswa::all();
+        $nama = $data->name;
+        $kelas = $data->kelas->name;
+        $walas = $data2->name;
+        // dd($walas);
+        return view('siswa.create_bimbingan_sosial', [
+            'title' => 'Belajar',
+            'nama' => $nama,
+            'kelas' => $kelas,
+            'walas' => $walas,
+            'diajak' => $diajak,
+        ]);
+    }
+    public function store_bimbingan_sosial(Request $request)
+    {
+        $request->validate([
+            'nama_siswa' => 'required',
+            'nama_kelas' => 'required',
+            'nama_walas' => 'required',
+            'diajukan' => 'required',
+            'alasan_pertemuan' => 'required',
+        ]);
+
+        Bimbingan_Sosial::insert([
+            'nama_siswa' => $request->nama_siswa,
+            'nama_kelas' => $request->nama_kelas,
+            'nama_walas' => $request->nama_walas,
+            'nama_guru_bk' => 'tes',
+            'diajukan' => $request->diajukan,
+            'alasan_pertemuan' => $request->alasan_pertemuan,
+            'status' => 'Menunggu',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('bimbingan_sosial');
+    }
+    public function list_bimbingan_sosial()
+    {
+        $id = 'Solokov';
+        $datas = Bimbingan_Sosial::where('nama_siswa', $id)->get();
+        return view('siswa.list_bimbingan_sosial', [
+            'title' => 'Sosial',
+            'datas' => $datas,
+        ]);
+    }
+    public function detail_bimbingan_sosial($id)
+    {
+        $data = Bimbingan_Sosial::where('id', $id)->first();
+        
+        return view('siswa.detail_bimbingan_sosial', [
+            'title' => 'Sosial',
             'data' => $data,
         ]);
     }
