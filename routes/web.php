@@ -103,6 +103,9 @@ Route::prefix('siswa')->group(function () {
     Route::post('/bimbingan_pribadi/destroy/{id}', [SiswaController::class, 'destroy_bimbingan_pribadi'])->name('destroy_bimbingan_pribadi');
     Route::post('/bimbingan_pribadi/update/{id}', [SiswaController::class, 'update_bimbingan_pribadi'])->name('update_bimbingan_pribadi');
     Route::get('/bimbingan_pribadi/edit/{id}', [SiswaController::class, 'edit_bimbingan_pribadi'])->name('edit_bimbingan_pribadi');
+    Route::get('/bimbingan_belajar', [SiswaController::class, 'bimbingan_belajar'])->name('bimbingan_belajar');
+    Route::get('/bimbingan_belajar/list', [SiswaController::class, 'list_bimbingan_belajar'])->name('list_bimbingan_belajar');
+    Route::get('/bimbingan_belajar/create', [SiswaController::class, 'create_bimbingan_belajar'])->name('create_bimbingan_belajar');
 });
 
 # guru Handler

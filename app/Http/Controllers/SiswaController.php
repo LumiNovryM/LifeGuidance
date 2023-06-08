@@ -11,6 +11,22 @@ class SiswaController extends Controller
             'title' => 'Dashboard',
         ]);
     }
+    public function bimbingan_belajar(){
+        return view('siswa.bimbingan_belajar', [
+            'title' => 'Belajar',
+        ]);
+    }
+    public function list_bimbingan_belajar(){
+        return view('siswa.list_bimbingan_belajar', [
+            'title' => 'Belajar',
+        ]);
+    }
+    public function create_bimbingan_belajar(){
+        return view('siswa.create_bimbingan_belajar', [
+            'title' => 'Belajar',
+        ]);
+    }
+
 
     #bimbiangan_pribadi
     public function show_bimbingan_pribadi(){
