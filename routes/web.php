@@ -94,6 +94,9 @@ Route::prefix('walas')->group(function () {
 # Siswa Handler
 Route::prefix('siswa')->group(function () {
     Route::get('/dashboard', [SiswaController::class, 'home_siswa'])->name('home_siswa');
+    Route::get('/bimbingan_belajar', [SiswaController::class, 'bimbingan_belajar'])->name('bimbingan_belajar');
+    Route::get('/bimbingan_belajar/list', [SiswaController::class, 'list_bimbingan_belajar'])->name('list_bimbingan_belajar');
+    Route::get('/bimbingan_belajar/create', [SiswaController::class, 'create_bimbingan_belajar'])->name('create_bimbingan_belajar');
 });
 
 # guru Handler
