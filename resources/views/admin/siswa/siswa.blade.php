@@ -52,9 +52,9 @@
                                             </div>
                                         </td>
                                         <td>
-                                            {{-- <div class="text-secondary">
-                                                <p class="text-secondary">{{ $data->siswa->name }}</p>
-                                            </div> --}}
+                                            <div class="text-secondary">
+                                                <p class="text-secondary">{{ $data->kelas->name }}</p>
+                                            </div>
                                         </td>
                                         <td>
                                             <div class="text-secondary d-flex">
