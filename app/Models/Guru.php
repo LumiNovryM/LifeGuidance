@@ -18,7 +18,19 @@ class Guru extends Model
     
     public function bimbinganPribadi()
     {
-        return $this->hasMany(Bimbingan_Pribadi::class);
+        return $this->belongsToMany(Siswa::class, Bimbingan_Pribadi::class);
+    }
+    public function bimbinganBelajar()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Belajar::class);
+    }
+    public function bimbinganSosial()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
+    }
+    public function bimbinganKarir()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
     }
 
     public function kelas()

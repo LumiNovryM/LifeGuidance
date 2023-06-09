@@ -18,6 +18,8 @@ class SiswaSeeder extends Seeder
          # Seeder Loop
          $data = [
             ['name' => 'Solokov', 'kelas_id' => 1, 'nisn' => '20229232', 'email' => 'solokov@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
+            ['name' => 'Ujang', 'kelas_id' => 1, 'nisn' => '20229233', 'email' => 'udin@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
+            ['name' => 'Tono', 'kelas_id' => 1, 'nisn' => '20229233', 'email' => 'tono@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop

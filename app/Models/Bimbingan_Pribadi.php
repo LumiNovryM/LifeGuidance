@@ -10,15 +10,23 @@ class Bimbingan_Pribadi extends Model
     use HasFactory;
 
     protected $guarded = [];
-
     
     public function siswa()
     {
-        return $this->belongsToMany(Siswa::class);
+        return $this->belongsTo(Siswa::class);
+    }
+    public function walas()
+    {
+        return $this->belongsTo(Walas::class);
     }
     
     public function guru()
     {
-        return $this->belongsToMany(Guru::class);
+        return $this->belongsTo(Guru::class);
     }
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+    
 }

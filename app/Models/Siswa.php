@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Siswa extends Model
 {
-    use HasFactory;
+    use HasFactory,HasApiTokens;
     
     protected $guarded = [];
 
@@ -19,6 +20,18 @@ class Siswa extends Model
 
     public function bimbinganPribadi()
     {
-        return $this->hasMany(Bimbingan_Pribadi::class);
+        return $this->belongsToMany(Guru::class, Bimbingan_Pribadi::class);
+    }
+    public function bimbinganBelajar()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Belajar::class);
+    }
+    public function bimbinganSosial()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
+    }
+    public function bimbinganKarir()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
     }
 }
