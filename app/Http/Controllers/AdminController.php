@@ -304,6 +304,7 @@ class AdminController extends Controller
 
     #profile
     public function show_profile(){
+    
         return view('admin.profile.profile',[
             "title" => "Profile"
         ]);
