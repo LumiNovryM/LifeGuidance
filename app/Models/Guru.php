@@ -14,4 +14,10 @@ class Guru extends Model
 
     protected $table = 'gurus';
 
+
+    
+    public function bimbinganPribadi()
+    {
+        return $this->hasMany(Bimbingan_Pribadi::class);
+    }
 }
