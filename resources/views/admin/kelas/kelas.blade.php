@@ -23,36 +23,46 @@
 
     <div class="row justify-content-center">
         @foreach ($datas as $data)
-        <div class="col-6">
-            <div class="card mb-3" style="max-width: 22rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Kelas {{ $data->name }}</h5>
-                    <p class="card-text">Wali Kelas: LeBron James</p>
-                    <p class="card-text">Guru BK: Paul Pogba</p>
-                    <p class="card-text">Total Siswa: 33</p>
-                    <div class="d-flex justify-content-center mt-3">
-                        <form style="margin-right: 10px" action="{{ route('destroy_kelas', $data->id) }}"
-                            method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-danger mr-2">Delete</button>
-                        </form>
-                        <a href="{{ route('edit_kelas', $data->id) }}" style="margin-right: 10px">
-                            <button type="submit" class="btn btn-sm btn-warning">Edit</button>
-                        </a>
-                        <a href="{{ route('show_siswa', $data->id) }}">
-                            <button type="button" class="btn btn-sm btn-info">View</button>
-                        </a>
+            <div class="col-6">
+                <div class="card mb-3" style="max-width: 22rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Kelas {{ $data->name }}</h5>
+                        @if (!isset($data->walas))
+                        <p class="card-text">Wali Kelas: -</p>
+                        @else
+                        <p class="card-text">Wali Kelas: {{ $data->walas->name }}</p>
+                        @endif
+                        @foreach ($data->guru as $item)
+                            @if (!$item->name)
+                                <p class="card-text">Guru BK: -</p>
+                            @else    
+                                <p class="card-text">Guru BK: {{ $item->name }}</p>
+                            @endif
+                        @endforeach
+                        <p class="card-text">Total Siswa: 33</p>
+                        <div class="d-flex justify-content-center mt-3">
+                            <form style="margin-right: 10px" action="{{ route('destroy_kelas', $data->id) }}"
+                                method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-danger mr-2">Delete</button>
+                            </form>
+                            <a href="{{ route('edit_kelas', $data->id) }}" style="margin-right: 10px">
+                                <button type="submit" class="btn btn-sm btn-warning">Edit</button>
+                            </a>
+                            <a href="{{ route('show_siswa', $data->id) }}">
+                                <button type="button" class="btn btn-sm btn-info">View</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
-    
 
 
-    <div class="mt-6">
+
+    {{-- <div class="mt-6">
         {{ $datas->links() }}
-    </div>
+    </div> --}}
 
 @endsection
