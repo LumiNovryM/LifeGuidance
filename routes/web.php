@@ -98,10 +98,10 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
 
     //bimbingan pribadi
     Route::get('/bimbingan_pribadi', [SiswaController::class, 'show_bimbingan_pribadi'])->name('show_bimbingan_pribadi');
-    Route::get('/bimbingan_pribadi/list', [SiswaController::class, 'show_list_bimbingan_pribadi'])->name('show_list_bimbingan_pribadi');
-    Route::get('/bimbingan_pribadi/create', [SiswaController::class, 'show_form_bimbingan_pribadi'])->name('show_form_bimbingan_pribadi');
+
+    
     Route::post('/bimbingan_pribadi/store', [SiswaController::class, 'store_bimbingan_pribadi'])->name('store_bimbingan_pribadi');
-    Route::get('/bimbingan_pribadi/list/detail/{id}', [SiswaController::class, 'detail_bimbingan_pribadi'])->name('detail_bimbingan_pribadi');
+    Route::get('/bimbingan_pribadi/detail/{id}', [SiswaController::class, 'detail_bimbingan_pribadi'])->name('detail_bimbingan_pribadi');
     
 
     // bimbingan belajar

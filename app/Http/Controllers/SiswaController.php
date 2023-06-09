@@ -24,33 +24,18 @@ class SiswaController extends Controller
     
     #bimbiangan_pribadi
     public function show_bimbingan_pribadi(){
-        // $data = Bimbingan_Pribadi::with('guru','siswa')->get();
-        // dd($data[0]->guru->name);
+        $user = Auth::guard('siswa')->user();
+        $walas = Walas::where('kelas_id', $user->kelas->id)->first();
+        
+        $datas = Bimbingan_Pribadi::where('siswa_id', $user->id)->get();
         return view('siswa.bimbingan_pribadi',[
             'title' => 'Bimbingan Pribadi',
+            'user' => $user,
+            'datas' => $datas,
+            'walas' => $walas,
         ]);   
     }
 
-    public function show_list_bimbingan_pribadi(){
-        $id = Auth::guard('siswa')->user()->id;
-        $datas = Bimbingan_Pribadi::where('siswa_id', $id)->get();
-        return view('siswa.list_bimbingan_pribadi',[
-            'title' => 'Bimbingan Pribadi',
-            'datas' => $datas
-        ]);
-    }
-
-    public function show_form_bimbingan_pribadi(){
-        $id = Auth::guard('siswa')->user()->id;
-        $data = Siswa::where('id', $id)->first();
-        $data2 = Walas::where('kelas_id', $data->kelas->id)->first();
-        return view('siswa.form_bimbingan_pribadi',[
-            'title' => 'Bimbingan Pribadi',
-            'nama' => $data,
-            'kelas' => $data,
-            'walas' => $data2,
-        ]);
-    }
     public function store_bimbingan_pribadi(Request $request)
     {
         $request->validate([
