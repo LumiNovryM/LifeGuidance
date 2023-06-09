@@ -8,7 +8,8 @@
   <div class="card-body">
       <h5 class="card-title">Pertemuan Bimbingan Sosial</h5>
       <p class="card-text">
-          <strong>Guru Bk:</strong> {{ $data->nama_guru_bk }}<br>
+          <strong>Tema:</strong> {{ $data->alasan_pertemuan }}<br>
+          <strong>Guru Bk:</strong> {{ $data->guru->name }}<br>
           <strong>Status:</strong> {{ $data->status }}<br>
 
           @if ($data->status != 'Menunggu')
