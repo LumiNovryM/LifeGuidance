@@ -149,6 +149,16 @@ class AdminController extends Controller
             }
         }
 
+        if($request->kelas_sebelas){
+            $data = $request->kelas_sebelas;
+            foreach($data as $val){
+                GuruKelas::insert([
+                    'guru_id' => $guru_id,
+                    'kelas_id' => $val,
+                ]);
+            }
+        }
+
         return redirect()->route('show_guru_bk');
     }
     public function edit_guru_bk($id)
