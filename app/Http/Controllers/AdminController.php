@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\GuruKelas;
 use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Siswa;
@@ -104,13 +105,19 @@ class AdminController extends Controller
     }
     public function create_guru_bk()
     {
+        $datax = Kelas::where('name', 'LIKE', '%X%')->where('name', 'NOT LIKE', '%XI%')->where('name', 'NOT LIKE', '%XII%')->get();
+        $dataxi = Kelas::where('name', 'LIKE', '%XI%')->where('name', 'NOT LIKE', '%XII%')->get();
+        $dataxii = Kelas::where('name', 'LIKE', '%XII%')->get();
         return view('admin.guru.create_guru_bk', [
-            "title" => "Guru BK"
+            "title" => "Guru BK",
+            "kelas_sepuluh" => $datax,
+            "kelas_sebelas" => $dataxi,
+            "kelas_duabelas" => $dataxii,
         ]);
     }
     public function store_guru_bk(Request $request)
     {
-
+        dd($request->all());
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -127,6 +134,14 @@ class AdminController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        # Kelas X
+        GuruKelas::insert([
+            'kelas_id' => $request->sepuluh_
+        ]);
+        # Kelas XI
+        
+        # Kelas XI
 
         return redirect()->route('show_guru_bk');
     }
@@ -250,7 +265,7 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
-        $datas = Kelas::paginate(2);
+        $datas = Kelas::paginate(4);
         return view('admin.kelas.kelas', [
             "title" => "Kelas",
             "datas" => $datas
