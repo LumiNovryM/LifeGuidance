@@ -139,6 +139,7 @@ class AdminController extends Controller
         $guru = Guru::where('name', $request->name)->first();
         $guru_id = $guru->id;
 
+        # Kelas Sepuluh
         if($request->kelas_sepuluh){
             $data = $request->kelas_sepuluh;
             foreach($data as $val){
@@ -149,6 +150,7 @@ class AdminController extends Controller
             }
         }
 
+        # Kelas Sebelas
         if($request->kelas_sebelas){
             $data = $request->kelas_sebelas;
             foreach($data as $val){
@@ -159,6 +161,7 @@ class AdminController extends Controller
             }
         }
         
+        # Kelas Dua Belas
         if($request->kelas_duabelas){
             $data = $request->kelas_duabelas;
             foreach($data as $val){
