@@ -114,7 +114,7 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
     Route::get('/bimbingan_sosial', [SiswaController::class, 'bimbingan_sosial'])->name('bimbingan_sosial');
     Route::post('/bimbingan_sosial/store', [SiswaController::class, 'store_bimbingan_sosial'])->name('store_bimbingan_sosial');
     Route::get('/bimbingan_sosial/list', [SiswaController::class, 'list_bimbingan_sosial'])->name('list_bimbingan_sosial');
-    Route::get('/bimbingan_sosial/list/detail/{id}', [SiswaController::class, 'detail_bimbingan_sosial'])->name('detail_bimbingan_sosial');
+    Route::get('/bimbingan_sosial/detail/{id}', [SiswaController::class, 'detail_bimbingan_sosial'])->name('detail_bimbingan_sosial');
     Route::get('/bimbingan_sosial/create', [SiswaController::class, 'create_bimbingan_sosial'])->name('create_bimbingan_sosial');
 
     // bimbingan sosial

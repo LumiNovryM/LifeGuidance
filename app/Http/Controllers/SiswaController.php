@@ -126,25 +126,21 @@ class SiswaController extends Controller
 
     // bimbingan sosial
     public function bimbingan_sosial(){
-        return view('siswa.bimbingan_sosial', [
-            'title' => 'Sosial',
-        ]);
-    }
-    public function create_bimbingan_sosial(){
-        $id = Auth::user()->id;
-        $data = Siswa::where('id', $id)->first();
-        $data2 = Walas::where('kelas_id', $data->kelas->id)->first();
+        $user = Auth::guard('siswa')->user();
+        $walas = Walas::where('kelas_id', $user->kelas->id)->first();
+        $datas = Bimbingan_Sosial::where('siswa_id', $user->id)->orWhere('diajukan', $user->id)->get();
         $diajak = Siswa::all();
         
-        // dd($walas);
-        return view('siswa.create_bimbingan_sosial', [
+        
+        return view('siswa.bimbingan_sosial', [
             'title' => 'Sosial',
-            'nama' => $data,
-            'kelas' => $data,
-            'walas' => $data2,
+            'user' => $user,
+            'walas' => $walas,
+            'datas' => $datas,
             'diajak' => $diajak,
         ]);
     }
+
     public function store_bimbingan_sosial(Request $request)
     {
         $request->validate([
@@ -168,15 +164,6 @@ class SiswaController extends Controller
         ]);
 
         return redirect()->route('bimbingan_sosial');
-    }
-    public function list_bimbingan_sosial()
-    {
-        $id = Auth::guard('siswa')->user()->id;
-        $datas = Bimbingan_Sosial::where('siswa_id', $id)->orWhere('diajukan', $id)->get();
-        return view('siswa.list_bimbingan_sosial', [
-            'title' => 'Sosial',
-            'datas' => $datas,
-        ]);
     }
     public function detail_bimbingan_sosial($id)
     {

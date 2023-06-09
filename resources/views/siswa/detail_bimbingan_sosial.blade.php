@@ -38,5 +38,5 @@
         <p>{{ $data->lokasi_pertemuan }}</p>
     </div>
 
-    <a href="{{ route('list_bimbingan_belajar') }}" type="button" class="btn btn-primary">Kembali</a>
+    <a href="{{ route('bimbingan_sosial') }}" type="button" class="btn btn-primary">Kembali</a>
 @endsection
