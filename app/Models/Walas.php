@@ -28,4 +28,8 @@ class Walas extends Model
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Belajar::class);
     }
+    public function bimbinganKarir()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
+    }
 }
