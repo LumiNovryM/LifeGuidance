@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('bimbingan__sosials', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_siswa");
-            $table->string("nama_guru_bk");
-            $table->string("nama_kelas");
-            $table->string("nama_walas");
+
             $table->string("diajukan");
             $table->text("alasan_pertemuan");
             $table->date("tanggal_pertemuan")->nullable();
