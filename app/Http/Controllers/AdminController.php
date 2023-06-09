@@ -250,8 +250,6 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
-        $relasi = Kelas::with('guru')->get();
-        dd($relasi);
         $datas = Kelas::paginate(2);
         return view('admin.kelas.kelas', [
             "title" => "Kelas",
