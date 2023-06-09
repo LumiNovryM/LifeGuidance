@@ -180,22 +180,17 @@ class SiswaController extends Controller
 
     // bimbingan karir
     public function bimbingan_karir(){
+        $user = Auth::guard('siswa')->user();
+        $datas = Bimbingan_Karir::where('siswa_id', $user->id)->get();
+        $walas = Walas::where('kelas_id', $user->kelas->id)->first();
         return view('siswa.bimbingan_karir', [
             'title' => 'Karir',
+            'user' => $user,
+            'walas' => $walas,
+            'datas' => $datas,
         ]);
     }
-    public function create_bimbingan_karir(){
-        $id = Auth::guard('siswa')->user()->id;
-        $data = Siswa::where('id', $id)->first();
-        $data2 = Walas::where('kelas_id', $data->kelas->id)->first();
-        // dd($walas);
-        return view('siswa.create_bimbingan_karir', [
-            'title' => 'Karir',
-            'nama' => $data,
-            'kelas' => $data,
-            'walas' => $data2,
-        ]);
-    }
+
     public function store_bimbingan_karir(Request $request)
     {
         $request->validate([
@@ -220,15 +215,7 @@ class SiswaController extends Controller
 
         return redirect()->route('bimbingan_karir');
     }
-    public function list_bimbingan_karir()
-    {
-        $id = Auth::guard('siswa')->user()->id;
-        $datas = Bimbingan_Karir::where('siswa_id', $id)->get();
-        return view('siswa.list_bimbingan_karir', [
-            'title' => 'Karir',
-            'datas' => $datas,
-        ]);
-    }
+
     public function detail_bimbingan_karir($id)
     {
         $data = Bimbingan_Karir::with('siswa','kelas','walas','guru' )->where('id', $id)->first();

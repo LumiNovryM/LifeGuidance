@@ -111,7 +111,7 @@
   </div>
 </div>
 @empty
-<h1>kosong</h1>
+<h3>Kamu Belum Memiliki Bimbingan Sosial</h3>
 
 @endforelse
 @endsection

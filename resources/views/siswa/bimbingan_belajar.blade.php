@@ -94,7 +94,7 @@
   </div>
 </div>
 @empty
-<h1>kosong</h1>
+<h3>Kamu Belum Memiliki Bimbingan Belajar</h3>
 
 @endforelse
 @endsection
