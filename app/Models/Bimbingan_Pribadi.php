@@ -10,7 +10,6 @@ class Bimbingan_Pribadi extends Model
     use HasFactory;
 
     protected $guarded = [];
-
     
     public function siswa()
     {
