@@ -65,7 +65,7 @@
         <p class="text-danger text-xs mt-2">{{ $message }}</p>
         @enderror
   </div>  
-  
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -94,7 +94,7 @@
   </div>
 </div>
 @empty
-<h1>kosong</h1>
+<h3>Kamu Belum Memiliki Bimbingan Pribadi</h3>
 
 @endforelse
 @endsection
