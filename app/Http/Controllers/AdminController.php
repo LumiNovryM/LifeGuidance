@@ -301,4 +301,11 @@ class AdminController extends Controller
         Kelas::find($id)->delete();
         return redirect()->route('show_kelas');
     }
+
+    #profile
+    public function show_profile(){
+        return view('admin.profile.profile',[
+            "title" => "Profile"
+        ]);
+    }
 }
