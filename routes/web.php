@@ -82,6 +82,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/kelas/destroy/{id}', [AdminController::class, 'destroy_kelas'])->name('destroy_kelas');
     Route::post('/kelas/update/{id}', [AdminController::class, 'update_kelas'])->name('update_kelas');
     Route::get('/kelas/edit/{id}', [AdminController::class, 'edit_kelas'])->name('edit_kelas');
+
+    //profile
+    Route::get('/profile', [AdminController::class, 'show_profile'])->name('show_profile');
 });
 
 # Walas Handler
