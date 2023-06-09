@@ -85,11 +85,10 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if(Auth::guard('walas')->attempt($credentials)){
+        if(Auth::guard('siswa')->attempt($credentials)){
             $request->session()->regenerate();
             
-            return redirect()->route('home_siswa
-            ');
+            return redirect()->route('home_siswa');
         }
 
         Session::flash('status', 'Error');
