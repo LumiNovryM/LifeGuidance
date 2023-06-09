@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Sosial;
+use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,41 +32,39 @@ class SiswaController extends Controller
     }
 
     public function show_list_bimbingan_pribadi(){
-        $id = 'Solokov';
-        $datas = Bimbingan_Pribadi::where('nama_siswa', $id)->get();
+        $id = Auth::guard('siswa')->user()->id;
+        $datas = Bimbingan_Pribadi::where('siswa_id', $id)->get();
         return view('siswa.list_bimbingan_pribadi',[
             'title' => 'Bimbingan Pribadi',
             'datas' => $datas
         ]);
     }
 
-    public function show_form_bimbingan_pribadi($id){
+    public function show_form_bimbingan_pribadi(){
+        $id = Auth::guard('siswa')->user()->id;
         $data = Siswa::where('id', $id)->first();
         $data2 = Walas::where('kelas_id', $data->kelas->id)->first();
-        $nama = $data->name;
-        $kelas = $data->kelas->name;
-        $walas = $data2->name;
         return view('siswa.form_bimbingan_pribadi',[
             'title' => 'Bimbingan Pribadi',
-            'nama' => $nama,
-            'kelas' => $kelas,
-            'walas' => $walas
+            'nama' => $data,
+            'kelas' => $data,
+            'walas' => $data2,
         ]);
     }
     public function store_bimbingan_pribadi(Request $request)
     {
         $request->validate([
-            'nama_siswa' => 'required',
-            'nama_kelas' => 'required',
-            'nama_walas' => 'required',
+            'siswa_id' => 'required',
+            'kelas_id' => 'required',
+            'walas_id' => 'required',
             'alasan_pertemuan' => 'required',
         ]);
 
         Bimbingan_Pribadi::insert([
-            'nama_siswa' => $request->nama_siswa,
-            'nama_kelas' => $request->nama_kelas,
-            'nama_walas' => $request->nama_walas,
-            'nama_guru_bk' => 'tes',
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $request->kelas_id,
+            'walas_id' => $request->walas_id,
+            'guru_id' => 1,
             'alasan_pertemuan' => $request->alasan_pertemuan,
             'status' => 'Menunggu',
             'created_at' => Carbon::now(),
@@ -76,8 +75,9 @@ class SiswaController extends Controller
     }
     public function detail_bimbingan_pribadi($id)
     {
-        $data = Bimbingan_Pribadi::where('id', $id)->first();
-        return view('siswa.detail_bimbingan_belajar', [
+        $data = Bimbingan_Pribadi::with('siswa', )->where('id', $id)->first();
+        // dd($data);
+        return view('siswa.detail_bimbingan_pribadi', [
             'title' => 'Bimbingan Pribadi',
             'data' => $data,
         ]);
