@@ -3,18 +3,25 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('siswa_content')
-@foreach ($datas as $data)
-<div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2 my-3">
-    <div class="d-flex justify-content-between">
-      <a href="{{ route('detail_bimbingan_belajar', $data->id) }}" class="font-weight-bold text-decoration-none hover:text-yellow-800">{{ $data->alasan_pertemuan }}</a>
-        <div class="text-yellow-600 text-xs">{{ $data->status }}</div>
-    </div>
-    <div class="text-sm text-gray-600">
-      <p>Guru BK  : {{ $data->nama_guru_bk }}</p>
-      <div class="d-flex">
-        <p>{{ $data->nama_siswa }}, <p>{{ $data->created_at }}</p></p>
-      </div>
-    </div>
+@forelse ($datas as $data)
+<div class="card mt-5">
+  <div class="card-body">
+      <h5 class="card-title">Pertemuan Bimbingan Belajar</h5>
+      <p class="card-text">
+          <strong>Tema:</strong> {{ $data->alasan_pertemuan }}<br>
+          <strong>Guru Bk:</strong> {{ $data->guru->name }}<br>
+          <strong>Status:</strong> {{ $data->status }}<br>
+
+          @if ($data->status != 'Menunggu')
+          <strong>Tanggal dan Tempat:</strong> 12 June 2023, Meeting Room 1
+          @endif
+          
+      </p>
+      <a href="{{ route('detail_bimbingan_belajar', $data->id) }}" class="btn">Show Details</a>
   </div>
-@endforeach
+</div>
+@empty
+<h1>kosong</h1>
+
+@endforelse
 @endsection

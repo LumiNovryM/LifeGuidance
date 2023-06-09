@@ -20,4 +20,12 @@ class Bimbingan_Sosial extends Model
     {
         return $this->belongsTo(Guru::class);
     }
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+    public function Walas()
+    {
+        return $this->belongsTo(Walas::class);
+    }
 }
