@@ -14,11 +14,11 @@ class Bimbingan_Pribadi extends Model
     
     public function siswa()
     {
-        return $this->belongsToMany(Siswa::class);
+        return $this->belongsTo(Siswa::class);
     }
     
     public function guru()
     {
-        return $this->belongsToMany(Guru::class);
+        return $this->belongsTo(Guru::class);
     }
 }

@@ -19,6 +19,6 @@ class Siswa extends Model
 
     public function bimbinganPribadi()
     {
-        return $this->hasMany(Bimbingan_Pribadi::class);
+        return $this->belongsToMany(Guru::class, Bimbingan_Pribadi::class);
     }
 }

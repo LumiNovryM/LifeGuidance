@@ -18,6 +18,6 @@ class Guru extends Model
     
     public function bimbinganPribadi()
     {
-        return $this->hasMany(Bimbingan_Pribadi::class);
+        return $this->belongsToMany(Siswa::class, Bimbingan_Pribadi::class);
     }
 }

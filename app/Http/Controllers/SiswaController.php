@@ -23,6 +23,8 @@ class SiswaController extends Controller
     
     #bimbiangan_pribadi
     public function show_bimbingan_pribadi(){
+        // $data = Bimbingan_Pribadi::with('guru','siswa')->get();
+        // dd($data[0]->guru->name);
         return view('siswa.bimbingan_pribadi',[
             'title' => 'Bimbingan Pribadi',
         ]);   
