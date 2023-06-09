@@ -28,7 +28,7 @@ class SiswaController extends Controller
         $user = Auth::guard('siswa')->user();
         $walas = Walas::where('kelas_id', $user->kelas->id)->first();
         
-        $datas = Bimbingan_Pribadi::where('siswa_id', $user->id)->get();
+        $datas = Bimbingan_Pribadi::where('siswa_id', $user->id)->paginate(1);
         return view('siswa.bimbingan_pribadi',[
             'title' => 'Bimbingan Pribadi',
             'user' => $user,
@@ -82,6 +82,14 @@ class SiswaController extends Controller
         
         
         return view('siswa.bimbingan_belajar', [
+            'title' => 'Belajar',
+        ]);
+    }
+    public function list_bimbingan_belajar()
+    {
+        $id = Auth::guard('siswa')->user()->id;
+        $datas = Bimbingan_Belajar::where('siswa_id', $id)->paginate(5);
+        return view('siswa.list_bimbingan_belajar', [
             'title' => 'Belajar',
             'user' => $user,
             'datas' => $datas,
@@ -165,6 +173,15 @@ class SiswaController extends Controller
 
         return redirect()->route('bimbingan_sosial');
     }
+    public function list_bimbingan_sosial()
+    {
+        $id = Auth::guard('siswa')->user()->id;
+        $datas = Bimbingan_Sosial::where('siswa_id', $id)->orWhere('diajukan', $id)->paginate();
+        return view('siswa.list_bimbingan_sosial', [
+            'title' => 'Sosial',
+            'datas' => $datas,
+        ]);
+    }
     public function detail_bimbingan_sosial($id)
     {
         $data = Bimbingan_Sosial::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
@@ -215,7 +232,15 @@ class SiswaController extends Controller
 
         return redirect()->route('bimbingan_karir');
     }
-
+    public function list_bimbingan_karir()
+    {
+        $id = Auth::guard('siswa')->user()->id;
+        $datas = Bimbingan_Karir::where('siswa_id', $id)->paginate();
+        return view('siswa.list_bimbingan_karir', [
+            'title' => 'Karir',
+            'datas' => $datas,
+        ]);
+    }
     public function detail_bimbingan_karir($id)
     {
         $data = Bimbingan_Karir::with('siswa','kelas','walas','guru' )->where('id', $id)->first();

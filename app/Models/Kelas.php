@@ -19,7 +19,6 @@ class Kelas extends Model
     {
         return $this->hasMany(Siswa::class);
     }
-
     public function bimbinganPribadi()
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Pribadi::class);

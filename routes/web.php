@@ -90,6 +90,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 # Walas Handler
 Route::prefix('walas')->middleware('auth:walas')->group(function () {
     Route::get('/dashboard', [WalasController::class, 'home_walas'])->name('home_walas');
+
+    // bimbingan pribadi
+    Route::get('/jadwal_bimbingan_pribadi', [WalasController::class, 'walas_list_bimbingan_pribadi'])->name('walas_list_bimbingan_pribadi');
+    Route::get('/detail_bimbingan_pribadi/{id}', [WalasController::class, 'walas_detail_bimbingan_pribadi'])->name('walas_detail_bimbingan_pribadi');
+
+    // bimbingan belajar
+    Route::get('/jadwal_bimbingan_belajar', [WalasController::class, 'walas_list_bimbingan_belajar'])->name('walas_list_bimbingan_belajar');
+    Route::get('/detail_bimbingan_belajar/{id}', [WalasController::class, 'walas_detail_bimbingan_belajar'])->name('walas_detail_bimbingan_belajar');
 });
 
 # Siswa Handler
@@ -98,8 +106,6 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
 
     //bimbingan pribadi
     Route::get('/bimbingan_pribadi', [SiswaController::class, 'show_bimbingan_pribadi'])->name('show_bimbingan_pribadi');
-
-    
     Route::post('/bimbingan_pribadi/store', [SiswaController::class, 'store_bimbingan_pribadi'])->name('store_bimbingan_pribadi');
     Route::get('/bimbingan_pribadi/detail/{id}', [SiswaController::class, 'detail_bimbingan_pribadi'])->name('detail_bimbingan_pribadi');
     
