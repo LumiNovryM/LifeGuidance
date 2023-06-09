@@ -24,8 +24,12 @@ class Bimbingan_Sosial extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
-    public function Walas()
+    public function walas()
     {
         return $this->belongsTo(Walas::class);
+    }
+    public function diajukan()
+    {
+        return $this->belongsTo(Siswa::class);
     }
 }

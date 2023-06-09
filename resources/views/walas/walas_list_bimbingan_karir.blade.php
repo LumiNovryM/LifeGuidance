@@ -3,13 +3,13 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('walas_content')
-<h5>Permohonan Bimbingan Belajar Kelas {{ $kelas }}</h5>
+<h5>Permohonan Bimbingan Karir Kelas {{ $kelas }}</h5>
 <div class="">
 
   @forelse ($datas as $data)
   <div class="card mt-3">
     <div class="card-body">
-        <h5 class="card-title">Pertemuan Bimbingan Belajar</h5>
+        <h5 class="card-title">Pertemuan Bimbingan Karir</h5>
         <p class="card-text">
             <strong>Tema:</strong> {{ $data->alasan_pertemuan }}<br>
             <strong>Guru Bk:</strong> {{ $data->guru->name }}<br>
@@ -21,7 +21,7 @@
             @endif
             
         </p>
-        <a href="{{ route('walas_detail_bimbingan_belajar', $data->id) }}" class="btn">Show Details</a>
+        <a href="{{ route('walas_detail_bimbingan_karir', $data->id) }}" class="btn">Show Details</a>
     </div>
   </div>
   @empty

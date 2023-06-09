@@ -3,7 +3,7 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('walas_content')
-<h5>Permohonan Pertemuan Pribadi Kelas {{ $kelas }}</h5>
+<h5>Permohonan Bimbingan Pribadi Kelas {{ $kelas }}</h5>
 @forelse ($datas as $data)
 <div class="card mt-3">
   <div class="card-body">

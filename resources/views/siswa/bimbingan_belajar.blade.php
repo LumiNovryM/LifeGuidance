@@ -97,4 +97,7 @@
 <h3>Kamu Belum Memiliki Bimbingan Belajar</h3>
 
 @endforelse
+<div class="">
+    {{ $datas->links() }}
+</div>
 @endsection

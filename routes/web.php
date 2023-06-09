@@ -98,6 +98,14 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
     // bimbingan belajar
     Route::get('/jadwal_bimbingan_belajar', [WalasController::class, 'walas_list_bimbingan_belajar'])->name('walas_list_bimbingan_belajar');
     Route::get('/detail_bimbingan_belajar/{id}', [WalasController::class, 'walas_detail_bimbingan_belajar'])->name('walas_detail_bimbingan_belajar');
+
+    // bimbingan sosial
+    Route::get('/jadwal_bimbingan_sosial', [WalasController::class, 'walas_list_bimbingan_sosial'])->name('walas_list_bimbingan_sosial');
+    Route::get('/detail_bimbingan_sosial/{id}', [WalasController::class, 'walas_detail_bimbingan_sosial'])->name('walas_detail_bimbingan_sosial');
+
+    // bimbingan karir
+    Route::get('/jadwal_bimbingan_karir', [WalasController::class, 'walas_list_bimbingan_karir'])->name('walas_list_bimbingan_karir');
+    Route::get('/detail_bimbingan_karir/{id}', [WalasController::class, 'walas_detail_bimbingan_karir'])->name('walas_detail_bimbingan_karir');
 });
 
 # Siswa Handler

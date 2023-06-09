@@ -116,4 +116,7 @@
 <h3>Kamu Belum Memiliki Bimbingan Karir</h3>
 
 @endforelse
+<div class="">
+    {{ $datas->links() }}
+</div>
 @endsection
