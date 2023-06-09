@@ -15,7 +15,7 @@ class AdminController extends Controller
 {
     public function home_admin()
     {
-        return view('admin.home_admin',[
+        return view('admin.home_admin', [
             "title" => "Dashboard"
         ]);
     }
@@ -23,12 +23,13 @@ class AdminController extends Controller
     # Wali Kelas
     public function show_walas()
     {
-        $datas = Walas::query()->get();   
+        $datas = Walas::query()->get();
         return view('admin.walas.walas', [
             "datas" => $datas,
             "title" => "Wali Kelas"
         ]);
     }
+
     public function create_walas()
     {
         return view('admin.walas.create_walas', [
@@ -58,7 +59,7 @@ class AdminController extends Controller
     }
     public function edit_walas($id)
     {
-        $data = Walas::query()->where('id', $id)->first();   
+        $data = Walas::query()->where('id', $id)->first();
         return view('admin.walas.edit_walas', [
             "data" => $data,
             "title" => "Wali Kelas"
@@ -95,7 +96,7 @@ class AdminController extends Controller
     # Guru BK
     public function show_guru_bk()
     {
-        $datas = Guru::query()->get();   
+        $datas = Guru::query()->get();
         return view('admin.guru.guru_bk', [
             "datas" => $datas,
             "title" => "Guru BK"
@@ -109,7 +110,7 @@ class AdminController extends Controller
     }
     public function store_guru_bk(Request $request)
     {
-        
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -131,7 +132,7 @@ class AdminController extends Controller
     }
     public function edit_guru_bk($id)
     {
-        $data = Guru::query()->where('id', $id)->first();   
+        $data = Guru::query()->where('id', $id)->first();
         return view('admin.guru.edit_guru_bk', [
             "data" => $data,
             "title" => "Guru BK"
@@ -166,15 +167,15 @@ class AdminController extends Controller
     # siswa
     public function show_siswa(Request $request, $id)
     {
-        $datas = Siswa::with('kelas')->where('kelas_id',$id)->get();  
-        
+        $datas = Siswa::with('kelas')->where('kelas_id', $id)->get();
+
         return view('admin.siswa.siswa', [
             "datas" => $datas,
             "title" => "Kelas",
             "id" => $id
         ]);
     }
-    public function create_siswa(Request $request,$id)
+    public function create_siswa(Request $request, $id)
     {
         $datas = Kelas::query()->get();
         $kelas = Kelas::where('id', $id)->get();
@@ -200,18 +201,18 @@ class AdminController extends Controller
             'email' => $request->email,
             'nisn' => $request->nisn,
             'kelas_id' => $request->kelas_id,
-            'role_id'=> 2,
+            'role_id' => 2,
             'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('show_siswa',$request->kelas_id);
+        return redirect()->route('show_siswa', $request->kelas_id);
     }
     public function edit_siswa($id)
     {
         $kelas = Kelas::where('id', $id)->first();
-        $data = Siswa::query()->where('id', $id)->first();   
+        $data = Siswa::query()->where('id', $id)->first();
         return view('admin.siswa.edit_siswa', [
             "kelas" => $kelas,
             "data" => $data,
@@ -249,6 +250,8 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
+        $relasi = Kelas::with('guru')->get();
+        dd($relasi);
         $datas = Kelas::paginate(2);
         return view('admin.kelas.kelas', [
             "title" => "Kelas",
@@ -265,7 +268,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            
+
         ]);
 
         Kelas::create([
@@ -290,7 +293,7 @@ class AdminController extends Controller
     }
     public function edit_kelas($id)
     {
-        $data = Kelas::query()->where('id', $id)->first();   
+        $data = Kelas::query()->where('id', $id)->first();
         return view('admin.kelas.edit_kelas', [
             "data" => $data,
             "title" => "Wali Kelas"

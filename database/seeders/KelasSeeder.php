@@ -16,8 +16,33 @@ class KelasSeeder extends Seeder
     public function run(): void
     {
         $data = [
+            # X
+            ['name' => 'X PPLG 1'],
+            ['name' => 'X PPLG 2'],
+            ['name' => 'X Animasi 1'],
+            ['name' => 'X Animasi 2'],
+            ['name' => 'X TKJT 1'],
+            ['name' => 'X TKJT 2'],
+            ['name' => 'X TE'],
+            ['name' => 'X BC'],
+            # XI 
             ['name' => 'XI PPLG 1'],
             ['name' => 'XI PPLG 2'],
+            ['name' => 'XI Animasi 1'],
+            ['name' => 'XI Animasi 2'],
+            ['name' => 'XI TKJT 1'],
+            ['name' => 'XI TKJT 2'],
+            ['name' => 'XI TE'],
+            ['name' => 'XI BC'],
+            # XII  
+            ['name' => 'XII PPLG 1'],
+            ['name' => 'XII PPLG 2'],
+            ['name' => 'XII Animasi 1'],
+            ['name' => 'XII Animasi 2'],
+            ['name' => 'XII TKJT 1'],
+            ['name' => 'XII TKJT 2'],
+            ['name' => 'XII TE'],
+            ['name' => 'XII BC'],
         ];
 
         # Run Seeder Loop
