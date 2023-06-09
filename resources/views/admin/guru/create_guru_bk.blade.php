@@ -39,7 +39,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Pilih Kelas Untuk Layanan Konseling</label>
-            {{-- List Kelas X --}}
+            {{-- List Kelas X, XI, XII --}}
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -71,7 +71,7 @@
                             @foreach ($kelas_sepuluh as $item)    
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="kelas_sepuluh" id="fcustomCheck1">
+                                    <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="kelas_sepuluh[]" id="fcustomCheck1">
                                     <label class="custom-control-label" for="customCheck1">{{ $item->name }}</label>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             @foreach ($kelas_sebelas as $item)    
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="kelas_sebelas" id="fcustomCheck1">
+                                    <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="kelas_sebelas[]" id="fcustomCheck1">
                                     <label class="custom-control-label" for="customCheck1">{{ $item->name }}</label>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                             @foreach ($kelas_duabelas as $item)    
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="kelas_duabelas" id="fcustomCheck1">
+                                    <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="kelas_duabelas[]" id="fcustomCheck1">
                                     <label class="custom-control-label" for="customCheck1">{{ $item->name }}</label>
                                 </div>
                             </div>

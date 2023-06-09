@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\GuruKelas;
 use App\Models\Kelas;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Walas;
@@ -117,7 +118,7 @@ class AdminController extends Controller
     }
     public function store_guru_bk(Request $request)
     {
-        dd($request->all());
+        
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -135,13 +136,18 @@ class AdminController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        # Kelas X
-        GuruKelas::insert([
-            'kelas_id' => $request->sepuluh_
-        ]);
-        # Kelas XI
-        
-        # Kelas XI
+        $guru = Guru::where('name', $request->name)->first();
+        $guru_id = $guru->id;
+
+        if($request->kelas_sepuluh){
+            $data = $request->kelas_sepuluh;
+            foreach($data as $val){
+                GuruKelas::insert([
+                    'guru_id' => $guru_id,
+                    'kelas_id' => $val,
+                ]);
+            }
+        }
 
         return redirect()->route('show_guru_bk');
     }
