@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bimbingan__pribadis', function (Blueprint $table) {
+        Schema::create('bimbingan__sosials', function (Blueprint $table) {
             $table->id();
-
-            
+            $table->string("nama_siswa");
+            $table->string("nama_guru_bk");
             $table->string("nama_kelas");
             $table->string("nama_walas");
+            $table->string("diajukan");
             $table->text("alasan_pertemuan");
             $table->date("tanggal_pertemuan")->nullable();
             $table->string("lokasi_pertemuan")->nullable();
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bimbingan__pribadis');
+        Schema::dropIfExists('bimbingan__sosials');
     }
 };

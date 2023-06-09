@@ -40,6 +40,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'guru' => [
+            'driver' => 'session',
+            'provider' => 'gurus', 
+        ],
+
+        'walas' => [
+            'driver' => 'session',
+            'provider' => 'walas', 
+        ],
+
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswas', 
+        ],
     ],
 
     /*

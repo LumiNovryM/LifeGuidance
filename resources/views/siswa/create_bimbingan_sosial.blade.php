@@ -3,13 +3,13 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('siswa_content')
-<h4>Buat Pertemuan Bimbingan Belajar</h4>
-<form action="{{ route('store_bimbingan_belajar') }}" method="post" class="mt-2">
+<h4>Buat Pertemuan Bimbingan Sosial</h4>
+<form action="{{ route('store_bimbingan_sosial') }}" method="post" class="mt-2">
   @csrf
   <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Nama</label>
       <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off" placeholder="Masukkan Nama" name="nama_siswa" readonly value="{{ $nama }}">
-          @error('nama_siswa')
+          @error('nama_siswa')      
           <p class="text-danger text-xs mt-2">{{ $message }}</p>
           @enderror
   </div>
@@ -29,6 +29,14 @@
         @error('nama_guru_bk')
         <p class="text-danger text-xs mt-2">{{ $message }}</p>
         @enderror
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Orang Yang Bersangkutan</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="diajukan">
+        @foreach ($diajak as $item)
+            <option value="{{ $item->name }}, {{ $item->kelas->name }}">{{ $item->name }}, {{ $item->kelas->name }}</option>
+        @endforeach
+    </select>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Alasan Pertemuan</label>
