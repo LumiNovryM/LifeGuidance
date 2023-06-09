@@ -30,4 +30,8 @@ class Siswa extends Model
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
     }
+    public function bimbinganKarir()
+    {
+        return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
+    }
 }

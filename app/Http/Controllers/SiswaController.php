@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
+use App\Models\Bimbingan_Karir;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,7 +23,7 @@ class SiswaController extends Controller
     }
     
     
-    #bimbiangan_pribadi
+    #bimbingan_pribadi
     public function show_bimbingan_pribadi(){
         // $data = Bimbingan_Pribadi::with('guru','siswa')->get();
         // dd($data[0]->guru->name);
@@ -83,6 +84,10 @@ class SiswaController extends Controller
         ]);
     }
     
+
+
+
+
     //bimbingan belajar
     public function bimbingan_belajar(){
         return view('siswa.bimbingan_belajar', [
@@ -141,6 +146,10 @@ class SiswaController extends Controller
         ]);
     }
 
+
+
+
+
     // bimbingan sosial
     public function bimbingan_sosial(){
         return view('siswa.bimbingan_sosial', [
@@ -189,7 +198,7 @@ class SiswaController extends Controller
     public function list_bimbingan_sosial()
     {
         $id = Auth::guard('siswa')->user()->id;
-        $datas = Bimbingan_Sosial::where('siswa_id', $id)->get();
+        $datas = Bimbingan_Sosial::where('siswa_id', $id)->orWhere('diajukan', $id)->get();
         return view('siswa.list_bimbingan_sosial', [
             'title' => 'Sosial',
             'datas' => $datas,
@@ -200,6 +209,70 @@ class SiswaController extends Controller
         $data = Bimbingan_Sosial::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
         return view('siswa.detail_bimbingan_sosial', [
             'title' => 'Sosial',
+            'data' => $data,
+        ]);
+    }
+
+
+
+
+
+    // bimbingan karir
+    public function bimbingan_karir(){
+        return view('siswa.bimbingan_karir', [
+            'title' => 'Karir',
+        ]);
+    }
+    public function create_bimbingan_karir(){
+        $id = Auth::guard('siswa')->user()->id;
+        $data = Siswa::where('id', $id)->first();
+        $data2 = Walas::where('kelas_id', $data->kelas->id)->first();
+        // dd($walas);
+        return view('siswa.create_bimbingan_karir', [
+            'title' => 'Karir',
+            'nama' => $data,
+            'kelas' => $data,
+            'walas' => $data2,
+        ]);
+    }
+    public function store_bimbingan_karir(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required',
+            'kelas_id' => 'required',
+            'walas_id' => 'required',
+            'tipe_bimbingan' => 'required',
+            'alasan_pertemuan' => 'required',
+        ]);
+
+        Bimbingan_Karir::insert([
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $request->kelas_id,
+            'walas_id' => $request->walas_id,
+            'guru_id' => 1,
+            'tipe_bimbingan' => $request->tipe_bimbingan,
+            'alasan_pertemuan' => $request->alasan_pertemuan,
+            'status' => 'Menunggu',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('bimbingan_karir');
+    }
+    public function list_bimbingan_karir()
+    {
+        $id = Auth::guard('siswa')->user()->id;
+        $datas = Bimbingan_Karir::where('siswa_id', $id)->get();
+        return view('siswa.list_bimbingan_karir', [
+            'title' => 'Karir',
+            'datas' => $datas,
+        ]);
+    }
+    public function detail_bimbingan_karir($id)
+    {
+        $data = Bimbingan_Karir::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
+        return view('siswa.detail_bimbingan_karir', [
+            'title' => 'Karir',
             'data' => $data,
         ]);
     }
