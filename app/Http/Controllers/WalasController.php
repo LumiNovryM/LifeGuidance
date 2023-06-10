@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
+use App\Exports\PetaExport;
 use Illuminate\Http\Request;
 use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
@@ -12,6 +13,7 @@ use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class WalasController extends Controller
@@ -154,6 +156,13 @@ class WalasController extends Controller
             "data" => $data
         ]);
     }
+
+    function export_peta_kerawanan($id)
+    {
+        
+        return Excel::download(new PetaExport($id), 'peta Kerawanan.xlsx');
+    }
+
     public function walas_update_peta_kerawanan(Request $request, $id)
     {
         $data = [
