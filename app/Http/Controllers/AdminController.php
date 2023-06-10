@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
-use App\Models\GuruKelas;
-use App\Models\Kelas;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
+use App\Models\GuruKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -57,7 +58,10 @@ class AdminController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('show_walas');
+        Session::flash('status', 'success');
+        Session::flash('message', 'Data Berhasil Di Tambahkan');
+
+        return redirect()->route('show_walas')->with('success', 'Data Berhasil Ditambahkan');
     }
     public function edit_walas($id)
     {
@@ -172,7 +176,9 @@ class AdminController extends Controller
             }
         }
 
-        return redirect()->route('show_guru_bk');
+
+
+        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Ditambahkan');
     }
     public function edit_guru_bk($id)
     {
@@ -200,12 +206,12 @@ class AdminController extends Controller
 
         Guru::where('id', $id)->update($data);
 
-        return redirect()->route('show_guru_bk');
+        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Diperbarui');
     }
     public function destroy_guru_bk($id)
     {
         Guru::find($id)->delete();
-        return redirect()->route('show_guru_bk');
+        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Dihapus');
     }
 
     # siswa
@@ -348,7 +354,8 @@ class AdminController extends Controller
     }
 
     #profile
-    public function show_profile(){
+    public function show_profile()
+    {
     
         return view('admin.profile.profile',[
             "title" => "Profile"
