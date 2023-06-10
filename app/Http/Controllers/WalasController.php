@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
+use App\Models\Walas;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Bimbingan_Pribadi;
-use App\Models\Bimbingan_Belajar;
-use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Karir;
+use App\Models\Bimbingan_Sosial;
+use App\Models\Bimbingan_Belajar;
+use App\Models\Bimbingan_Pribadi;
+use App\Models\Peta_Kerawanan;
+use Illuminate\Support\Facades\Auth;
 
 
 class WalasController extends Controller
@@ -127,8 +130,43 @@ class WalasController extends Controller
     // peta kerawanan
     public function walas_peta_kerawanan()
     {
+        $walas = Walas::where('id', Auth::guard('walas')->user()->id)->get();
+        $datas = Siswa::where('kelas_id', $walas[0]->kelas_id)->get();
+        
         return view('walas.walas_peta_kerawanan', [
-            "title" => "Peta"
+            "title" => "Peta",
+            "datas" => $datas,
+            "kelas" => $datas[0]->kelas->name,
         ]);
     }
+    public function walas_detail_peta_kerawanan($id)
+    {
+        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('id', $id)->first();
+        // dd($data);
+        return view('walas.walas_detail_peta_kerawanan', [
+            "title" => "Peta",
+            "data" => $data
+        ]);
+    }
+    public function walas_update_peta_kerawanan(Request $request, $id)
+    {
+        $data = [
+            'sering_sakit' => $request->sering_sakit,
+            'sering_izin' => $request->sering_izin,
+            'sering_alpha' => $request->sering_alpha,
+            'sering_terlambat' => $request->sering_terlambat,
+            'bolos' => $request->bolos,
+            'kelainan_jasmani' => $request->kelainan_jasmani,
+            'minat_belajar_kurang' => $request->minat_belajar_kurang,
+            'introvert' => $request->introvert,
+            'tinggal_dengan_wali' => $request->tinggal_dengan_wali,
+            'kemampuan_kurang' => $request->kemampuan_kurang,
+        ];
+
+        Peta_Kerawanan::where('id', $id)->update($data);
+
+        return redirect()->route('walas_peta_kerawanan', $id);
+    }
 }
+
+

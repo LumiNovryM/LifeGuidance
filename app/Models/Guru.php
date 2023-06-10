@@ -20,14 +20,17 @@ class Guru extends Model
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Pribadi::class);
     }
+
     public function bimbinganBelajar()
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Belajar::class);
     }
+
     public function bimbinganSosial()
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
     }
+
     public function bimbinganKarir()
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
@@ -38,4 +41,8 @@ class Guru extends Model
         return $this->belongsToMany(Kelas::class, GuruKelas::class);
     }
 
+    public function petaKerawanan()
+    {
+        return $this->belongsToMany(Siswa::class, Peta_Kerawanan::class);
+    }
 }

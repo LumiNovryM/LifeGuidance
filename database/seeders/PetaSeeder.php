@@ -16,22 +16,8 @@ class PetaSeeder extends Seeder
     {
         # Seeder Loop
         $data = [
-            [
-            'siswa_id' => 1,
-            'guru_id' => 1, 
-            'walas_id' => 1,
-            'kelas_id' => 1,
-            'sering_sakit' => 0,
-            'sering_izin' => 0,
-            'sering_alpha' => 0,
-            'sering_terlambat' => 0,
-            'bolos' => 1,
-            'kelainan_jasmani' => 1,
-            'minat_belajar_kurang' => 1,
-            'introvert' => 1,
-            'tinggal_dengan_wali' => 1,
-            'kemampuan_kurang' => 1
-        ],
+            ['siswa_id' => 1, 'guru_id' => 1, 'walas_id' => 1, 'kelas_id' => 1, 'sering_sakit' => 0, 'sering_izin' => 0, 'sering_alpha' => 0, 'sering_terlambat' => 0, 'bolos' => 1, 'kelainan_jasmani' => 1, 'minat_belajar_kurang' => 1, 'introvert' => 1, 'tinggal_dengan_wali' => 1, 'kemampuan_kurang' => 1,],
+            ['siswa_id' => 2, 'guru_id' => 1, 'walas_id' => 1, 'kelas_id' => 1, 'sering_sakit' => 0, 'sering_izin' => 0, 'sering_alpha' => 0, 'sering_terlambat' => 0, 'bolos' => 0, 'kelainan_jasmani' => 0, 'minat_belajar_kurang' => 0, 'introvert' => 0, 'tinggal_dengan_wali' => 0, 'kemampuan_kurang' => 0,],
         ];
 
         # Run Seeder Loop

@@ -14,6 +14,7 @@ class Bimbingan_Karir extends Model
     {
         return $this->belongsTo(Siswa::class);
     }
+
     public function walas()
     {
         return $this->belongsTo(Walas::class);
@@ -23,6 +24,7 @@ class Bimbingan_Karir extends Model
     {
         return $this->belongsTo(Guru::class);
     }
+    
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
