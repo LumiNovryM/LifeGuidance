@@ -3,11 +3,15 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('siswa_content')
-    <div class="d-flex justify-content-end" style="width: 100%">
-        <h5 class="font-bold">Detail Pertemuan</h5>
-        <p>{{ $data->status }}</p>
+<div class="card">
+    <div class="card-header">
+            <div class="d-flex justify-content-between" style="width: 100%">
+                <h5 class="font-bold">Detail Pertemuan</h5>
+                <p style="margin-left: 10px">{{ $data->status }}</p>
+            </div>
     </div>
 
+<div class="card-body">
     <div class="">
         <h6>Nama</h6>
         <p>{{ $data->siswa->name }}</p>
@@ -37,6 +41,10 @@
         <h6>Lokasi Pertemuan</h6>
         <p>{{ $data->lokasi_pertemuan }}</p>
     </div>
+</div>
 
-    <a href="{{ route('bimbingan_karir') }}" type="button" class="btn btn-primary">Kembali</a>
+    <div class="card-footer">
+        <a href="{{ route('bimbingan_karir') }}" type="button" class="btn btn-primary">Kembali</a>
+    </div>
+</div>
 @endsection

@@ -167,10 +167,13 @@ class SiswaController extends Controller
     }
     public function detail_bimbingan_sosial($id)
     {
-        $data = Bimbingan_Sosial::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
+        $data = Bimbingan_Sosial::with('siswa','kelas','walas','guru', )->where('id', $id)->first();
+        $diajukan = Siswa::where('id',$data->diajukan)->get();
+        // dd($diajukan);
         return view('siswa.detail_bimbingan_sosial', [
             'title' => 'Sosial',
             'data' => $data,
+            'diajukan' => $diajukan[0]
         ]);
     }
 
