@@ -141,8 +141,8 @@ class WalasController extends Controller
     }
     public function walas_detail_peta_kerawanan($id)
     {
-        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('id', $id)->first();
-        // dd($data);
+        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('id', $id)->first();  
+        
         return view('walas.walas_detail_peta_kerawanan', [
             "title" => "Peta",
             "data" => $data

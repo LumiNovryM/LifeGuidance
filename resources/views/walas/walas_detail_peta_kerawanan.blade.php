@@ -1,4 +1,4 @@
-@extends('layout.template.walas_dashboard')
+    @extends('layout.template.walas_dashboard')
 
 @section('title-tab', 'LifeGuidance')
 
@@ -10,6 +10,7 @@
             </div>
         </div>
         <div class="card-body">
+            @if ($data )
             <div class="">
                 <h6>Nama</h6>
                 <p>{{ $data->siswa->name }}</p>
@@ -31,87 +32,96 @@
                 <div>
                     <form action="{{ route('walas_update_peta_kerawanan', $data->id) }}" method="POST">
                         @csrf
-                        <div class="d-flex">
-                            <div class="d-flex">
-                                <p>Sering Sakit</p>
-                                <select name="sering_sakit" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Sering Izin</p>
-                                <select name="sering_izin" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Sering Alpha</p>
-                                <select name="sering_alpha" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Sering Terlambat</p>
-                                <select name="sering_terlambat" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Sering Bolos</p>
-                                <select name="bolos" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="d-flex">
-                                <p>Kelainan Jasmani</p>
-                                <select name="kelainan_jasmani" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Minat Belajar Kurang</p>
-                                <select name="minat_belajar_kurang" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Introvert</p>
-                                <select name="introvert" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Tinggal Dengan Wali</p>
-                                <select name="tinggal_dengan_wali" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <p>Kemampuan Kurang</p>
-                                <select name="kemampuan_kurang" id="">
-                                    <option value="0">Tidak</option>
-                                    <option value="1">Iya</option>
-                                </select>
-                            </div>
-                            <br>
+    <table cellpadding="10" cellspacing="0">
+        <tr >
+          <td>Sering Sakit</td>
+          <td>
+            <select name="sering_sakit" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Sering Izin</td>
+          <td>
+            <select name="sering_izin" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Sering Alpha</td>
+          <td>
+            <select name="sering_alpha" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Sering Terlambat</td>
+          <td>
+            <select name="sering_terlambat" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Sering Bolos</td>
+          <td>
+            <select name="bolos" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+
+        </tr>
+        <tr style="text-align: center;">
+          <td>Kelainan Jasmani</td>
+          <td>
+            <select name="kelainan_jasmani" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Minat Belajar Kurang</td>
+          <td>
+            <select name="minat_belajar_kurang" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Introvert</td>
+          <td>
+            <select name="introvert" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Tinggal Dengan Wali</td>
+          <td>
+            <select name="tinggal_dengan_wali" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+          <td>Kemampuan Kurang</td>
+          <td>
+            <select name="kemampuan_kurang" id="">
+                <option value="0">Tidak</option>
+                <option value="1">Iya</option>
+            </select>
+          </td>
+        </tr>
+      </table>
                             <button type="submit" class="btn btn-warning">Ubah</button>
                         </div>
                     </form>
                 </div>
             </div>
+            
+
+    
+            @else
+            <h3 class="text-center">Peta Kerawanan Pada Murid Ini Belum Tersedia</h3>
 
            
+            @endif
         </div>
         <div class="card-footer">
             <a href="{{ route('walas_peta_kerawanan') }}" type="button" class="btn btn-primary">Kembali</a>
