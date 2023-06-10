@@ -63,6 +63,12 @@ class AuthController extends Controller
         if(Auth::guard('guru')->attempt($credentials)){
             $request->session()->regenerate();
             
+            if ($request->remember === "on") {
+                setcookie("email", $request->email);
+            } else {
+                setcookie("email", "");
+            }
+
             return redirect()->route('home_guru');
         }
 
