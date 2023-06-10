@@ -7,7 +7,7 @@
         <div class="card-header">
                 <div class="d-flex justify-content-between" style="width: 100%">
                     <h5 class="font-bold">Detail Pertemuan</h5>
-                    <p style="margin-left: 10px">Menunggu</p>
+                    <p style="margin-left: 10px">{{ $data->status }}</p>
                 </div>
         </div>
         <div class="card-body">

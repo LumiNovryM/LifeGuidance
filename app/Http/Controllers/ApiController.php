@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use App\Models\Siswa;
 
 class ApiController extends Controller
 {
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
-
+        $credentials = $request->validated();
+    
         if (Auth::guard('siswa')->attempt($credentials)) {
             $user = Auth::guard('siswa')->user();
             $token = $user->createToken('SiswaToken')->plainTextToken;
-
-            return response()->json(['token' => $token], 200);
+    
+            return response()->json(['token' => $token, 'user' => $user], 200);
         }
-
-        return response()->json(['message' => 'Invalid credentials'], 401);
+    
+        // Invalid credentials
+        return response()->json(['error' => 'Invalid credentials'], 401);
     }
+    
 }
