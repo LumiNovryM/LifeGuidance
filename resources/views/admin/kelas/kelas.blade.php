@@ -61,8 +61,8 @@
 
 
 
-    {{-- <div class="mt-6">
+    <div class="mt-6">
         {{ $datas->links() }}
-    </div> --}}
+    </div>
 
 @endsection

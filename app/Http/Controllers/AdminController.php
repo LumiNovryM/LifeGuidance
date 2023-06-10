@@ -25,7 +25,7 @@ class AdminController extends Controller
     # Wali Kelas
     public function show_walas()
     {
-        $datas = Walas::query()->get();
+        $datas = Walas::query()->paginate(2);
         return view('admin.walas.walas', [
             "datas" => $datas,
             "title" => "Wali Kelas"
@@ -98,7 +98,7 @@ class AdminController extends Controller
     # Guru BK
     public function show_guru_bk()
     {
-        $datas = Guru::query()->get();
+        $datas = Guru::query()->paginate(2);
         return view('admin.guru.guru_bk', [
             "datas" => $datas,
             "title" => "Guru BK"
@@ -294,7 +294,7 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
-        $datas = Kelas::with(['guru','walas'])->get();
+        $datas = Kelas::with(['guru','walas'])->paginate(4);
         return view('admin.kelas.kelas', [
             "title" => "Kelas",
             "datas" => $datas,
