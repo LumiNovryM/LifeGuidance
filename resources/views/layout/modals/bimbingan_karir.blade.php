@@ -22,7 +22,7 @@
                         placeholder="Masukkan Nama" readonly value="{{ $user->name }}">
                     <input type="hidden" class="form-control" id="exampleFormControlInput1" autocomplete="off" readonly
                         value="{{ $user->id }}" name="siswa_id">
-                    @error('nama_siswa')
+                    @error('siswa_id')
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
@@ -33,7 +33,7 @@
                         placeholder="Masukkan Kelas" readonly value="{{ $user->kelas->name }}">
                     <input type="hidden" class="form-control" id="exampleFormControlInput1" autocomplete="off" readonly
                         value="{{ $user->kelas->id }}" name="kelas_id">
-                    @error('nama_kelas')
+                    @error('kelas_id')
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
@@ -44,16 +44,25 @@
                         placeholder="Masukkan " readonly value="{{ $walas->name }}">
                     <input type="hidden" class="form-control" id="exampleFormControlInput1" autocomplete="off" readonly
                         value="{{ $walas->id }}" name="walas_id">
-                    @error('nama_walas')
+                    @error('walas_id')
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Guru BK</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off"
+                        placeholder="Masukkan " readonly value="{{ $guru->name }}">
+                    <input type="hidden" class="form-control" id="exampleFormControlInput1" autocomplete="off" readonly
+                        value="{{ $guru->id }}" name="guru_id">
+                    @error('walas_id')
+                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Tipe Bimbingan</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="tipe_bimbingan">
-                        {{-- @foreach ($diajak as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}, {{ $item->kelas->name }}</option>
-                        @endforeach --}}
                         <option value="Kerja">Kerja</option>
                         <option value="Wirausaha">Wirausaha</option>
                         <option value="Kuliah">Kuliah</option>

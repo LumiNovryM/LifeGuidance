@@ -17,7 +17,7 @@
         <p>{{ $data->siswa->name }}</p>
     </div>
     <div class="">
-        <h6>diajukan</h6>
+        <h6>Rekan Yang Diajukan</h6>
         <p>{{ $diajukan->name }}</p>
     </div>
     <div class="mt-2">

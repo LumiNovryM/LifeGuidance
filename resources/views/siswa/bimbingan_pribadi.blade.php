@@ -15,7 +15,7 @@
           <strong>Status:</strong> {{ $data->status }}<br>
 
           @if ($data->status != 'Menunggu')
-          <strong>Tanggal dan Tempat:</strong> 12 June 2023, Meeting Room 1
+          <strong>Tanggal dan Tempat:</strong> {{ $data->lokasi_pertemuan }}, {{ $data->tanggal_pertemuan }}
           @endif
           
       </p>

@@ -16,25 +16,32 @@ use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
-    public function home_siswa(){
+    public function home_siswa()
+    {
         return view('siswa.siswa', [
             'title' => 'Dashboard',
         ]);
     }
-    
-    
+
+
     #bimbingan_pribadi
-    public function show_bimbingan_pribadi(){
+    public function show_bimbingan_pribadi()
+    {
         $user = Auth::guard('siswa')->user();
         $walas = Walas::where('kelas_id', $user->kelas->id)->first();
-        
+        $kelasName = $user->kelas->name;
+        $guru = Guru::whereHas('kelas', function ($query) use ($kelasName) {
+            $query->where('name', $kelasName);
+        })->get();
+
         $datas = Bimbingan_Pribadi::where('siswa_id', $user->id)->paginate(5);
-        return view('siswa.bimbingan_pribadi',[
+        return view('siswa.bimbingan_pribadi', [
             'title' => 'Bimbingan Pribadi',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
-        ]);   
+            'guru' => $guru[0]
+        ]);
     }
 
     public function store_bimbingan_pribadi(Request $request)
@@ -43,6 +50,7 @@ class SiswaController extends Controller
             'siswa_id' => 'required',
             'kelas_id' => 'required',
             'walas_id' => 'required',
+            'guru_id' => 'required',
             'alasan_pertemuan' => 'required',
         ]);
 
@@ -50,7 +58,7 @@ class SiswaController extends Controller
             'siswa_id' => $request->siswa_id,
             'kelas_id' => $request->kelas_id,
             'walas_id' => $request->walas_id,
-            'guru_id' => 1,
+            'guru_id' => $request->guru_id,
             'alasan_pertemuan' => $request->alasan_pertemuan,
             'status' => 'Menunggu',
             'created_at' => Carbon::now(),
@@ -61,31 +69,36 @@ class SiswaController extends Controller
     }
     public function detail_bimbingan_pribadi($id)
     {
-        $data = Bimbingan_Pribadi::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
+        $data = Bimbingan_Pribadi::with('siswa', 'kelas', 'walas', 'guru')->where('id', $id)->first();
         // dd($data);
         return view('siswa.detail_bimbingan_pribadi', [
             'title' => 'Bimbingan Pribadi',
             'data' => $data,
         ]);
     }
-    
+
 
 
 
 
     //bimbingan belajar
-    public function bimbingan_belajar(){
+    public function bimbingan_belajar()
+    {
         $user = Auth::guard('siswa')->user();
         $walas = Walas::where('kelas_id', $user->kelas->id)->first();
-        
         $datas = Bimbingan_Belajar::where('siswa_id', $user->id)->paginate(5);
-        
-        
+        $kelasName = $user->kelas->name;
+
+        $guru = Guru::whereHas('kelas', function ($query) use ($kelasName) {
+            $query->where('name', $kelasName);
+        })->get();
+
         return view('siswa.bimbingan_belajar', [
             'title' => 'Belajar',
             'user' => $user,
             'walas' => $walas,
-            'datas' => $datas
+            'datas' => $datas,
+            'guru' => $guru[0],
         ]);
     }
 
@@ -95,6 +108,7 @@ class SiswaController extends Controller
             'siswa_id' => 'required',
             'kelas_id' => 'required',
             'walas_id' => 'required',
+            'guru_id' => 'required',
             'alasan_pertemuan' => 'required',
         ]);
 
@@ -102,7 +116,7 @@ class SiswaController extends Controller
             'siswa_id' => $request->siswa_id,
             'kelas_id' => $request->kelas_id,
             'walas_id' => $request->walas_id,
-            'guru_id' => 1,
+            'guru_id' => $request->guru_id,
             'alasan_pertemuan' => $request->alasan_pertemuan,
             'status' => 'Menunggu',
             'created_at' => Carbon::now(),
@@ -113,7 +127,7 @@ class SiswaController extends Controller
     }
     public function detail_bimbingan_belajar($id)
     {
-        $data = Bimbingan_Belajar::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
+        $data = Bimbingan_Belajar::with('siswa', 'kelas', 'walas', 'guru')->where('id', $id)->first();
         return view('siswa.detail_bimbingan_belajar', [
             'title' => 'Belajar',
             'data' => $data,
@@ -125,19 +139,25 @@ class SiswaController extends Controller
 
 
     // bimbingan sosial
-    public function bimbingan_sosial(){
+    public function bimbingan_sosial()
+    {
         $user = Auth::guard('siswa')->user();
         $walas = Walas::where('kelas_id', $user->kelas->id)->first();
         $datas = Bimbingan_Sosial::where('siswa_id', $user->id)->orWhere('diajukan', $user->id)->paginate(5);
+        $kelasName = $user->kelas->name;
+        $guru = Guru::whereHas('kelas', function ($query) use ($kelasName) {
+            $query->where('name', $kelasName);
+        })->get();
         $diajak = Siswa::all();
-        
-        
+
+
         return view('siswa.bimbingan_sosial', [
             'title' => 'Sosial',
             'user' => $user,
             'walas' => $walas,
             'datas' => $datas,
             'diajak' => $diajak,
+            'guru' => $guru[0]
         ]);
     }
 
@@ -148,6 +168,7 @@ class SiswaController extends Controller
             'kelas_id' => 'required',
             'walas_id' => 'required',
             'diajukan' => 'required',
+            'guru_id' => 'required',
             'alasan_pertemuan' => 'required',
         ]);
 
@@ -155,7 +176,7 @@ class SiswaController extends Controller
             'siswa_id' => $request->siswa_id,
             'kelas_id' => $request->kelas_id,
             'walas_id' => $request->walas_id,
-            'guru_id' => 1,
+            'guru_id' => $request->guru_id,
             'diajukan' => $request->diajukan,
             'alasan_pertemuan' => $request->alasan_pertemuan,
             'status' => 'Menunggu',
@@ -167,8 +188,8 @@ class SiswaController extends Controller
     }
     public function detail_bimbingan_sosial($id)
     {
-        $data = Bimbingan_Sosial::with('siswa','kelas','walas','guru', )->where('id', $id)->first();
-        $diajukan = Siswa::where('id',$data->diajukan)->get();
+        $data = Bimbingan_Sosial::with('siswa', 'kelas', 'walas', 'guru',)->where('id', $id)->first();
+        $diajukan = Siswa::where('id', $data->diajukan)->get();
         // dd($diajukan);
         return view('siswa.detail_bimbingan_sosial', [
             'title' => 'Sosial',
@@ -182,15 +203,22 @@ class SiswaController extends Controller
 
 
     // bimbingan karir
-    public function bimbingan_karir(){
+    public function bimbingan_karir()
+    {
         $user = Auth::guard('siswa')->user();
         $datas = Bimbingan_Karir::where('siswa_id', $user->id)->paginate(5);
         $walas = Walas::where('kelas_id', $user->kelas->id)->first();
+        $kelasName = $user->kelas->name;
+        $guru = Guru::whereHas('kelas', function ($query) use ($kelasName) {
+            $query->where('name', $kelasName);
+        })->get();
+
         return view('siswa.bimbingan_karir', [
             'title' => 'Karir',
             'user' => $user,
             'walas' => $walas,
             'datas' => $datas,
+            'guru' => $guru[0]
         ]);
     }
     public function store_bimbingan_karir(Request $request)
@@ -219,7 +247,7 @@ class SiswaController extends Controller
     }
     public function detail_bimbingan_karir($id)
     {
-        $data = Bimbingan_Karir::with('siswa','kelas','walas','guru' )->where('id', $id)->first();
+        $data = Bimbingan_Karir::with('siswa', 'kelas', 'walas', 'guru')->where('id', $id)->first();
         return view('siswa.detail_bimbingan_karir', [
             'title' => 'Karir',
             'data' => $data,

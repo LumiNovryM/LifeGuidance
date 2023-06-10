@@ -45,7 +45,7 @@
 
         </div>
         <div class="card-footer">
-            <a href="{{ route('walas_detail_bimbingan_pribadi') }}" type="button" class="btn btn-primary">Kembali</a>
+            <a href="{{ route('walas_list_bimbingan_pribadi') }}" type="button" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 @endsection

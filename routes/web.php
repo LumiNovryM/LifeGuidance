@@ -144,4 +144,7 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
 # guru Handler
 Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
+    Route::get('/bimbingan_pribadi', [GuruController::class, 'guru_bimbingan_pribadi'])->name('guru_bimbingan_pribadi');
+    Route::get('/bimbingan_pribadi/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_pribadi'])->name('guru_detail_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/update/{id}', [GuruController::class, 'guru_update_bimbingan_pribadi'])->name('guru_update_bimbingan_pribadi');
 });

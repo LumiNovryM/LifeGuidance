@@ -8,14 +8,14 @@
 @forelse ($datas as $data)
 <div class="card mt-5">
   <div class="card-body">
-      <h5 class="card-title">Pertemuan Bimbingan Belajar</h5>
+      <h5 class="card-title">Pertemuan Bimbingan Karir</h5>
       <p class="card-text">
           <strong>Tema:</strong> {{ $data->alasan_pertemuan }}<br>
           <strong>Guru Bk:</strong> {{ $data->guru->name }}<br>
           <strong>Status:</strong> {{ $data->status }}<br>
 
           @if ($data->status != 'Menunggu')
-          <strong>Tanggal dan Tempat:</strong> 12 June 2023, Meeting Room 1
+          <strong>Tanggal dan Tempat:</strong> {{ $data->lokasi_pertemuan }}, {{ $data->tanggal_pertemuan }}
           @endif
           
       </p>
