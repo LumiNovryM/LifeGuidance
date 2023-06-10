@@ -106,6 +106,9 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
     // bimbingan karir
     Route::get('/jadwal_bimbingan_karir', [WalasController::class, 'walas_list_bimbingan_karir'])->name('walas_list_bimbingan_karir');
     Route::get('/detail_bimbingan_karir/{id}', [WalasController::class, 'walas_detail_bimbingan_karir'])->name('walas_detail_bimbingan_karir');
+
+     // peta kerawanan
+     Route::get('/peta_kerawanan', [WalasController::class, 'walas_peta_kerawanan'])->name('walas_peta_kerawanan');
 });
 
 # Siswa Handler

@@ -120,4 +120,15 @@ class WalasController extends Controller
         ]);
     }
     
+
+
+
+
+    // peta kerawanan
+    public function walas_peta_kerawanan()
+    {
+        return view('walas.walas_peta_kerawanan', [
+            "title" => "Peta"
+        ]);
+    }
 }
