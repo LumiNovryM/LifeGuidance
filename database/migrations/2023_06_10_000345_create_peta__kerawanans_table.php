@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('peta__kerawanans', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger("sering_sakit")->default(0);
+            $table->tinyInteger("sering_sakit")->default(0)->comment('0 = false, 1 = true');
             $table->tinyInteger("sering_izin")->default(0);
             $table->tinyInteger("sering_alpha")->default(0);
             $table->tinyInteger("sering_terlambat")->default(0);
