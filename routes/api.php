@@ -15,4 +15,4 @@ use App\Http\Controllers\ApiController;
 |
 */
 
-Route::get('/login', [ApiController::class, 'login']);
+Route::post('/login', [ApiController::class, 'login']);
