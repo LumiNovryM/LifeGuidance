@@ -133,16 +133,15 @@ class AuthController extends Controller
         if(Auth::guard('walas')->attempt($credentials)){
             $request->session()->regenerate();
             
+            if ($request->remember === "on") {
+                setcookie("email", $request->email);
+            } else {
+                setcookie("email", "");
+            }
+
             return redirect()->route('home_walas');
         }
-
-        // cookies
-        if ($request->remember === "on") {
-            setcookie("email", $request->email);
-        } else {
-            setcookie("email", "");
-        }
-
+        
         Session::flash('status', 'Error');
         Session::flash('message', 'Invalid Login. Try Again');
         return redirect()->route('login_walas');
