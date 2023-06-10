@@ -95,6 +95,12 @@ class AuthController extends Controller
         if(Auth::guard('siswa')->attempt($credentials)){
             $request->session()->regenerate();
             
+            if ($request->remember === "on") {
+                setcookie("email", $request->email);
+            } else {
+                setcookie("email", "");
+            }
+
             return redirect()->route('home_siswa');
         }
 
