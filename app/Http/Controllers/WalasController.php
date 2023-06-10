@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
+use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
-use App\Models\Peta_Kerawanan;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -25,13 +26,14 @@ class WalasController extends Controller
     // bimbingan pribadi
     public function walas_list_bimbingan_pribadi()
     {
-        $id = Auth::guard('walas')->user()->id;
-        $datas = Bimbingan_Pribadi::where('walas_id', $id)->paginate(5);
-        $kelas = $datas[0]->kelas->name;
-        return view('walas.walas_list_bimbingan_pribadi', [
-            "title" => "Pribadi",
+        $user = Auth::guard('walas')->user();
+        $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
+        $kelas = Kelas::where('id',$user->kelas_id)->get();
+        
+        return view('walas.walas_list_bimbingan_sosial', [
+            "title" => "Sosial",
             'datas' => $datas,
-            'kelas' => $kelas
+            'kelas' => $kelas[0]->name
         ]);
     }
     public function walas_detail_bimbingan_pribadi($id)
@@ -51,13 +53,15 @@ class WalasController extends Controller
     // bimbingan belajar
     public function walas_list_bimbingan_belajar()
     {
-        $id = Auth::guard('walas')->user()->id;
-        $datas = Bimbingan_Belajar::where('walas_id', $id)->paginate(5);
-        $kelas = $datas[0]->kelas->name;
+        $user = Auth::guard('walas')->user();
+        $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
+        $kelas = Kelas::where('id',$user->kelas_id)->get();
+        
         return view('walas.walas_list_bimbingan_belajar', [
             "title" => "Belajar",
             'datas' => $datas,
-            'kelas' => $kelas
+            'kelas' => $kelas[0]->name,
+            
         ]);
     }
     public function walas_detail_bimbingan_belajar($id)
@@ -77,13 +81,14 @@ class WalasController extends Controller
     // bimbingan sosial
     public function walas_list_bimbingan_sosial()
     {
-        $id = Auth::guard('walas')->user()->id;
-        $datas = Bimbingan_Sosial::where('walas_id', $id)->paginate(5);
-        $kelas = $datas[0]->kelas->name;
+        $user = Auth::guard('walas')->user();
+        $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
+        $kelas = Kelas::where('id',$user->kelas_id)->get();
+
         return view('walas.walas_list_bimbingan_sosial', [
             "title" => "Sosial",
             'datas' => $datas,
-            'kelas' => $kelas
+            'kelas' => $kelas[0]->name
         ]);
     }
     public function walas_detail_bimbingan_sosial($id)
@@ -104,13 +109,14 @@ class WalasController extends Controller
     // bimbingan karir
     public function walas_list_bimbingan_Karir()
     {
-        $id = Auth::guard('walas')->user()->id;
-        $datas = Bimbingan_Karir::where('walas_id', $id)->paginate(5);
-        $kelas = $datas[0]->kelas->name;
-        return view('walas.walas_list_bimbingan_karir', [
-            "title" => "Karir",
+        $user = Auth::guard('walas')->user();
+        $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
+        $kelas = Kelas::where('id',$user->kelas_id)->get();
+        
+        return view('walas.walas_list_bimbingan_sosial', [
+            "title" => "Sosial",
             'datas' => $datas,
-            'kelas' => $kelas
+            'kelas' => $kelas[0]->name
         ]);
     }
     public function walas_detail_bimbingan_karir($id)
