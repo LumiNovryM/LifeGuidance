@@ -9,7 +9,7 @@
                 <h5 class="font-bold">Permohonan Pertemuan Bimbingan Pribadi</h5>
             </div>
         </div>
-        <form action="{{ route('guru_update_bimbingan_pribadi', $data->id) }}" method="post">
+        <form action="{{ route('guru_update_bimbingan_belajar', $data->id) }}" method="post">
             @csrf
             <div class="card-body">
                 <div class="">
@@ -75,7 +75,7 @@
 
             </div>
             <div class="card-footer">
-                <a href="{{ route('guru_bimbingan_pribadi') }}" type="button" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('guru_bimbingan_belajar') }}" type="button" class="btn btn-primary">Kembali</a>
                 <button type="submit" type="button" class="btn btn-info">Submit</button>
             </div>
         </form>
