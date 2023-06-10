@@ -6,10 +6,10 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between" style="width: 100%">
-                <h5 class="font-bold">Permohonan Pertemuan Bimbingan Pribadi</h5>
+                <h5 class="font-bold">Permohonan Pertemuan Bimbingan Sosial</h5>
             </div>
         </div>
-        <form action="{{ route('guru_update_bimbingan_pribadi', $data->id) }}" method="post">
+        <form action="{{ route('guru_update_bimbingan_sosial', $data->id) }}" method="post">
             @csrf
             <div class="card-body">
                 <div class="">
@@ -27,6 +27,10 @@
                 <div class="mt-2">
                     <h6>Nama Wali Kelas</h6>
                     <p>{{ $data->walas->name }}</p>
+                </div>
+                <div class="mt-2">
+                    <h6>Orang Yang Bersangkutan</h6>
+                    <p>{{ $diajukan->name }}, {{ $diajukan->kelas->name }}</p>
                 </div>
 
                 <div class="mt-2">
@@ -75,7 +79,7 @@
 
             </div>
             <div class="card-footer">
-                <a href="{{ route('guru_bimbingan_pribadi') }}" type="button" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('guru_bimbingan_sosial') }}" type="button" class="btn btn-primary">Kembali</a>
                 <button type="submit" type="button" class="btn btn-info">Submit</button>
             </div>
         </form>

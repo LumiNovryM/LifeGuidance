@@ -6,7 +6,7 @@
     @forelse ($datas as $data)
         <div class="card mt-5">
             <div class="card-body">
-                <h5 class="card-title">Permohonan Bimbingan Pribadi</h5>
+                <h5 class="card-title">Permohonan Bimbingan Sosial</h5>
                 <p class="card-text">
                     <strong>Tema:</strong> {{ $data->alasan_pertemuan }}<br>
                     <strong>Kelas:</strong> {{ $data->kelas->name }}<br>
@@ -18,11 +18,11 @@
                     @endif
 
                 </p>
-                <a href="{{ route('guru_detail_bimbingan_pribadi', $data->id) }}" class="btn">Action</a>
+                <a href="{{ route('guru_detail_bimbingan_sosial', $data->id) }}" class="btn">Action</a>
             </div>
         </div>
     @empty
-        <h3>Permintaan Bimbingan Pribadi Sedang Tidak Ada</h3>
+        <h3>Permintaan Bimbingan Sosial Sedang Tidak Ada</h3>
     @endforelse
     <div class="">
         {{ $datas->links() }}
