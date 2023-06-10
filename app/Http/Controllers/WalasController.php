@@ -30,8 +30,8 @@ class WalasController extends Controller
         $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
         $kelas = Kelas::where('id',$user->kelas_id)->get();
         
-        return view('walas.walas_list_bimbingan_sosial', [
-            "title" => "Sosial",
+        return view('walas.walas_list_bimbingan_pribadi', [
+            "title" => "Pribadi",
             'datas' => $datas,
             'kelas' => $kelas[0]->name
         ]);
@@ -113,8 +113,8 @@ class WalasController extends Controller
         $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
         $kelas = Kelas::where('id',$user->kelas_id)->get();
         
-        return view('walas.walas_list_bimbingan_sosial', [
-            "title" => "Sosial",
+        return view('walas.walas_list_bimbingan_karir', [
+            "title" => "Karir",
             'datas' => $datas,
             'kelas' => $kelas[0]->name
         ]);
