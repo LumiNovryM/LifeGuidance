@@ -35,6 +35,7 @@ class SiswaController extends Controller
         })->get();
 
         $datas = Bimbingan_Pribadi::where('siswa_id', $user->id)->paginate(5);
+        // dd($guru);
         return view('siswa.bimbingan_pribadi', [
             'title' => 'Bimbingan Pribadi',
             'user' => $user,
