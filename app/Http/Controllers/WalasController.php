@@ -176,11 +176,12 @@ class WalasController extends Controller
             'introvert' => $request->introvert,
             'tinggal_dengan_wali' => $request->tinggal_dengan_wali,
             'kemampuan_kurang' => $request->kemampuan_kurang,
+            'kesimpulan' => $request->kesimpulan
         ];
 
         Peta_Kerawanan::where('id', $id)->update($data);
 
-        return redirect()->route('walas_peta_kerawanan', $id);
+        return redirect()->route('walas_peta_kerawanan');
     }
 }
 

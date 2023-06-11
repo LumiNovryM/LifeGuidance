@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger("introvert")->default(0);
             $table->tinyInteger("tinggal_dengan_wali")->default(0);
             $table->tinyInteger("kemampuan_kurang")->default(0);
+            $table->text("kesimpulan")->nullable();
             $table->timestamps();
         });
     }
