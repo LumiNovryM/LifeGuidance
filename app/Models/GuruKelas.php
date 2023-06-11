@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class GuruKelas extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
 }
