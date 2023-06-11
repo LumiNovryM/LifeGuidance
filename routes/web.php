@@ -164,4 +164,12 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/bimbingan_karir', [GuruController::class, 'guru_bimbingan_karir'])->name('guru_bimbingan_karir');
     Route::get('/bimbingan_karir/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_karir'])->name('guru_detail_bimbingan_karir');
     Route::post('/bimbingan_karir/update/{id}', [GuruController::class, 'guru_update_bimbingan_karir'])->name('guru_update_bimbingan_karir'); 
+
+    // peta kerawanan
+    Route::get('/peta_kerawanan', [GuruController::class, 'guru_peta_kerawanan'])->name('guru_peta_kerawanan');
+    Route::get('/peta_kerawanan/list/{id}', [GuruController::class, 'guru_list_peta_kerawanan'])->name('guru_list_peta_kerawanan');
+    Route::get('/peta_kerawanan/edit/{id}', [GuruController::class, 'guru_edit_peta_kerawanan'])->name('guru_edit_peta_kerawanan');
+    Route::get('/peta_kerawanan/create/{id}', [GuruController::class, 'guru_create_peta_kerawanan'])->name('guru_create_peta_kerawanan');
+    Route::post('/peta_kerawanan/update/{id}', [GuruController::class, 'guru_update_peta_kerawanan'])->name('guru_update_peta_kerawanan');
+    Route::post('/peta_kerawanan/store', [GuruController::class, 'guru_store_peta_kerawanan'])->name('guru_store_peta_kerawanan');
 });

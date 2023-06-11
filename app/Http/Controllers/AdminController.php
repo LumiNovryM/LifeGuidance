@@ -35,8 +35,10 @@ class AdminController extends Controller
 
     public function create_walas()
     {
+        $datas = Kelas::all();
         return view('admin.walas.create_walas', [
-            "title" => "Wali Kelas"
+            "title" => "Wali Kelas",
+            "datas" => $datas
         ]);
     }
     public function store_walas(Request $request)
@@ -45,6 +47,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'nip' => 'required',
+            'kelas_id' => 'required',
             'password' => 'required|min:8',
         ]);
 
@@ -53,6 +56,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'role_id' => 4,
             'nip' => $request->nip,
+            'kelas_id' => $request->kelas_id,
             'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -66,9 +70,12 @@ class AdminController extends Controller
     public function edit_walas($id)
     {
         $data = Walas::query()->where('id', $id)->first();
+        $kelas = Kelas::all();
+
         return view('admin.walas.edit_walas', [
             "data" => $data,
-            "title" => "Wali Kelas"
+            "title" => "Wali Kelas",
+            "kelas" => $kelas
         ]);
     }
     public function update_walas(Request $request, $id)
@@ -77,12 +84,14 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'nip' => 'required',
+            'kelas_id' => 'required',
             'password' => 'required|min:8',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'kelas_id' => $request->kelas_id,
             'nip' => $request->nip,
             'password' => Hash::make($request->password),
         ];

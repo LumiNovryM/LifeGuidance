@@ -1,8 +1,8 @@
-@extends('layout.template.walas_dashboard')
+@extends('layout.template.guru_dashboard')
 
 @section('title-tab', 'LifeGuidance')
 
-@section('walas_content')
+@section('guru_content')
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between" style="width: 100%">
@@ -30,15 +30,15 @@
                 <div class="mt-2">
                     <h6>Peta Kerawanan</h6>
                     <div>
-                        <form action="{{ route('walas_update_peta_kerawanan', $data->id) }}" method="POST">
+                        <form action="{{ route('guru_update_peta_kerawanan', $data->id) }}" method="POST">
                             @csrf
                             <table cellpadding="10" cellspacing="0">
                                 <tr>
                                     <td>Sering Sakit</td>
                                     <td>
                                         <select name="sering_sakit" id="" class="form-control">
-                                            <option {{ $data->sering_sakit == 0 ? 'selected' : '' }} value="0">
-                                                Tidak</option>
+                                            <option {{ $data->sering_sakit == 0 ? 'selected' : '' }} value="0">Tidak
+                                            </option>
                                             <option {{ $data->sering_sakit == 1 ? 'selected' : '' }} value="1">Iya
                                             </option>
                                         </select>
@@ -55,8 +55,8 @@
                                     <td>Sering Alpha</td>
                                     <td>
                                         <select name="sering_alpha" id="" class="form-control">
-                                            <option {{ $data->sering_alpha == 0 ? 'selected' : '' }} value="0">
-                                                Tidak</option>
+                                            <option {{ $data->sering_alpha == 0 ? 'selected' : '' }} value="0">Tidak
+                                            </option>
                                             <option {{ $data->sering_alpha == 1 ? 'selected' : '' }} value="1">Iya
                                             </option>
                                         </select>
@@ -64,19 +64,17 @@
                                     <td>Sering Terlambat</td>
                                     <td>
                                         <select name="sering_terlambat" id="" class="form-control">
-                                            <option {{ $data->sering_terlambat == 0 ? 'selected' : '' }}
-                                                value="0">Tidak</option>
-                                            <option {{ $data->sering_terlambat == 1 ? 'selected' : '' }}
-                                                value="1">Iya</option>
+                                            <option {{ $data->sering_terlambat == 0 ? 'selected' : '' }} value="0">
+                                                Tidak</option>
+                                            <option {{ $data->sering_terlambat == 1 ? 'selected' : '' }} value="1">Iya
+                                            </option>
                                         </select>
                                     </td>
                                     <td>Sering Bolos</td>
                                     <td>
                                         <select name="bolos" id="" class="form-control">
-                                            <option {{ $data->bolos == 0 ? 'selected' : '' }} value="0">Tidak
-                                            </option>
-                                            <option {{ $data->bolos == 1 ? 'selected' : '' }} value="1">Iya
-                                            </option>
+                                            <option {{ $data->bolos == 0 ? 'selected' : '' }} value="0">Tidak</option>
+                                            <option {{ $data->bolos == 1 ? 'selected' : '' }} value="1">Iya</option>
                                         </select>
                                     </td>
 
@@ -85,10 +83,10 @@
                                     <td>Kelainan Jasmani</td>
                                     <td>
                                         <select name="kelainan_jasmani" id="" class="form-control">
-                                            <option {{ $data->kelainan_jasmani == 0 ? 'selected' : '' }}
-                                                value="0">Tidak</option>
-                                            <option {{ $data->kelainan_jasmani == 1 ? 'selected' : '' }}
-                                                value="1">Iya</option>
+                                            <option {{ $data->kelainan_jasmani == 0 ? 'selected' : '' }} value="0">
+                                                Tidak</option>
+                                            <option {{ $data->kelainan_jasmani == 1 ? 'selected' : '' }} value="1">Iya
+                                            </option>
                                         </select>
                                     </td>
                                     <td>Minat Belajar Kurang</td>
@@ -112,25 +110,25 @@
                                     <td>Tinggal Dengan Wali</td>
                                     <td>
                                         <select name="tinggal_dengan_wali" id="" class="form-control">
-                                            <option {{ $data->tinggal_dengan_wali == 0 ? 'selected' : '' }}
-                                                value="0">Tidak</option>
-                                            <option {{ $data->tinggal_dengan_wali == 1 ? 'selected' : '' }}
-                                                value="1">Iya</option>
+                                            <option {{ $data->tinggal_dengan_wali == 0 ? 'selected' : '' }} value="0">
+                                                Tidak</option>
+                                            <option {{ $data->tinggal_dengan_wali == 1 ? 'selected' : '' }} value="1">
+                                                Iya</option>
                                         </select>
                                     </td>
                                     <td>Kemampuan Kurang</td>
                                     <td>
                                         <select name="kemampuan_kurang" id="" class="form-control">
-                                            <option {{ $data->kemampuan_kurang == 0 ? 'selected' : '' }}
-                                                value="0">Tidak</option>
-                                            <option {{ $data->kemampuan_kurang == 1 ? 'selected' : '' }}
-                                                value="1">Iya</option>
+                                            <option {{ $data->kemampuan_kurang == 0 ? 'selected' : '' }} value="0">
+                                                Tidak</option>
+                                            <option {{ $data->kemampuan_kurang == 1 ? 'selected' : '' }} value="1">Iya
+                                            </option>
                                         </select>
                                     </td>
                                 </tr>
                             </table>
                             <div class="mt-3">
-                                <a href="{{ route('walas_peta_kerawanan') }}" type="button"
+                                <a href="{{ route('guru_peta_kerawanan') }}" type="button"
                                     class="btn btn-primary">Kembali</a>
                                 <a href="{{ route('export_peta_kerawanan', $data->id) }}" type="button"
                                     class="btn btn-success">Eksport Excel</a>
@@ -141,10 +139,10 @@
                 </div>
         </div>
     @else
-        <h3 class="text-center">Peta Kerawanan Pada Murid Ini Belum Tersedia</h3>
+        <h4 class="text-center">Peta Kerawanan Pada Murid Ini Belum Tersedia</h4>
+        <a href="{{ route('guru_create_peta_kerawanan', $ids) }}" type="button" class="btn btn-info">Buat Peta Kerawanan</a>
         @endif
     </div>
 
-    </div>
-    </div>
+  
 @endsection

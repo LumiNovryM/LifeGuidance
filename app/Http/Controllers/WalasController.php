@@ -84,7 +84,7 @@ class WalasController extends Controller
     public function walas_list_bimbingan_sosial()
     {
         $user = Auth::guard('walas')->user();
-        $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
+        $datas = Bimbingan_Sosial::where('walas_id', $user->id)->paginate(5);  
         $kelas = Kelas::where('id',$user->kelas_id)->get();
 
         return view('walas.walas_list_bimbingan_sosial', [
@@ -112,7 +112,7 @@ class WalasController extends Controller
     public function walas_list_bimbingan_Karir()
     {
         $user = Auth::guard('walas')->user();
-        $datas = Bimbingan_Belajar::where('walas_id', $user->id)->paginate(5);  
+        $datas = Bimbingan_Karir::where('walas_id', $user->id)->paginate(5);  
         $kelas = Kelas::where('id',$user->kelas_id)->get();
         
         return view('walas.walas_list_bimbingan_karir', [
@@ -149,7 +149,7 @@ class WalasController extends Controller
     }
     public function walas_detail_peta_kerawanan($id)
     {
-        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('id', $id)->first();  
+        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('siswa_id', $id)->first();  
         
         return view('walas.walas_detail_peta_kerawanan', [
             "title" => "Peta",

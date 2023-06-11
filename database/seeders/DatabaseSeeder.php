@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             WalasSeeder::class,
             SiswaSeeder::class,
             PetaSeeder::class,
+            GuruKelasSeeder::class,
         ]);
     }
 }
