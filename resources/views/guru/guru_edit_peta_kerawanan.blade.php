@@ -127,7 +127,11 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div class="mt-3">
+                            <div class="">
+                                <h6>Kesimpulan</h6>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="kesimpulan">{{ $data->kesimpulan }}</textarea>
+                            </div>
+                            <div class="mt-5">
                                 <a href="{{ route('guru_peta_kerawanan') }}" type="button"
                                     class="btn btn-primary">Kembali</a>
                                 <a href="{{ route('export_peta_kerawanan', $data->id) }}" type="button"
