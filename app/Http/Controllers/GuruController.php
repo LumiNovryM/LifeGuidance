@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
 use Illuminate\Http\Request;
+use App\Models\Peta_Kerawanan;
+use App\Models\Bimbingan_Karir;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
-use App\Models\Bimbingan_Karir;
 use App\Models\Bimbingan_Pribadi;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,14 +29,14 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-        
+
         $datas = Bimbingan_Pribadi::where('guru_id', $user->id)->paginate(5);
-        return view('guru.guru_bimbingan_pribadi',[
+        return view('guru.guru_bimbingan_pribadi', [
             'title' => 'Pribadi',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
-        ]);   
+        ]);
     }
     public function guru_detail_bimbingan_pribadi($id)
     {
@@ -49,7 +52,7 @@ class GuruController extends Controller
             'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
-            
+
         ]);
 
         $data = [
@@ -74,14 +77,14 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-        
+
         $datas = Bimbingan_Belajar::where('guru_id', $user->id)->paginate(5);
-        return view('guru.guru_bimbingan_belajar',[
+        return view('guru.guru_bimbingan_belajar', [
             'title' => 'Belajar',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
-        ]);   
+        ]);
     }
     public function guru_detail_bimbingan_belajar($id)
     {
@@ -97,7 +100,7 @@ class GuruController extends Controller
             'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
-            
+
         ]);
 
         $data = [
@@ -122,14 +125,14 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-        
+
         $datas = Bimbingan_Sosial::where('guru_id', $user->id)->paginate(5);
-        return view('guru.guru_bimbingan_sosial',[
+        return view('guru.guru_bimbingan_sosial', [
             'title' => 'Sosial',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
-        ]);   
+        ]);
     }
     public function guru_detail_bimbingan_sosial($id)
     {
@@ -147,7 +150,7 @@ class GuruController extends Controller
             'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
-            
+
         ]);
 
         $data = [
@@ -172,14 +175,14 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-        
+
         $datas = Bimbingan_Karir::where('guru_id', $user->id)->paginate(5);
-        return view('guru.guru_bimbingan_karir',[
+        return view('guru.guru_bimbingan_karir', [
             'title' => 'Karir',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
-        ]);   
+        ]);
     }
     public function guru_detail_bimbingan_karir($id)
     {
@@ -195,7 +198,7 @@ class GuruController extends Controller
             'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
-            
+
         ]);
 
         $data = [
@@ -210,18 +213,113 @@ class GuruController extends Controller
 
         return redirect()->route('guru_bimbingan_karir');
     }
+
+
+
+
+
+    // peta kerawanan
+    public function guru_peta_kerawanan()
+    {
+        $data = Guru::find(Auth::guard('guru')->user()->id);
+        $datas = $data->kelas->map(function ($kelas) {
+            return [
+                'id' => $kelas->id,
+                'name' => $kelas->name,
+            ];
+        });
+        return view("guru.guru_peta_kerawanan", [
+            "title" => "Peta",
+            "datas" => $datas
+        ]);
+    }
+    public function guru_list_peta_kerawanan($id)
+    {
+        $datas = Siswa::where('kelas_id', $id)->get();
+        return view('guru.guru_list_peta_kerawanan', [
+            "title" => "Peta",
+            "datas" => $datas,
+            "kelas" => $datas[0]->kelas->name,
+        ]);
+    }
+    public function guru_edit_peta_kerawanan($id)
+    {
+        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('siswa_id', $id)->first();  
+        return view("guru.guru_edit_peta_kerawanan", [
+            "title" => "Peta",
+            "data" => $data,
+            "ids" => $id
+        ]);   
+    }
+    public function guru_update_peta_kerawanan(Request $request, $id)
+    {
+        $data = [
+            'sering_sakit' => $request->sering_sakit,
+            'sering_izin' => $request->sering_izin,
+            'sering_alpha' => $request->sering_alpha,
+            'sering_terlambat' => $request->sering_terlambat,
+            'bolos' => $request->bolos,
+            'kelainan_jasmani' => $request->kelainan_jasmani,
+            'minat_belajar_kurang' => $request->minat_belajar_kurang,
+            'introvert' => $request->introvert,
+            'tinggal_dengan_wali' => $request->tinggal_dengan_wali,
+            'kemampuan_kurang' => $request->kemampuan_kurang,
+        ];
+
+        Peta_Kerawanan::where('id', $id)->update($data);
+
+        return redirect()->route('guru_peta_kerawanan');
+    }
+    public function guru_create_peta_kerawanan($id)
+    {
+        $siswa = Siswa::find($id);
+        $guru = Guru::whereHas('kelas', function ($query) use ($siswa) {
+            $query->where('kelas_id', $siswa->kelas->id);
+        })->get();
+        $walas = Walas::where('kelas_id', $siswa->kelas->id)->first();
+        return view("guru.guru_create_peta_kerawanan", [
+            "title" => "Peta",
+            "siswa" => $siswa,
+            "guru" => $guru[0],
+            "walas" => $walas
+        ]);   
+    }
+    public function guru_store_peta_kerawanan(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required',
+            'guru_id' => 'required',
+            'walas_id' => 'required',
+            'kelas_id' => 'required',
+            'sering_sakit' => 'required',
+            'sering_izin' => 'required',
+            'sering_alpha' => 'required',
+            'sering_terlambat' => 'required',
+            'bolos' => 'required',
+            'kelainan_jasmani' => 'required',
+            'minat_belajar_kurang' => 'required',
+            'introvert' => 'required',
+            'tinggal_dengan_wali' => 'required',
+            'kemampuan_kurang' => 'required',
+        ]);
+
+        Peta_Kerawanan::insert([
+            'siswa_id' => $request->siswa_id,
+            'guru_id' => $request->guru_id,
+            'walas_id' => $request->walas_id,
+            'kelas_id' => $request->kelas_id,
+            'sering_sakit' => $request->sering_sakit,
+            'sering_izin' => $request->sering_izin,
+            'sering_alpha' => $request->sering_alpha,
+            'sering_terlambat' => $request->sering_terlambat,
+            'bolos' => $request->bolos,
+            'kelainan_jasmani' => $request->kelainan_jasmani,
+            'minat_belajar_kurang' => $request->minat_belajar_kurang,
+            'introvert' => $request->introvert,
+            'tinggal_dengan_wali' => $request->tinggal_dengan_wali,
+            'kemampuan_kurang' => $request->kemampuan_kurang,
+        ]);
+
+        return redirect()->route('guru_peta_kerawanan', $request->kelas_id);
+    }
 }
-
-
-
-// jangan dihapus
-// $data = Guru::find(Auth::guard('guru')->user()->id);
-//         $kelasInfo = $data->kelas->map(function ($kelas) {
-//             return [
-//                 'id' => $kelas->id,
-//                 'name' => $kelas->name,
-//             ];
-//         });
-// @foreach ($kelasInfo as $kelas)
-//     {{ $kelas['id'] }} - {{ $kelas['name'] }}
-// @endforeach
