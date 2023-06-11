@@ -18,15 +18,31 @@ class AdminController extends Controller
 {
     public function home_admin()
     {
+        # Siswa
+        $siswa = Siswa::all();
+        $totalsiswa = $siswa->count();
+        # Guru
+        $guru = Guru::all();
+        $totalguru = $guru->count();
+        # Kelas
+        $kelas = Kelas::all();
+        $totalkelas = $kelas->count();
+        # Wali Kelas
+        $walas = Walas::all();
+        $totalwalas = $walas->count();
         return view('admin.home_admin', [
-            "title" => "Dashboard"
+            "title" => "Dashboard",
+            "siswa" => $totalsiswa,
+            "guru" => $totalguru,
+            "kelas" => $totalkelas,
+            "walas" => $totalwalas,
         ]);
     }
 
     # Wali Kelas
     public function show_walas()
     {
-        $datas = Walas::query()->paginate(2);
+        $datas = Walas::query()->paginate(5);
         return view('admin.walas.walas', [
             "datas" => $datas,
             "title" => "Wali Kelas"
@@ -111,7 +127,7 @@ class AdminController extends Controller
     # Guru BK
     public function show_guru_bk()
     {
-        $datas = Guru::query()->paginate(2);
+        $datas = Guru::query()->paginate(5);
         return view('admin.guru.guru_bk', [
             "datas" => $datas,
             "title" => "Guru BK"
