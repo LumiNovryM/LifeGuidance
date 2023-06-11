@@ -44,7 +44,8 @@
             <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn bg-gradient-primary">Submit</button>
+        <a href="{{ route('show_walas') }}" type="submit" class="btn bg-gradient-info">Cancel</a>
 
     </form>
 @endsection

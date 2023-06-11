@@ -11,7 +11,7 @@
                     <input type="text" name="name" autocomplete="off" class="form-control"
                         placeholder="Masukkan Nama Kelas" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
-                    <button class="btn btn-primary mb-0" type="button" id="button-addon2">Submit</button>
+                    <button class="btn bg-gradient-primary mb-0" type="button" id="button-addon2">Submit</button>
                 </div>
             </form>
             @error('name')
@@ -44,13 +44,13 @@
                             <form style="margin-right: 10px" action="{{ route('destroy_kelas', $data->id) }}"
                                 method="post">
                                 @csrf
-                                <button type="submit" class="btn btn-sm btn-danger mr-2">Delete</button>
+                                <button type="submit" class="btn btn-sm bg-gradient-danger mr-2">Delete</button>
                             </form>
                             <a href="{{ route('edit_kelas', $data->id) }}" style="margin-right: 10px">
-                                <button type="submit" class="btn btn-sm btn-warning">Edit</button>
+                                <button type="submit" class="btn btn-sm bg-gradient-warning">Edit</button>
                             </a>
                             <a href="{{ route('show_siswa', $data->id) }}">
-                                <button type="button" class="btn btn-sm btn-info">View</button>
+                                <button type="button" class="btn btn-sm bg-gradient-info">View</button>
                             </a>
                         </div>
                     </div>
