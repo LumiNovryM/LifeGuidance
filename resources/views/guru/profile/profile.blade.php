@@ -20,7 +20,7 @@
               {{ Auth::guard('guru')->user()->name }}
             </h5>
             <p class="mb-0 font-weight-bold text-sm">
-              {{ Auth::guard('guru')->user()->role }}
+              {{ Auth::guard('guru')->user()->role->name }}
             </p>
           </div>
         </div>
@@ -44,7 +44,7 @@
         <ul class="list-group">
           <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">NIP:</strong> &nbsp; {{ Auth::guard('guru')->user()->nip }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ Auth::guard('guru')->user()->email }}</li>
-          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{ Auth::guard('guru')->user()->no_telp }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; Indonesia, Jawa Barat, Kota Depok</li>
           <li class="list-group-item border-0 ps-0 pb-0">
             <strong class="text-dark text-sm">Social:</strong> &nbsp;
