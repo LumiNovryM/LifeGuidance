@@ -32,7 +32,6 @@
                 <textarea id="alasan" rows="4" class="form-control" placeholder="" name="alasan" readonly>{{ $data->alasan_pertemuan }}</textarea>
             </div>
 
-            @if ($data->tanggal_pertemuan && $data->lokasi_pertemuan)
             <div class="mt-2">
                 <h6>Tanggal Pertemuan</h6>
                 <p>{{ $data->tanggal_pertemuan }}</p>
@@ -41,7 +40,6 @@
                 <h6>Lokasi Pertemuan</h6>
                 <p>{{ $data->lokasi_pertemuan }}</p>
             </div>            
-        @endif
 
         </div>
         <div class="card-footer">

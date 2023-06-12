@@ -68,6 +68,22 @@
                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Tanggal Pertemuan</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" autocomplete="off"
+                            placeholder="Masukkan Tanggal" name="tanggal_pertemuan">
+                        @error('tanggal_pertemuan')
+                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Lokasi Pertemuan</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off"
+                            placeholder="Masukkan Lokasi Pertemuan" name="lokasi_pertemuan">
+                        @error('lokasi_pertemuan')
+                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
