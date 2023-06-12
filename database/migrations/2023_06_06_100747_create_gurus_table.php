@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
+            $table->string('foto')->nullable();
             $table->string('name');
             $table->string('no_telp');
             $table->string('motto', 225);

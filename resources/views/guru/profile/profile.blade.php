@@ -11,7 +11,11 @@
       <div class="row gx-4">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-            <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            @if (Auth::guard('guru')->user()->foto)
+              <img src="{{ asset('foto_gurubk/'.Auth::guard('guru')->user()->foto) }}" alt="{{ Auth::guard('guru')->user()->name }}" class="w-100 mt-5 border-radius-lg shadow-sm">
+            @else 
+              <img src="{{ asset('foto_gurubk/None.png') }}" alt="Avatar" class="w-100 mt-5 border-radius-lg shadow-sm">
+            @endif
           </div>
         </div>
         <div class="col-auto my-auto">

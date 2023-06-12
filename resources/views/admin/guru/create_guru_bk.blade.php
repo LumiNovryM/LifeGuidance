@@ -3,13 +3,21 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('admin_content')
-    <form action="{{ route('store_guru_bk') }}" method="post">
+    <form action="{{ route('store_guru_bk') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nama</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off"
                 placeholder="Masukkan Nama" name="name">
             @error('name')
+                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Motto</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off"
+                placeholder="Masukkan Motto" name="motto">
+            @error('motto')
                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
@@ -26,6 +34,21 @@
             <input type="number" class="form-control" id="exampleFormControlInput1" autocomplete="off"
                 placeholder="Masukkan NIP" name="nip">
             @error('nip')
+                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">No Telp.</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" autocomplete="off"
+                placeholder="Masukkan No Telp." name="no_telp">
+            @error('no_telp')
+                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Profile Picture</label>
+            <input type="file" class="form-control" id="exampleFormControlInput1" autocomplete="off" name="foto">
+            @error('foto')
                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>

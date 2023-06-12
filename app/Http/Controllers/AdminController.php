@@ -164,10 +164,24 @@ class AdminController extends Controller
             'email' => 'required|email',
             'nip' => 'required',
             'password' => 'required|min:8',
+            'foto' => 'required',
+            'no_telp' => 'required',
+            'motto' => 'required',
         ]);
 
+        if($request->hasFile('foto')){
+            $foto = $request->file('foto');
+            $fotoName = $foto->getClientOriginalName();
+            $foto->move('foto_gurubk/', $fotoName);
+        } else {
+            $fotoName = NULL;
+        }
+
         Guru::insert([
+            'foto' => $fotoName,
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
+            'motto' => $request->motto,
             'email' => $request->email,
             'role_id' => 3,
             'nip' => $request->nip,
