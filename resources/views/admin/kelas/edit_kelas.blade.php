@@ -14,6 +14,7 @@
         </div>
        
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ route('show_kelas') }}" type="submit" class="btn bg-gradient-info">Cancel</a>
 
     </form>
 @endsection

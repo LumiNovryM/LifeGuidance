@@ -38,6 +38,8 @@
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    {{-- Toastr --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -65,7 +67,7 @@
                     </div>
                     <ul class="navbar-nav  justify-content-end" >
                         <li class="nav-item d-flex align-items-center">
-                            <a href="{{ route('show_profile') }}" type="buttom" class="nav-link text-body font-weight-bold px-0 " >
+                            <a href="{{ route('show_profile_admin') }}" type="buttom" class="nav-link text-body font-weight-bold px-0 " >
                                 <i class="fa fa-user me-sm-1"></i>
                                 <span class="d-sm-inline d-none">{{ auth()->user()->name }}</span>
                             </a>
@@ -367,6 +369,19 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+
+    {{-- Toastr + Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @if (Session::has('success'))
+        <script>
+            toastr.info("{{ Session::get('success') }}", "Admin",{
+                closeButton: true,
+                progressBar: true,
+            });
+        </script>
+    @endif
 </body>
 
 </html>

@@ -27,17 +27,6 @@
                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
-
-
-        {{-- <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Guru BK</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off" placeholder="Masukkan " readonly value="{{ $walas->name }}">
-    <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off" readonly value="{{ $walas->id }}" name="guru_bk_id">
-        @error('nama_walas')
-        <p class="text-danger text-xs mt-2">{{ $message }}</p>
-        @enderror
-  </div> --}}
-
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Wali Kelas</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off"
@@ -51,9 +40,6 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Tipe Bimbingan</label>
             <select class="form-control" id="exampleFormControlSelect1" name="tipe_bimbingan">
-                {{-- @foreach ($diajak as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}, {{ $item->kelas->name }}</option>
-                @endforeach --}}
                 <option value="Kerja">Kerja</option>
                 <option value="Wirausaha">Wirausaha</option>
                 <option value="Kuliah">Kuliah</option>

@@ -15,4 +15,5 @@ use App\Http\Controllers\ApiController;
 |
 */
 
-Route::get('/login', [ApiController::class, 'login']);
+Route::post('/login', [ApiController::class, 'login']);
+Route::middleware('auth:sanctum')->get('/data', [ApiController::class, 'getData']);

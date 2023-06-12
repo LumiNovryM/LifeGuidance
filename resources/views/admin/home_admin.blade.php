@@ -11,16 +11,16 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Siswa</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Siswa Terdaftar</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                      500 
-                                      {{-- <span class="text-success text-sm font-weight-bolder">+55%</span> --}}
+                                      {{ $siswa }}
+                                      <span class="text-success text-sm font-weight-bolder">100%</span>
                                     </h5>
                                   </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -33,16 +33,16 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Guru</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        35
-                                        {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
+                                        2,300
+                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -55,10 +55,10 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Kelas</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        25
-                                        {{-- <span class="text-danger text-sm font-weight-bolder">-2%</span> --}}
+                                        +3,462
+                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
                                     </h5>
                                 </div>
                             </div>
@@ -77,9 +77,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Konsultan</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        40
+                                        $103,430
                                     </h5>
                                 </div>
                             </div>

@@ -3,14 +3,22 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('siswa_content')
-    <div class="d-flex justify-content-end" style="width: 100%">
+    <div class="card">
+<div class="card-header">
+    <div class="d-flex justify-content-between" style="width: 100%">
         <h5 class="font-bold">Detail Pertemuan</h5>
         <p>{{ $data->status }}</p>
     </div>
-
+</div>
+    
+<div class="card-body">
     <div class="">
         <h6>Nama</h6>
         <p>{{ $data->siswa->name }}</p>
+    </div>
+    <div class="">
+        <h6>Rekan Yang Diajukan</h6>
+        <p>{{ $diajukan->name }}</p>
     </div>
     <div class="mt-2">
         <h6>Kelas</h6>
@@ -37,6 +45,10 @@
         <h6>Lokasi Pertemuan</h6>
         <p>{{ $data->lokasi_pertemuan }}</p>
     </div>
-
+</div>
+    
+<div class="card-footer">
     <a href="{{ route('bimbingan_sosial') }}" type="button" class="btn btn-primary">Kembali</a>
+</div>
+    </div>
 @endsection

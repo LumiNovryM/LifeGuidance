@@ -87,7 +87,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/kelas/edit/{id}', [AdminController::class, 'edit_kelas'])->name('edit_kelas');
 
     //profile
-    Route::get('/profile', [AdminController::class, 'show_profile'])->name('show_profile');
+    Route::get('/profile_admin', [AdminController::class, 'show_profile_admin'])->name('show_profile_admin');
 });
 
 # Walas Handler
@@ -109,6 +109,12 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
     // bimbingan karir
     Route::get('/jadwal_bimbingan_karir', [WalasController::class, 'walas_list_bimbingan_karir'])->name('walas_list_bimbingan_karir');
     Route::get('/detail_bimbingan_karir/{id}', [WalasController::class, 'walas_detail_bimbingan_karir'])->name('walas_detail_bimbingan_karir');
+
+     // peta kerawanan
+     Route::get('/peta_kerawanan', [WalasController::class, 'walas_peta_kerawanan'])->name('walas_peta_kerawanan');
+     Route::get('/export_peta_kerawanan/{id}', [WalasController::class, 'export_peta_kerawanan'])->name('export_peta_kerawanan');
+     Route::get('/peta_kerawanan/detail/{id}', [WalasController::class, 'walas_detail_peta_kerawanan'])->name('walas_detail_peta_kerawanan');
+     Route::post('/peta_kerawanan/update/{id}', [WalasController::class, 'walas_update_peta_kerawanan'])->name('walas_update_peta_kerawanan');
 
      //profile
      Route::get('/profile', [WalasController::class, 'show_profile'])->name('show_profile');
@@ -147,4 +153,39 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
 # guru Handler
 Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/dashboard', [GuruController::class, 'home_guru'])->name('home_guru');
+
+    // bimbingan pribadi
+    Route::get('/bimbingan_pribadi', [GuruController::class, 'guru_bimbingan_pribadi'])->name('guru_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/store', [GuruController::class, 'guru_store_bimbingan_pribadi'])->name('guru_store_bimbingan_pribadi');
+    Route::get('/bimbingan_pribadi/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_pribadi'])->name('guru_detail_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/update/{id}', [GuruController::class, 'guru_update_bimbingan_pribadi'])->name('guru_update_bimbingan_pribadi');
+
+    // bimbingan belajar
+    Route::get('/bimbingan_belajar', [GuruController::class, 'guru_bimbingan_belajar'])->name('guru_bimbingan_belajar');
+    Route::post('/bimbingan_belajar/store', [GuruController::class, 'guru_store_bimbingan_belajar'])->name('guru_store_bimbingan_belajar');
+    Route::get('/bimbingan_belajar/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_belajar'])->name('guru_detail_bimbingan_belajar');
+    Route::post('/bimbingan_belajar/update/{id}', [GuruController::class, 'guru_update_bimbingan_belajar'])->name('guru_update_bimbingan_belajar'); 
+
+    // bimbingan sosial
+    Route::get('/bimbingan_sosial', [GuruController::class, 'guru_bimbingan_sosial'])->name('guru_bimbingan_sosial');
+    Route::post('/bimbingan_sosial/store', [GuruController::class, 'guru_store_bimbingan_sosial'])->name('guru_store_bimbingan_sosial');
+    Route::get('/bimbingan_sosial/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_sosial'])->name('guru_detail_bimbingan_sosial');
+    Route::post('/bimbingan_sosial/update/{id}', [GuruController::class, 'guru_update_bimbingan_sosial'])->name('guru_update_bimbingan_sosial'); 
+
+    // bimbingan karir
+    Route::get('/bimbingan_karir', [GuruController::class, 'guru_bimbingan_karir'])->name('guru_bimbingan_karir');
+    Route::post('/bimbingan_karir/store', [GuruController::class, 'guru_store_bimbingan_karir'])->name('guru_store_bimbingan_karir');
+    Route::get('/bimbingan_karir/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_karir'])->name('guru_detail_bimbingan_karir');
+    Route::post('/bimbingan_karir/update/{id}', [GuruController::class, 'guru_update_bimbingan_karir'])->name('guru_update_bimbingan_karir'); 
+
+    // peta kerawanan
+    Route::get('/peta_kerawanan', [GuruController::class, 'guru_peta_kerawanan'])->name('guru_peta_kerawanan');
+    Route::get('/peta_kerawanan/list/{id}', [GuruController::class, 'guru_list_peta_kerawanan'])->name('guru_list_peta_kerawanan');
+    Route::get('/peta_kerawanan/edit/{id}', [GuruController::class, 'guru_edit_peta_kerawanan'])->name('guru_edit_peta_kerawanan');
+    Route::get('/peta_kerawanan/create/{id}', [GuruController::class, 'guru_create_peta_kerawanan'])->name('guru_create_peta_kerawanan');
+    Route::post('/peta_kerawanan/update/{id}', [GuruController::class, 'guru_update_peta_kerawanan'])->name('guru_update_peta_kerawanan');
+    Route::post('/peta_kerawanan/store', [GuruController::class, 'guru_store_peta_kerawanan'])->name('guru_store_peta_kerawanan');
+
+    //profile
+    Route::get('/profile_guru', [GuruController::class, 'show_profile_guru'])->name('show_profile_guru');
 });

@@ -34,4 +34,8 @@ class Siswa extends Model
     {
         return $this->belongsToMany(Siswa::class, Bimbingan_Sosial::class);
     }
+    public function petaKerawanan()
+    {
+        return $this->belongsToMany(Siswa::class, Peta_Kerawanan::class);
+    }
 }

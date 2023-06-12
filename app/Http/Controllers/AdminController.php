@@ -3,29 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
-use App\Models\GuruKelas;
-use App\Models\Kelas;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
+use App\Models\GuruKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
     public function home_admin()
     {
+        # Siswa
+        $siswa = Siswa::all();
+        $totalsiswa = $siswa->count();
+        # Guru
+        $guru = Guru::all();
+        $totalguru = $guru->count();
+        # Kelas
+        $kelas = Kelas::all();
+        $totalkelas = $kelas->count();
+        # Wali Kelas
+        $walas = Walas::all();
+        $totalwalas = $walas->count();
         return view('admin.home_admin', [
-            "title" => "Dashboard"
+            "title" => "Dashboard",
+            "siswa" => $totalsiswa,
+            "guru" => $totalguru,
+            "kelas" => $totalkelas,
+            "walas" => $totalwalas,
         ]);
     }
 
     # Wali Kelas
     public function show_walas()
     {
-        $datas = Walas::query()->get();
+        $datas = Walas::query()->paginate(5);
         return view('admin.walas.walas', [
             "datas" => $datas,
             "title" => "Wali Kelas"
@@ -34,8 +51,10 @@ class AdminController extends Controller
 
     public function create_walas()
     {
+        $datas = Kelas::all();
         return view('admin.walas.create_walas', [
-            "title" => "Wali Kelas"
+            "title" => "Wali Kelas",
+            "datas" => $datas
         ]);
     }
     public function store_walas(Request $request)
@@ -44,6 +63,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'nip' => 'required',
+            'kelas_id' => 'required',
             'password' => 'required|min:8',
         ]);
 
@@ -52,19 +72,26 @@ class AdminController extends Controller
             'email' => $request->email,
             'role_id' => 4,
             'nip' => $request->nip,
+            'kelas_id' => $request->kelas_id,
             'password' => Hash::make($request->password),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect()->route('show_walas');
+        Session::flash('status', 'success');
+        Session::flash('message', 'Data Berhasil Di Tambahkan');
+
+        return redirect()->route('show_walas')->with('success', 'Data Berhasil Ditambahkan');
     }
     public function edit_walas($id)
     {
         $data = Walas::query()->where('id', $id)->first();
+        $kelas = Kelas::all();
+
         return view('admin.walas.edit_walas', [
             "data" => $data,
-            "title" => "Wali Kelas"
+            "title" => "Wali Kelas",
+            "kelas" => $kelas
         ]);
     }
     public function update_walas(Request $request, $id)
@@ -73,12 +100,14 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'nip' => 'required',
+            'kelas_id' => 'required',
             'password' => 'required|min:8',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'kelas_id' => $request->kelas_id,
             'nip' => $request->nip,
             'password' => Hash::make($request->password),
         ];
@@ -98,7 +127,7 @@ class AdminController extends Controller
     # Guru BK
     public function show_guru_bk()
     {
-        $datas = Guru::query()->get();
+        $datas = Guru::query()->paginate(5);
         return view('admin.guru.guru_bk', [
             "datas" => $datas,
             "title" => "Guru BK"
@@ -172,7 +201,9 @@ class AdminController extends Controller
             }
         }
 
-        return redirect()->route('show_guru_bk');
+
+
+        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Ditambahkan');
     }
     public function edit_guru_bk($id)
     {
@@ -200,12 +231,12 @@ class AdminController extends Controller
 
         Guru::where('id', $id)->update($data);
 
-        return redirect()->route('show_guru_bk');
+        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Diperbarui');
     }
     public function destroy_guru_bk($id)
     {
         Guru::find($id)->delete();
-        return redirect()->route('show_guru_bk');
+        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Dihapus');
     }
 
     # siswa
@@ -294,7 +325,7 @@ class AdminController extends Controller
     // kelas handler
     public function show_kelas()
     {
-        $datas = Kelas::with(['guru','walas'])->get();
+        $datas = Kelas::with(['guru','walas'])->paginate(4);
         return view('admin.kelas.kelas', [
             "title" => "Kelas",
             "datas" => $datas,
@@ -348,7 +379,8 @@ class AdminController extends Controller
     }
 
     #profile
-    public function show_profile(){
+    public function show_profile_admin()
+    {
     
         return view('admin.profile.profile',[
             "title" => "Profile"
