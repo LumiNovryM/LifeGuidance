@@ -136,7 +136,7 @@
                                     class="btn btn-primary">Kembali</a>
                                 <a href="{{ route('export_pdf', $data->id) }}" type="button"
                                     class="btn btn-danger">Eksport Pdf</a>
-                                <button type="submit" class="btn btn-warning">Ubah</button>
+                                <button type="submit" class="btn btn-info">Ubah</button>
                             </div>
                     </div>
                     </form>

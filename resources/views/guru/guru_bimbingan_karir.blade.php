@@ -7,7 +7,7 @@
         @include('layout.modals.guru.bimbingan_karir')
     @endif
     @forelse ($datas as $data)
-        <div class="card mt-5">
+        <div class="card mt-3">
             <div class="card-body">
                 <h5 class="card-title">Permohonan Bimbingan Karir</h5>
                 <p class="card-text">
@@ -22,7 +22,7 @@
 
                 </p>
                 @if ($data->status == 'Menunggu')
-                    <div class="d-flex">
+                    <div class="d-flex justify-content-between" style="width: 15vw">
                         <a href="{{ route('guru_detail_bimbingan_karir', $data->id) }}" class="btn btn-danger">Tunda</a>
                         <form action="{{ route('guru_accept_bimbingan_karir', $data->id) }}" method="post">
                             @csrf

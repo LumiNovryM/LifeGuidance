@@ -109,6 +109,16 @@ class GuruController extends Controller
 
         return redirect()->route('guru_bimbingan_pribadi');
     }
+    public function guru_finish_bimbingan_pribadi($id)
+    {
+        $data = [
+            'status' => "Selesai",
+        ];
+
+        Bimbingan_Pribadi::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_pribadi');
+    }
 
 
 
@@ -190,6 +200,16 @@ class GuruController extends Controller
     {
         $data = [
             'status' => "Diterima",
+        ];
+
+        Bimbingan_Belajar::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_belajar');
+    }
+    public function guru_finish_bimbingan_belajar($id)
+    {
+        $data = [
+            'status' => "Selesai",
         ];
 
         Bimbingan_Belajar::where('id', $id)->update($data);
@@ -287,6 +307,16 @@ class GuruController extends Controller
 
         return redirect()->route('guru_bimbingan_sosial');
     }
+    public function guru_finish_bimbingan_sosial($id)
+    {
+        $data = [
+            'status' => "Selesai",
+        ];
+
+        Bimbingan_Sosial::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_sosial');
+    }
 
 
 
@@ -371,6 +401,16 @@ class GuruController extends Controller
     {
         $data = [
             'status' => "Diterima",
+        ];
+
+        Bimbingan_Karir::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_karir');
+    }
+    public function guru_finish_bimbingan_karir($id)
+    {
+        $data = [
+            'status' => "Selesai",
         ];
 
         Bimbingan_Karir::where('id', $id)->update($data);

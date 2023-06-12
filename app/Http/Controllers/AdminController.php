@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bimbingan_Belajar;
+use App\Models\Bimbingan_Karir;
+use App\Models\Bimbingan_Pribadi;
+use App\Models\Bimbingan_Sosial;
 use App\Models\Guru;
 use App\Models\Role;
 use App\Models\User;
@@ -38,6 +42,10 @@ class AdminController extends Controller
             "walas" => $totalwalas,
         ]);
     }
+
+
+
+
 
     # Wali Kelas
     public function show_walas()
@@ -121,6 +129,9 @@ class AdminController extends Controller
         Walas::find($id)->delete();
         return redirect()->route('show_walas');
     }
+
+
+
 
 
 
@@ -377,6 +388,115 @@ class AdminController extends Controller
         Kelas::find($id)->delete();
         return redirect()->route('show_kelas');
     }
+
+
+
+
+
+    // arsip
+    public function show_arsip()
+    {
+        $kelas = Kelas::paginate(9);
+        return view('admin.archive.arsip',[
+            "title" => "Arsip",
+            "datas" => $kelas
+        ]);
+    }
+    public function kelas_arsip($id)
+    {
+        return view('admin.archive.kelas_arsip',[
+            "title" => "Arsip",
+            "id" => $id,
+        ]);
+    }
+    public function list_arsip_pribadi($id)
+    {
+        $datas = Bimbingan_Pribadi::where('kelas_id', $id)->where('status', 'Selesai')->get();
+        return view('admin.archive.list_arsip_pribadi',[
+            "title" => "Arsip",
+            "id" => $id,
+            "datas" => $datas,
+        ]);
+    }
+    public function detail_arsip_pribadi($id, $kelas_id)
+    {
+        $data = Bimbingan_Pribadi::where('id', $id)->first();
+        // dd($data);
+        return view('admin.archive.detail_arsip_pribadi',[
+            "title" => "Arsip",
+            "id" => $id,
+            "data" => $data,
+            "kelas_id" => $kelas_id
+        ]);
+    }
+    public function list_arsip_belajar($id)
+    {
+        $datas = Bimbingan_Belajar::where('kelas_id', $id)->get();
+        return view('admin.archive.list_arsip_belajar',[
+            "title" => "Arsip",
+            "id" => $id,
+            "datas" => $datas,
+        ]);
+    }
+    public function detail_arsip_belajar($id, $kelas_id)
+    {
+        $data = Bimbingan_Belajar::where('id', $id)->first();
+        // dd($data);
+        return view('admin.archive.detail_arsip_belajar',[
+            "title" => "Arsip",
+            "id" => $id,
+            "data" => $data,
+            "kelas_id" => $kelas_id
+        ]);
+    }
+    public function list_arsip_sosial($id)
+    {
+        $datas = Bimbingan_Sosial::where('kelas_id', $id)->get();
+        return view('admin.archive.list_arsip_sosial',[
+            "title" => "Arsip",
+            "id" => $id,
+            "datas" => $datas,
+        ]);
+    }
+    public function detail_arsip_sosial($id, $kelas_id)
+    {
+        $data = Bimbingan_Sosial::where('id', $id)->first();
+        $diajukan = Siswa::where('id', $data->diajukan)->get();
+
+        // dd($data);
+        return view('admin.archive.detail_arsip_sosial',[
+            "title" => "Arsip",
+            "id" => $id,
+            "data" => $data,
+            "kelas_id" => $kelas_id,
+            "diajukan" => $diajukan[0]
+        ]);
+    }
+    public function list_arsip_karir($id)
+    {
+        $datas = Bimbingan_Karir::where('kelas_id', $id)->get();
+        return view('admin.archive.list_arsip_karir',[
+            "title" => "Arsip",
+            "id" => $id,
+            "datas" => $datas,
+        ]);
+    }
+    public function detail_arsip_karir($id, $kelas_id)
+    {
+        $data = Bimbingan_Karir::where('id', $id)->first();
+        // dd($data);
+        return view('admin.archive.detail_arsip_karir',[
+            "title" => "Arsip",
+            "id" => $id,
+            "data" => $data,
+            "kelas_id" => $kelas_id
+        ]);
+    }
+
+
+
+
+
 
     #profile
     public function show_profile_admin()
