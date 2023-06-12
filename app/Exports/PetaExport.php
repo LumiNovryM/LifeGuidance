@@ -59,7 +59,7 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
     public function headings(): array
     {
         return [
-            'ID',
+            'No',
             'Nama Siswa',
             'Nama Guru',
             'Nama Walas',
@@ -81,48 +81,51 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
 
     public function styles(Worksheet $sheet)
     {
-    // Set body alignment to center
-    $lastRow = $sheet->getHighestRow();
-    $lastColumn = $sheet->getHighestColumn();
-    $range = 'A2:' . $lastColumn . $lastRow;
-
-        $sheet->getStyle('A1:O1')->applyFromArray([
-            'font' => ['bold' => true],
+        $lastRow = $sheet->getHighestRow();
+        $lastColumn = $sheet->getHighestColumn();
+        $range = 'A1:' . $lastColumn . $lastRow;
+    
+        $sheet->getStyle($range)->applyFromArray([
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
             'borders' => [
-                'bottom' => ['borderStyle' => Border::BORDER_THIN],
+                'allBorders' => ['borderStyle' => Border::BORDER_THIN],
             ],
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
-                'startColor' => ['argb' => 'FFCB0C9F'],
+                'startColor' => ['rgb' => 'FFCB0C9F'],
             ],
             'alignment' => [
                 'horizontal' => Alignment::HORIZONTAL_CENTER,
                 'vertical' => Alignment::VERTICAL_CENTER,
             ],
         ]);
-
-        $sheet->getStyle('A1:O1')->getAlignment()->setIndent(1);
-        $sheet->getStyle('A1:O1')->getAlignment()->setWrapText(true);
+    
+        $sheet->getStyle($range)->getAlignment()->setIndent(1);
+        $sheet->getStyle($range)->getAlignment()->setWrapText(true);
         $sheet->getRowDimension(1)->setRowHeight(20);
-
+    
         // Set column widths
-        for ($column = 'A'; $column <= 'E'; $column++) {
-            $sheet->getColumnDimension($column)->setWidth(13);
-        }
-
-        for ($column = 'F'; $column <= 'O'; $column++) {
+        for ($column = 'A'; $column <= $lastColumn; $column++) {
             $sheet->getColumnDimension($column)->setWidth(20);
         }
-
+    
+        // Set body background to white
+        $sheet->getStyle('A2:' . $lastColumn . $lastRow)->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setRGB('FFFFFF');
+    
+        // Set heading font style to bold
+        $sheet->getStyle('A1:' . $lastColumn . '1')->getFont()->setBold(true);
+    
+        // Set body font style to normal
+        $sheet->getStyle('A2:' . $lastColumn . $lastRow)->getFont()->setBold(false);
+    
+        // Set heading text color to white
+        $sheet->getStyle('A1:' . $lastColumn . '1')->getFont()->getColor()->setRGB('FFFFFF');
+    
         // Set body alignment to center
-        $lastRow = $sheet->getHighestRow();
-        $lastColumn = $sheet->getHighestColumn();
-        $range = 'A2:' . $lastColumn . $lastRow;
-
-        $sheet->getStyle($range)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle($range)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-
+        $sheet->getStyle('A2:' . $lastColumn . $lastRow)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A2:' . $lastColumn . $lastRow)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    
         return $sheet;
     }
+    
 }

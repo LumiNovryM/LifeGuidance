@@ -159,7 +159,6 @@ class WalasController extends Controller
 
     function export_peta_kerawanan($id)
     {
-        
         return Excel::download(new PetaExport($id), 'peta Kerawanan.xlsx');
     }
 
