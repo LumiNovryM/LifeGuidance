@@ -55,6 +55,8 @@ class SiswaController extends Controller
             'walas_id' => 'required',
             'guru_id' => 'required',
             'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
         ]);
 
         Bimbingan_Pribadi::insert([
@@ -63,6 +65,8 @@ class SiswaController extends Controller
             'walas_id' => $request->walas_id,
             'guru_id' => $request->guru_id,
             'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'status' => 'Menunggu',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -122,6 +126,8 @@ class SiswaController extends Controller
             'walas_id' => 'required',
             'guru_id' => 'required',
             'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
         ]);
 
         Bimbingan_Belajar::insert([
@@ -130,6 +136,8 @@ class SiswaController extends Controller
             'walas_id' => $request->walas_id,
             'guru_id' => $request->guru_id,
             'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'status' => 'Menunggu',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -182,6 +190,8 @@ class SiswaController extends Controller
             'diajukan' => 'required',
             'guru_id' => 'required',
             'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
         ]);
 
         Bimbingan_Sosial::insert([
@@ -191,6 +201,8 @@ class SiswaController extends Controller
             'guru_id' => $request->guru_id,
             'diajukan' => $request->diajukan,
             'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'status' => 'Menunggu',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -241,6 +253,8 @@ class SiswaController extends Controller
             'walas_id' => 'required',
             'tipe_bimbingan' => 'required',
             'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
         ]);
 
         Bimbingan_Karir::insert([
@@ -250,6 +264,8 @@ class SiswaController extends Controller
             'guru_id' => 1,
             'tipe_bimbingan' => $request->tipe_bimbingan,
             'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'status' => 'Menunggu',
             'tipe_request' => 'Permintaan',
             'created_at' => Carbon::now(),
