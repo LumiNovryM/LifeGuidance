@@ -24,7 +24,7 @@ class GuruSeeder extends Seeder
             ['name' => 'Heni Siswanti S.Psi','no_telp' => '081244542479' ,'motto' => 'Tetaplah percaya pada dirimu sendiri', 'nip' => '598106125854791086', 'email' => 'heni@gmail.com', 'role_id' => 3, 'password' => Hash::make('12345678'),],
         ];
 
-        # Run Seeder Loop
+        # Run Seeder Only For Demo Acc
         foreach ($data as $val) {
             Guru::insert([
                 'name' => $val['name'],
