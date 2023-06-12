@@ -3,6 +3,9 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('guru_content')
+@if ($datas)
+@include('layout.modals.guru.bimbingan_karir')
+@endif
     @forelse ($datas as $data)
         <div class="card mt-5">
             <div class="card-body">

@@ -3,6 +3,10 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('guru_content')
+@if ($datas)
+@include('layout.modals.guru.bimbingan_pribadi')
+@endif
+
     @forelse ($datas as $data)
         <div class="card mt-5">
             <div class="card-body">
@@ -23,6 +27,7 @@
         </div>
     @empty
         <h3>Permintaan Bimbingan Pribadi Sedang Tidak Ada</h3>
+
     @endforelse
     <div class="">
         {{ $datas->links() }}
