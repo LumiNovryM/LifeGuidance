@@ -73,11 +73,15 @@
                 </div>
 
             </div>
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-between" style="width: 25vw">
                 <a href="{{ route('guru_bimbingan_sosial') }}" type="button" class="btn btn-primary">Kembali</a>
-                <button type="submit" type="button" class="btn btn-info {{ $data->status == 'Diterima' ? 'disabled' : '' }}">Submit</button>
+                <button type="submit" type="button" class="btn btn-info">Tunda</button>
+            </form>
+            <form action="{{ route('guru_finish_bimbingan_sosial', $data->id) }}" method="post">
+                @csrf
+                <button type="submit" type="button" class="btn btn-success ">Selesai</button>
+            </form>
             </div>
-        </form>
 
     </div>
 @endsection

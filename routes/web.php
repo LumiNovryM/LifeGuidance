@@ -119,6 +119,10 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
 
     Route::get('/export_pdf/{id}', [WalasController::class, 'export_pdf'])->name('export_pdf_walas');
     Route::get('/export_excel/{id}', [GuruController::class, 'export_excel'])->name('export_excel_walas');
+
+
+     //profile
+     Route::get('/profile', [WalasController::class, 'show_profile'])->name('show_profile_walas');
 });
 
 # Siswa Handler
@@ -147,8 +151,8 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
     Route::post('/bimbingan_karir/store', [SiswaController::class, 'store_bimbingan_karir'])->name('store_bimbingan_karir');
     Route::get('/bimbingan_karir/detail/{id}', [SiswaController::class, 'detail_bimbingan_karir'])->name('detail_bimbingan_karir');
 
-    //profile
-    Route::get('/profile', [SiswaController::class, 'show_profile'])->name('show_profile');
+     //profile
+     Route::get('/profile', [SiswaController::class, 'show_profile'])->name('show_profile_siswa');
 });
 
 # guru Handler
@@ -161,6 +165,7 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/bimbingan_pribadi/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_pribadi'])->name('guru_detail_bimbingan_pribadi');
     Route::post('/bimbingan_pribadi/update/{id}', [GuruController::class, 'guru_update_bimbingan_pribadi'])->name('guru_update_bimbingan_pribadi');
     Route::post('/bimbingan_pribadi/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_pribadi'])->name('guru_accept_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/finish/{id}', [GuruController::class, 'guru_finish_bimbingan_pribadi'])->name('guru_finish_bimbingan_pribadi');
 
     // bimbingan belajar
     Route::get('/bimbingan_belajar', [GuruController::class, 'guru_bimbingan_belajar'])->name('guru_bimbingan_belajar');
@@ -168,6 +173,7 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/bimbingan_belajar/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_belajar'])->name('guru_detail_bimbingan_belajar');
     Route::post('/bimbingan_belajar/update/{id}', [GuruController::class, 'guru_update_bimbingan_belajar'])->name('guru_update_bimbingan_belajar');
     Route::post('/bimbingan_belajar/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_belajar'])->name('guru_accept_bimbingan_belajar');
+    Route::post('/bimbingan_belajar/finish/{id}', [GuruController::class, 'guru_finish_bimbingan_belajar'])->name('guru_finish_bimbingan_belajar');
 
 
     // bimbingan sosial
@@ -176,6 +182,8 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/bimbingan_sosial/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_sosial'])->name('guru_detail_bimbingan_sosial');
     Route::post('/bimbingan_sosial/update/{id}', [GuruController::class, 'guru_update_bimbingan_sosial'])->name('guru_update_bimbingan_sosial');
     Route::post('/bimbingan_sosial/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_sosial'])->name('guru_accept_bimbingan_sosial');
+    Route::post('/bimbingan_sosial/finish/{id}', [GuruController::class, 'guru_finish_bimbingan_sosial'])->name('guru_finish_bimbingan_sosial');
+
 
 
     // bimbingan karir
@@ -184,6 +192,7 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/bimbingan_karir/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_karir'])->name('guru_detail_bimbingan_karir');
     Route::post('/bimbingan_karir/update/{id}', [GuruController::class, 'guru_update_bimbingan_karir'])->name('guru_update_bimbingan_karir');
     Route::post('/bimbingan_karir/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_karir'])->name('guru_accept_bimbingan_karir');
+    Route::post('/bimbingan_karir/finish/{id}', [GuruController::class, 'guru_finish_bimbingan_karir'])->name('guru_finish_bimbingan_karir');
 
 
     // peta kerawanan
