@@ -112,6 +112,9 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
      Route::get('/export_peta_kerawanan/{id}', [WalasController::class, 'export_peta_kerawanan'])->name('export_peta_kerawanan');
      Route::get('/peta_kerawanan/detail/{id}', [WalasController::class, 'walas_detail_peta_kerawanan'])->name('walas_detail_peta_kerawanan');
      Route::post('/peta_kerawanan/update/{id}', [WalasController::class, 'walas_update_peta_kerawanan'])->name('walas_update_peta_kerawanan');
+     
+    //profile
+    Route::get('/profile_walas', [WalasController::class, 'show_profile_walas'])->name('show_profile_walas');
 });
 
 # Siswa Handler
