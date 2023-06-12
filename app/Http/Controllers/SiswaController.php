@@ -240,6 +240,7 @@ class SiswaController extends Controller
             'tipe_bimbingan' => $request->tipe_bimbingan,
             'alasan_pertemuan' => $request->alasan_pertemuan,
             'status' => 'Menunggu',
+            'tipe_request' => 'Permintaan',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
