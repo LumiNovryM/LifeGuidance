@@ -10,8 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "psr/simple-cache": "2.0",
         "maatwebsite/excel": "^3.1",
-        "psr/simple-cache": "2.0"
+        "phpoffice/phpspreadsheet": "1.27"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
