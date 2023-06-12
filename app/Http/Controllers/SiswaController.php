@@ -222,4 +222,5 @@ class SiswaController extends Controller
             'data' => $data,
         ]);
     }
+
 }

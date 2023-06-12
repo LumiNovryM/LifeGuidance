@@ -45,6 +45,9 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/login_walas_action', [AuthController::class, 'login_walas_action'])->name('login_walas_action');
     Route::post('/logout_walas', 'logout')->name('logout_walas');
 
+    //profile
+    Route::get('/profile', [AuthController::class, 'show_profile'])->name('show_profile');
+
 });
 
 # Admin Handler
@@ -106,6 +109,9 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
     // bimbingan karir
     Route::get('/jadwal_bimbingan_karir', [WalasController::class, 'walas_list_bimbingan_karir'])->name('walas_list_bimbingan_karir');
     Route::get('/detail_bimbingan_karir/{id}', [WalasController::class, 'walas_detail_bimbingan_karir'])->name('walas_detail_bimbingan_karir');
+
+     //profile
+     Route::get('/profile', [WalasController::class, 'show_profile'])->name('show_profile');
 });
 
 # Siswa Handler
@@ -133,6 +139,9 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
     Route::get('/bimbingan_karir', [SiswaController::class, 'bimbingan_karir'])->name('bimbingan_karir');
     Route::post('/bimbingan_karir/store', [SiswaController::class, 'store_bimbingan_karir'])->name('store_bimbingan_karir');
     Route::get('/bimbingan_karir/detail/{id}', [SiswaController::class, 'detail_bimbingan_karir'])->name('detail_bimbingan_karir');
+
+     //profile
+     Route::get('/profile', [SiswaController::class, 'show_profile'])->name('show_profile');
 });
 
 # guru Handler
