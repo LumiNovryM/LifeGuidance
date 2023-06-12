@@ -196,6 +196,13 @@ class WalasController extends Controller
 
         return redirect()->route('walas_peta_kerawanan');
     }
+
+    public function show_profile_walas()
+    {
+        return view('walas.profile.profile',[
+            "title" => "Profile"
+        ]);
+    }
 }
 
 

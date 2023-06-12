@@ -17,7 +17,7 @@ class WalasSeeder extends Seeder
     {
         # Seeder Loop
         $data = [
-            ['name' => 'John Wick','no_telp' => '081244542479' , 'kelas_id' => 1,'nip' => '505404', 'email' => 'johnwick@gmail.com', 'role_id' => 4, 'password' => Hash::make('12345678'),],
+            ['name' => 'John Wick','no_telp' => '081244542479' , 'kelas_id' => 1,'nip' => '598106125854791086', 'email' => 'johnwick@gmail.com', 'role_id' => 4, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop
