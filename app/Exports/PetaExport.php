@@ -32,29 +32,35 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
 
     public function collection()
     {
-        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('id', $this->id)->first();
+        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('kelas_id', $this->id)->get();
 
-        $exported = [
-            'id' => $data->id,
-            'nama siswa' => $data->siswa->name,
-            'nama guru' => $data->guru->name,
-            'nama walas' => $data->walas->name,
-            'nama kelas' => $data->kelas->name,
-            'sering sakit' => $this->YesOrNo($data->sering_sakit),
-            'sering izin' => $this->YesOrNo($data->sering_izin),
-            'sering alpha' => $this->YesOrNo($data->sering_alpha),
-            'sering terlambat' => $this->YesOrNo($data->sering_terlambat),
-            'bolos' => $this->YesOrNo($data->bolos),
-            'kelainan jasmani' => $this->YesOrNo($data->kelainan_jasmani),
-            'minat belajar kurang' => $this->YesOrNo($data->minat_belajar_kurang),
-            'introvert' => $this->YesOrNo($data->introvert),
-            'tinggal dengan wali' => $this->YesOrNo($data->tinggal_dengan_wali),
-            'kemampuan kurang' => $this->YesOrNo($data->kemampuan_kurang),
-            'kesimpulan' => $data->kesimpulan,
-        ];
+        $exported = [];
 
-        return collect([$exported]);
+        foreach ($data as $item) {
+            $exported[] = [
+                'id' => $item->id,
+                'nama siswa' => $item->siswa->name,
+                'nama guru' => $item->guru->name,
+                'nama walas' => $item->walas->name,
+                'nama kelas' => $item->kelas->name,
+                'sering sakit' => $this->YesOrNo($item->sering_sakit),
+                'sering izin' => $this->YesOrNo($item->sering_izin),
+                'sering alpha' => $this->YesOrNo($item->sering_alpha),
+                'sering terlambat' => $this->YesOrNo($item->sering_terlambat),
+                'bolos' => $this->YesOrNo($item->bolos),
+                'kelainan jasmani' => $this->YesOrNo($item->kelainan_jasmani),
+                'minat belajar kurang' => $this->YesOrNo($item->minat_belajar_kurang),
+                'introvert' => $this->YesOrNo($item->introvert),
+                'tinggal dengan wali' => $this->YesOrNo($item->tinggal_dengan_wali),
+                'kemampuan kurang' => $this->YesOrNo($item->kemampuan_kurang),
+                'kesimpulan' => $item->kesimpulan,
+            ];
+        }
+
+        return collect($exported);
     }
+
+    // Rest of your code...
 
     public function headings(): array
     {

@@ -112,9 +112,12 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
 
      // peta kerawanan
      Route::get('/peta_kerawanan', [WalasController::class, 'walas_peta_kerawanan'])->name('walas_peta_kerawanan');
-     Route::get('/export_peta_kerawanan/{id}', [WalasController::class, 'export_peta_kerawanan'])->name('export_peta_kerawanan');
      Route::get('/peta_kerawanan/detail/{id}', [WalasController::class, 'walas_detail_peta_kerawanan'])->name('walas_detail_peta_kerawanan');
      Route::post('/peta_kerawanan/update/{id}', [WalasController::class, 'walas_update_peta_kerawanan'])->name('walas_update_peta_kerawanan');
+
+     Route::get('/export_pdf/{id}', [WalasController::class, 'export_pdf'])->name('export_pdf_walas');
+    Route::get('/export_excel/{id}', [GuruController::class, 'export_excel'])->name('export_excel_walas');
+
 
      //profile
      Route::get('/profile', [WalasController::class, 'show_profile'])->name('show_profile');
@@ -128,8 +131,6 @@ Route::prefix('siswa')->middleware('auth:siswa')->group(function () {
     Route::get('/bimbingan_pribadi', [SiswaController::class, 'show_bimbingan_pribadi'])->name('show_bimbingan_pribadi');
     Route::post('/bimbingan_pribadi/store', [SiswaController::class, 'store_bimbingan_pribadi'])->name('store_bimbingan_pribadi');
     Route::get('/bimbingan_pribadi/detail/{id}', [SiswaController::class, 'detail_bimbingan_pribadi'])->name('detail_bimbingan_pribadi');
-    Route::get('/export_bimbingan_pribadi/{id}', [SiswaController::class, 'export_pdf'])->name('export_pdf');
-
     
 
     // bimbingan belajar
@@ -194,6 +195,11 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/peta_kerawanan/create/{id}', [GuruController::class, 'guru_create_peta_kerawanan'])->name('guru_create_peta_kerawanan');
     Route::post('/peta_kerawanan/update/{id}', [GuruController::class, 'guru_update_peta_kerawanan'])->name('guru_update_peta_kerawanan');
     Route::post('/peta_kerawanan/store', [GuruController::class, 'guru_store_peta_kerawanan'])->name('guru_store_peta_kerawanan');
+    Route::get('/export_pdf/{id}', [GuruController::class, 'export_pdf'])->name('export_pdf');
+    Route::get('/export_excel/{id}', [GuruController::class, 'export_excel'])->name('export_excel_guru');
+
+
+
 
     //profile
     Route::get('/profile_guru', [GuruController::class, 'show_profile_guru'])->name('show_profile_guru');

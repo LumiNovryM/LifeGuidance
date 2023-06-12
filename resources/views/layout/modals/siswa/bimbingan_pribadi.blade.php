@@ -68,7 +68,6 @@
                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                         @enderror
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

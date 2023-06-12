@@ -12,7 +12,6 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -81,16 +80,6 @@ class SiswaController extends Controller
     }
 
 
-    public function export_pdf($id)
-    {
-        $data = Bimbingan_Pribadi::with('siswa', 'kelas', 'walas', 'guru')->where('id', $id)->first();
-
-        // dd($data);
-    
-        $pdf = Pdf::loadView('pdf.bimbingan_pribadi', ['data' => $data]);
-    
-        return $pdf->stream('Bimbingan_pribadi.pdf');
-    }
 
 
     //bimbingan belajar

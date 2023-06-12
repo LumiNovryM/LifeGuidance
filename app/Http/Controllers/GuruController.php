@@ -7,13 +7,16 @@ use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
+use App\Exports\PetaExport;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GuruController extends Controller
 {
@@ -394,6 +397,24 @@ class GuruController extends Controller
             "datas" => $datas
         ]);
     }
+    function export_excel($id)
+    {
+        $data = Peta_Kerawanan::with('kelas', 'siswa', 'walas', 'guru')->where('kelas_id', $id)->get();
+        // dd($data);
+        return Excel::download(new PetaExport($id), 'peta Kerawanan.xlsx');
+    }
+
+    public function export_pdf($id)
+    {
+        $data = Peta_Kerawanan::with('siswa', 'kelas', 'walas', 'guru')->where('id', $id)->first();
+
+        // dd($data);
+    
+        $pdf = Pdf::loadView('pdf.peta_kerawanan', ['data' => $data]);
+    
+        return $pdf->stream('peta_kerawanan.pdf');
+    }
+    
     public function guru_list_peta_kerawanan($id)
     {
         $datas = Siswa::where('kelas_id', $id)->get();
