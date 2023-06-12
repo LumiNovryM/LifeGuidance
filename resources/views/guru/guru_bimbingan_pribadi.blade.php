@@ -8,7 +8,7 @@
 @endif
 
     @forelse ($datas as $data)
-        <div class="card mt-5">
+        <div class="card mt-3">
             <div class="card-body">
                 <h5 class="card-title">Permohonan Bimbingan Pribadi</h5>
                 <p class="card-text">
@@ -23,7 +23,7 @@
 
                 </p>
                 @if ($data->status == 'Menunggu')
-                    <div class="d-flex">
+                    <div class="d-flex justify-content-between" style="width: 15vw">
                         <a href="{{ route('guru_detail_bimbingan_pribadi', $data->id) }}" class="btn btn-danger">Tunda</a>
                         <form action="{{ route('guru_accept_bimbingan_pribadi', $data->id) }}" method="post">
                             @csrf
