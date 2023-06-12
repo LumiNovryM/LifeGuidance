@@ -40,6 +40,7 @@ class AuthController extends Controller
             setcookie("email", "");
         }
 
+
         Auth::login($user);
 
         return redirect()->route('home_admin');
@@ -53,16 +54,16 @@ class AuthController extends Controller
 
     public function login_guru_action(Request $request)
     {
-    
+
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
         // cookies
-        if(Auth::guard('guru')->attempt($credentials)){
+        if (Auth::guard('guru')->attempt($credentials)) {
             $request->session()->regenerate();
-            
+
             if ($request->remember === "on") {
                 setcookie("email", $request->email);
             } else {
@@ -74,8 +75,7 @@ class AuthController extends Controller
 
         Session::flash('status', 'Error');
         Session::flash('message', 'Invalid Login. Try Again');
-        return redirect()->route('login_walas');
-
+        return redirect()->route('login_guru');
     }
 
 
@@ -92,9 +92,9 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if(Auth::guard('siswa')->attempt($credentials)){
+        if (Auth::guard('siswa')->attempt($credentials)) {
             $request->session()->regenerate();
-            
+
             if ($request->remember === "on") {
                 setcookie("email", $request->email);
             } else {
@@ -104,17 +104,9 @@ class AuthController extends Controller
             return redirect()->route('home_siswa');
         }
 
-        // cookies
-        if ($request->remember === "on") {
-            setcookie("email", $request->email);
-        } else {
-            setcookie("email", "");
-        }
-
         Session::flash('status', 'Error');
         Session::flash('message', 'Invalid Login. Try Again');
-
-        return redirect()->route('home_siswa');
+        return redirect()->route('login_siswa');
     }
 
     # Login Page For Guru BK
@@ -130,9 +122,9 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if(Auth::guard('walas')->attempt($credentials)){
+        if (Auth::guard('walas')->attempt($credentials)) {
             $request->session()->regenerate();
-            
+
             if ($request->remember === "on") {
                 setcookie("email", $request->email);
             } else {
@@ -141,7 +133,7 @@ class AuthController extends Controller
 
             return redirect()->route('home_walas');
         }
-        
+
         Session::flash('status', 'Error');
         Session::flash('message', 'Invalid Login. Try Again');
         return redirect()->route('login_walas');
@@ -155,5 +147,4 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
-
 }
