@@ -3,9 +3,9 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('guru_content')
-@if ($datas)
-@include('layout.modals.guru.bimbingan_sosial')
-@endif
+    @if ($datas)
+        @include('layout.modals.guru.bimbingan_sosial')
+    @endif
     @forelse ($datas as $data)
         <div class="card mt-5">
             <div class="card-body">
@@ -21,7 +21,17 @@
                     @endif
 
                 </p>
-                <a href="{{ route('guru_detail_bimbingan_sosial', $data->id) }}" class="btn">Action</a>
+                @if ($data->status == 'Menunggu')
+                    <div class="d-flex">
+                        <a href="{{ route('guru_detail_bimbingan_sosial', $data->id) }}" class="btn btn-danger">Tunda</a>
+                        <form action="{{ route('guru_accept_bimbingan_sosial', $data->id) }}" method="post">
+                            @csrf
+                            <button class="btn btn-info ml-2" type="submit">Terima</button>
+                        </form>
+                    </div>
+                @else
+                    <a href="{{ route('guru_detail_bimbingan_sosial', $data->id) }}" class="btn">Informasi</a>
+                @endif
             </div>
         </div>
     @empty

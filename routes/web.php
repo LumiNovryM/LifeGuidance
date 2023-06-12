@@ -159,24 +159,31 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::post('/bimbingan_pribadi/store', [GuruController::class, 'guru_store_bimbingan_pribadi'])->name('guru_store_bimbingan_pribadi');
     Route::get('/bimbingan_pribadi/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_pribadi'])->name('guru_detail_bimbingan_pribadi');
     Route::post('/bimbingan_pribadi/update/{id}', [GuruController::class, 'guru_update_bimbingan_pribadi'])->name('guru_update_bimbingan_pribadi');
+    Route::post('/bimbingan_pribadi/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_pribadi'])->name('guru_accept_bimbingan_pribadi');
 
     // bimbingan belajar
     Route::get('/bimbingan_belajar', [GuruController::class, 'guru_bimbingan_belajar'])->name('guru_bimbingan_belajar');
     Route::post('/bimbingan_belajar/store', [GuruController::class, 'guru_store_bimbingan_belajar'])->name('guru_store_bimbingan_belajar');
     Route::get('/bimbingan_belajar/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_belajar'])->name('guru_detail_bimbingan_belajar');
     Route::post('/bimbingan_belajar/update/{id}', [GuruController::class, 'guru_update_bimbingan_belajar'])->name('guru_update_bimbingan_belajar'); 
+    Route::post('/bimbingan_belajar/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_belajar'])->name('guru_accept_bimbingan_belajar');
+
 
     // bimbingan sosial
     Route::get('/bimbingan_sosial', [GuruController::class, 'guru_bimbingan_sosial'])->name('guru_bimbingan_sosial');
     Route::post('/bimbingan_sosial/store', [GuruController::class, 'guru_store_bimbingan_sosial'])->name('guru_store_bimbingan_sosial');
     Route::get('/bimbingan_sosial/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_sosial'])->name('guru_detail_bimbingan_sosial');
     Route::post('/bimbingan_sosial/update/{id}', [GuruController::class, 'guru_update_bimbingan_sosial'])->name('guru_update_bimbingan_sosial'); 
+    Route::post('/bimbingan_sosial/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_sosial'])->name('guru_accept_bimbingan_sosial');
+
 
     // bimbingan karir
     Route::get('/bimbingan_karir', [GuruController::class, 'guru_bimbingan_karir'])->name('guru_bimbingan_karir');
     Route::post('/bimbingan_karir/store', [GuruController::class, 'guru_store_bimbingan_karir'])->name('guru_store_bimbingan_karir');
     Route::get('/bimbingan_karir/detail/{id}', [GuruController::class, 'guru_detail_bimbingan_karir'])->name('guru_detail_bimbingan_karir');
     Route::post('/bimbingan_karir/update/{id}', [GuruController::class, 'guru_update_bimbingan_karir'])->name('guru_update_bimbingan_karir'); 
+    Route::post('/bimbingan_karir/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_karir'])->name('guru_accept_bimbingan_karir');
+
 
     // peta kerawanan
     Route::get('/peta_kerawanan', [GuruController::class, 'guru_peta_kerawanan'])->name('guru_peta_kerawanan');
