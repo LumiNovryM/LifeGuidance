@@ -29,6 +29,10 @@
             <p>{{ $data->walas->name }}</p>
         </div>
         <div class="mt-2">
+            <h6>Tipe Bimbingan</h6>
+            <p>{{ $data->tipe_bimbingan }}</p>
+        </div>
+        <div class="mt-2">
             <h6>Alasan Pertemuan</h6>
             <textarea id="alasan" rows="4" class="form-control" placeholder="" name="alasan" readonly>{{ $data->alasan_pertemuan }}</textarea>
 
