@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text("solusi_guru")->nullable();
             $table->text("alasan_guru")->nullable();
             $table->string("status")->default("Menunggu");
+            $table->string("tipe_request")->nullable();
             $table->timestamps();
         });
     }

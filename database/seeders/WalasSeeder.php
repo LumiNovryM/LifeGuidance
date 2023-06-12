@@ -17,13 +17,14 @@ class WalasSeeder extends Seeder
     {
         # Seeder Loop
         $data = [
-            ['name' => 'John Wick', 'kelas_id' => 1,'nip' => '505404', 'email' => 'johnwick@gmail.com', 'role_id' => 4, 'password' => Hash::make('12345678'),],
+            ['name' => 'John Wick','no_telp' => '081244542479' , 'kelas_id' => 1,'nip' => '505404', 'email' => 'johnwick@gmail.com', 'role_id' => 4, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop
         foreach ($data as $val) {
             Walas::insert([
                 'name' => $val['name'],
+                'no_telp' => $val['no_telp'],
                 'kelas_id' => $val['kelas_id'],
                 'nip' => $val['nip'],
                 'email' => $val['email'],

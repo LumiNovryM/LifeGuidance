@@ -29,14 +29,44 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-
+        $name = Siswa::all();
         $datas = Bimbingan_Pribadi::where('guru_id', $user->id)->paginate(5);
         return view('guru.guru_bimbingan_pribadi', [
             'title' => 'Pribadi',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
+            'names' => $name, 
         ]);
+    }
+    public function guru_store_bimbingan_pribadi(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required',
+            'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
+        ]);
+
+        $siswa = Siswa::find($request->siswa_id);
+        $kelas = Kelas::where("id", $siswa->kelas_id)->first();
+        $walas = Walas::where("kelas_id", $siswa->kelas_id)->first();
+      
+
+        Bimbingan_Pribadi::insert([
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $kelas->id,
+            'walas_id' => $walas->id,
+            'guru_id' => Auth::guard("guru")->user()->id,
+            'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
+            'status' => 'Panggilan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('guru_bimbingan_pribadi');
     }
     public function guru_detail_bimbingan_pribadi($id)
     {
@@ -49,18 +79,27 @@ class GuruController extends Controller
     public function guru_update_bimbingan_pribadi(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
 
         ]);
 
         $data = [
-            'status' => $request->status,
+            'status' => "Ditunda",
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
             'solusi_guru' => $request->solusi_guru,
+        ];
+
+        Bimbingan_Pribadi::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_pribadi');
+    }
+    public function guru_accept_bimbingan_pribadi($id)
+    {
+        $data = [
+            'status' => "Diterima",
         ];
 
         Bimbingan_Pribadi::where('id', $id)->update($data);
@@ -77,14 +116,44 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-
+        $name = Siswa::all();
         $datas = Bimbingan_Belajar::where('guru_id', $user->id)->paginate(5);
         return view('guru.guru_bimbingan_belajar', [
             'title' => 'Belajar',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
+            'names' => $name,
         ]);
+    }
+    public function guru_store_bimbingan_belajar(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required',
+            'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
+        ]);
+
+        $siswa = Siswa::find($request->siswa_id);
+        $kelas = Kelas::where("id", $siswa->kelas_id)->first();
+        $walas = Walas::where("kelas_id", $siswa->kelas_id)->first();
+      
+
+        Bimbingan_Belajar::insert([
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $kelas->id,
+            'walas_id' => $walas->id,
+            'guru_id' => Auth::guard("guru")->user()->id,
+            'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
+            'status' => 'Panggilan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('guru_bimbingan_belajar');
     }
     public function guru_detail_bimbingan_belajar($id)
     {
@@ -97,18 +166,27 @@ class GuruController extends Controller
     public function guru_update_bimbingan_belajar(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
 
         ]);
 
         $data = [
-            'status' => $request->status,
+            'status' => 'Ditunda',
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
             'solusi_guru' => $request->solusi_guru,
+        ];
+
+        Bimbingan_Belajar::where('id', $id)->update($data);
+
+        return redirect($request->status)->route('guru_bimbingan_belajar');
+    }
+    public function guru_accept_bimbingan_belajar($id)
+    {
+        $data = [
+            'status' => "Diterima",
         ];
 
         Bimbingan_Belajar::where('id', $id)->update($data);
@@ -125,14 +203,46 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-
+        $name = Siswa::all();
         $datas = Bimbingan_Sosial::where('guru_id', $user->id)->paginate(5);
         return view('guru.guru_bimbingan_sosial', [
             'title' => 'Sosial',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
+            'names' => $name
         ]);
+    }
+    public function guru_store_bimbingan_sosial(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required',
+            'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
+            'diajukan' => 'required',
+        ]);
+
+        $siswa = Siswa::find($request->siswa_id);
+        $kelas = Kelas::where("id", $siswa->kelas_id)->first();
+        $walas = Walas::where("kelas_id", $siswa->kelas_id)->first();
+      
+
+        Bimbingan_Sosial::insert([
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $kelas->id,
+            'walas_id' => $walas->id,
+            'guru_id' => Auth::guard("guru")->user()->id,
+            'diajukan' => $request->diajukan,
+            'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
+            'status' => 'Panggilan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('guru_bimbingan_sosial');
     }
     public function guru_detail_bimbingan_sosial($id)
     {
@@ -147,18 +257,27 @@ class GuruController extends Controller
     public function guru_update_bimbingan_sosial(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
 
         ]);
 
         $data = [
-            'status' => $request->status,
+            'status' => 'Diterima',
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
             'solusi_guru' => $request->solusi_guru,
+        ];
+
+        Bimbingan_Sosial::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_sosial');
+    }
+    public function guru_accept_bimbingan_sosial($id)
+    {
+        $data = [
+            'status' => "Diterima",
         ];
 
         Bimbingan_Sosial::where('id', $id)->update($data);
@@ -175,14 +294,47 @@ class GuruController extends Controller
     {
         $user = Auth::guard('guru')->user();
         $walas = Walas::where('kelas_id', $user->id)->first();
-
+        $name = Siswa::all();
         $datas = Bimbingan_Karir::where('guru_id', $user->id)->paginate(5);
         return view('guru.guru_bimbingan_karir', [
             'title' => 'Karir',
             'user' => $user,
             'datas' => $datas,
             'walas' => $walas,
+            'names' => $name
         ]);
+    }
+    public function guru_store_bimbingan_karir(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required',
+            'alasan_pertemuan' => 'required',
+            'tanggal_pertemuan' => 'required',
+            'lokasi_pertemuan' => 'required',
+            'tipe_bimbingan' => 'required',
+        ]);
+
+        $siswa = Siswa::find($request->siswa_id);
+        $kelas = Kelas::where("id", $siswa->kelas_id)->first();
+        $walas = Walas::where("kelas_id", $siswa->kelas_id)->first();
+      
+
+        Bimbingan_Karir::insert([
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $kelas->id,
+            'walas_id' => $walas->id,
+            'guru_id' => Auth::guard("guru")->user()->id,
+            'tipe_bimbingan' => $request->tipe_bimbingan,
+            'alasan_pertemuan' => $request->alasan_pertemuan,
+            'tanggal_pertemuan' => $request->tanggal_pertemuan,
+            'lokasi_pertemuan' => $request->lokasi_pertemuan,
+            'status' => 'Panggilan',
+            'tipe_request' => 'Sosialisasi',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('guru_bimbingan_karir');
     }
     public function guru_detail_bimbingan_karir($id)
     {
@@ -195,18 +347,27 @@ class GuruController extends Controller
     public function guru_update_bimbingan_karir(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
             'tanggal_pertemuan' => 'required',
             'lokasi_pertemuan' => 'required',
 
         ]);
 
         $data = [
-            'status' => $request->status,
+            'status' => 'Diterima',
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
             'solusi_guru' => $request->solusi_guru,
+        ];
+
+        Bimbingan_Karir::where('id', $id)->update($data);
+
+        return redirect()->route('guru_bimbingan_karir');
+    }
+    public function guru_accept_bimbingan_karir($id)
+    {
+        $data = [
+            'status' => "Diterima",
         ];
 
         Bimbingan_Karir::where('id', $id)->update($data);
@@ -322,5 +483,13 @@ class GuruController extends Controller
         ]);
 
         return redirect()->route('guru_peta_kerawanan', $request->kelas_id);
+    }
+
+    # Profile
+    public function show_profile_guru()
+    {
+        return view('guru.profile.profile',[
+            "title" => "Profile",
+        ]);
     }
 }

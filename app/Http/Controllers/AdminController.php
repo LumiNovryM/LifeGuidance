@@ -379,7 +379,7 @@ class AdminController extends Controller
     }
 
     #profile
-    public function show_profile()
+    public function show_profile_admin()
     {
     
         return view('admin.profile.profile',[
