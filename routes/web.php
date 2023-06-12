@@ -85,6 +85,23 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/kelas/update/{id}', [AdminController::class, 'update_kelas'])->name('update_kelas');
     Route::get('/kelas/edit/{id}', [AdminController::class, 'edit_kelas'])->name('edit_kelas');
 
+
+    // arsip
+    Route::get('/arsip', [AdminController::class, 'show_arsip'])->name('show_arsip');
+    Route::get('/arsip/kelas/{id}', [AdminController::class, 'kelas_arsip'])->name('kelas_arsip');
+    Route::get('/arsip/kelas/list_pribadi/{id}', [AdminController::class, 'list_arsip_pribadi'])->name('list_arsip_pribadi');
+    Route::get('/arsip/kelas/list_pribadi/detail/{id}/{kelas_id}', [AdminController::class, 'detail_arsip_pribadi'])->name('detail_arsip_pribadi');
+    Route::get('/arsip/kelas/list_belajar/{id}', [AdminController::class, 'list_arsip_belajar'])->name('list_arsip_belajar');
+    Route::get('/arsip/kelas/list_belajar/detail/{id}/{kelas_id}', [AdminController::class, 'detail_arsip_belajar'])->name('detail_arsip_belajar');
+    Route::get('/arsip/kelas/list_sosial/{id}', [AdminController::class, 'list_arsip_sosial'])->name('list_arsip_sosial');
+    Route::get('/arsip/kelas/list_sosial/detail/{id}/{kelas_id}', [AdminController::class, 'detail_arsip_sosial'])->name('detail_arsip_sosial');
+    Route::get('/arsip/kelas/list_karir/{id}', [AdminController::class, 'list_arsip_karir'])->name('list_arsip_karir');
+    Route::get('/arsip/kelas/list_karir/detail/{id}/{kelas_id}', [AdminController::class, 'detail_arsip_karir'])->name('detail_arsip_karir');
+
+
+
+
+
     //profile
     Route::get('/profile_admin', [AdminController::class, 'show_profile_admin'])->name('show_profile_admin');
 });
@@ -120,9 +137,6 @@ Route::prefix('walas')->middleware('auth:walas')->group(function () {
     Route::get('/export_pdf/{id}', [WalasController::class, 'export_pdf'])->name('export_pdf_walas');
     Route::get('/export_excel/{id}', [GuruController::class, 'export_excel'])->name('export_excel_walas');
 
-
-     //profile
-     Route::get('/profile', [WalasController::class, 'show_profile'])->name('show_profile_walas');
 });
 
 # Siswa Handler
@@ -183,7 +197,6 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::post('/bimbingan_sosial/update/{id}', [GuruController::class, 'guru_update_bimbingan_sosial'])->name('guru_update_bimbingan_sosial');
     Route::post('/bimbingan_sosial/accept/{id}', [GuruController::class, 'guru_accept_bimbingan_sosial'])->name('guru_accept_bimbingan_sosial');
     Route::post('/bimbingan_sosial/finish/{id}', [GuruController::class, 'guru_finish_bimbingan_sosial'])->name('guru_finish_bimbingan_sosial');
-
 
 
     // bimbingan karir
