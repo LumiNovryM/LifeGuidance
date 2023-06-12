@@ -32,16 +32,15 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Guru </p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Guru BK</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        2,300
-                                        {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
+                                        {{ $guru }}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                                    <i class="fa-solid fa-person-chalkboard" style="color: #ffffff;"></i>
                                 </div>
                             </div>
                         </div>
@@ -56,8 +55,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Kelas</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        +3,462
-                                        {{-- <span class="text-danger text-sm font-weight-bolder">-2%</span> --}}
+                                        {{ $kelas }}
                                     </h5>
                                 </div>
                             </div>
@@ -76,15 +74,15 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Konsultasi</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Wali Kelas</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        $103,430
+                                        {{ $walas }}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="fa-solid fa-database" style="color: #ffffff;"></i>
+                                    <i class="fa-solid fa-person-chalkboard" style="color: #ffffff;"></i>
                                 </div>
                             </div>
                         </div>
@@ -99,14 +97,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
-                                    <p class="mb-1 pt-2 text-bold">Built by LifeGuidance</p>
                                     <h5 class="font-weight-bolder">LifeGuidance</h5>
-                                    <p class="mb-5">"life" (kehidupan) dan "guidance" (panduan) untuk menyoroti peran layanan BK dalam membantu individu mengatasi tantangan dan mengarahkan kehidupan mereka.</p>
-                                    {{-- <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+                                    <p class="mb-2 text-justify">LifeGuidance adalah sebuah aplikasi bimbingan konseling sekolah yang menggabungkan kata "Life" dan "Guidance". Nama ini memiliki makna singkat yaitu memberikan panduan dalam kehidupan sehari-hari, terutama dalam konteks bimbingan konseling sekolah.</p>
+                                    <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
                                         href="javascript:;">
                                         Read More
                                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                                    </a> --}}
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
@@ -130,8 +127,7 @@
                         <span class="mask bg-gradient-dark"></span>
                         <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                             <h5 class="text-white font-weight-bolder mb-4 pt-2">LifeGuidance</h5>
-                            <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all
-                                about who take the opportunity first.</p>
+                            <p class="text-white">Temukan potensi terbaikmu dengan LifeGuidance! Aplikasi inovatif kami memberikan bimbingan pribadi yang tepat, membantu siswa meraih sukses di sekolah dan kehidupan. Dapatkan nasihat ahli, atasi tantangan, dan jelajahi peluang baru.</p>
                             {{-- <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
                                 Read More
                                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
@@ -327,30 +323,9 @@
                                 document.write(new Date().getFullYear())
                             </script>,
                             made with <i class="fa fa-heart"></i> by
-                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative
-                                Tim</a>
-                            for a better web.
+                            <a href="{{ route('dashboard') }}" class="font-weight-bold" target="_blank">LifeGuidance</a>
+                            for a better life.
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link text-muted"
-                                    target="_blank">Creative Tim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                    target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                    target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                    target="_blank">License</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
