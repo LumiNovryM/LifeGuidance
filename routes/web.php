@@ -84,7 +84,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/kelas/edit/{id}', [AdminController::class, 'edit_kelas'])->name('edit_kelas');
 
     //profile
-    Route::get('/profile', [AdminController::class, 'show_profile'])->name('show_profile');
+    Route::get('/profile_admin', [AdminController::class, 'show_profile_admin'])->name('show_profile_admin');
 });
 
 # Walas Handler
@@ -172,4 +172,7 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     Route::get('/peta_kerawanan/create/{id}', [GuruController::class, 'guru_create_peta_kerawanan'])->name('guru_create_peta_kerawanan');
     Route::post('/peta_kerawanan/update/{id}', [GuruController::class, 'guru_update_peta_kerawanan'])->name('guru_update_peta_kerawanan');
     Route::post('/peta_kerawanan/store', [GuruController::class, 'guru_store_peta_kerawanan'])->name('guru_store_peta_kerawanan');
+
+    //profile
+    Route::get('/profile_guru', [GuruController::class, 'show_profile_guru'])->name('show_profile_guru');
 });

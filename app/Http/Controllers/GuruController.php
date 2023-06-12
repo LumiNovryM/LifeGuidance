@@ -323,4 +323,12 @@ class GuruController extends Controller
 
         return redirect()->route('guru_peta_kerawanan', $request->kelas_id);
     }
+
+    # Profile
+    public function show_profile_guru()
+    {
+        return view('guru.profile.profile',[
+            "title" => "Profile",
+        ]);
+    }
 }
