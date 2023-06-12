@@ -82,6 +82,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="">
+                {{ $datas->links() }}
+            </div>
+        </div> 
     </div>
 @endsection

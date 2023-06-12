@@ -68,6 +68,8 @@ class GuruController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_pribadi');
     }
@@ -97,6 +99,8 @@ class GuruController extends Controller
 
         Bimbingan_Pribadi::where('id', $id)->update($data);
 
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
+
         return redirect()->route('guru_bimbingan_pribadi');
     }
     public function guru_accept_bimbingan_pribadi($id)
@@ -106,6 +110,8 @@ class GuruController extends Controller
         ];
 
         Bimbingan_Pribadi::where('id', $id)->update($data);
+
+        session()->flash('message', 'Pertemuan Berhasil Diterima');
 
         return redirect()->route('guru_bimbingan_pribadi');
     }
@@ -165,6 +171,7 @@ class GuruController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_belajar');
     }
@@ -194,6 +201,8 @@ class GuruController extends Controller
 
         Bimbingan_Belajar::where('id', $id)->update($data);
 
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
+
         return redirect($request->status)->route('guru_bimbingan_belajar');
     }
     public function guru_accept_bimbingan_belajar($id)
@@ -203,6 +212,8 @@ class GuruController extends Controller
         ];
 
         Bimbingan_Belajar::where('id', $id)->update($data);
+
+        session()->flash('message', 'Pertemuan Berhasil Diterima');
 
         return redirect()->route('guru_bimbingan_belajar');
     }
@@ -264,6 +275,8 @@ class GuruController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_sosial');
     }
@@ -295,6 +308,8 @@ class GuruController extends Controller
 
         Bimbingan_Sosial::where('id', $id)->update($data);
 
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
+
         return redirect()->route('guru_bimbingan_sosial');
     }
     public function guru_accept_bimbingan_sosial($id)
@@ -304,6 +319,8 @@ class GuruController extends Controller
         ];
 
         Bimbingan_Sosial::where('id', $id)->update($data);
+
+        session()->flash('message', 'Pertemuan Berhasil Diterima');
 
         return redirect()->route('guru_bimbingan_sosial');
     }
@@ -366,6 +383,8 @@ class GuruController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_karir');
     }
@@ -395,6 +414,8 @@ class GuruController extends Controller
 
         Bimbingan_Karir::where('id', $id)->update($data);
 
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
+
         return redirect()->route('guru_bimbingan_karir');
     }
     public function guru_accept_bimbingan_karir($id)
@@ -404,6 +425,8 @@ class GuruController extends Controller
         ];
 
         Bimbingan_Karir::where('id', $id)->update($data);
+
+        session()->flash('message', 'Pertemuan Berhasil Diterima');
 
         return redirect()->route('guru_bimbingan_karir');
     }
@@ -457,7 +480,7 @@ class GuruController extends Controller
     
     public function guru_list_peta_kerawanan($id)
     {
-        $datas = Siswa::where('kelas_id', $id)->get();
+        $datas = Siswa::where('kelas_id', $id)->paginate(10);
         return view('guru.guru_list_peta_kerawanan', [
             "title" => "Peta",
             "datas" => $datas,
@@ -490,6 +513,7 @@ class GuruController extends Controller
         ];
 
         Peta_Kerawanan::where('id', $id)->update($data);
+        session()->flash('message', 'Peta Kerawanan Berhasil Ubah');
 
         return redirect()->route('guru_peta_kerawanan');
     }

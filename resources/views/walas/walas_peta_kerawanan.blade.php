@@ -85,5 +85,11 @@
                 </div>
             </div>
         </div>
+        {{ $datas->links() }}
     </div>
+    <script>
+        @if (session('message'))
+            toastr.success('{{ session('message') }}', 'Success');
+        @endif
+      </script>
 @endsection

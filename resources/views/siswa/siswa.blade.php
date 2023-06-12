@@ -357,4 +357,9 @@
         </div>
     </footer>
 </div>
+@if(session('message'))
+    <script>
+        toastr.success('{{ session('message') }}');
+    </script>
+@endif
 @endsection
