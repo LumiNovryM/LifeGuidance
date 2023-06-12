@@ -134,8 +134,8 @@
                             <div class="mt-5">
                                 <a href="{{ route('guru_peta_kerawanan') }}" type="button"
                                     class="btn btn-primary">Kembali</a>
-                                <a href="{{ route('export_peta_kerawanan', $data->id) }}" type="button"
-                                    class="btn btn-success">Eksport Excel</a>
+                                <a href="{{ route('export_pdf', $data->id) }}" type="button"
+                                    class="btn btn-danger">Eksport Pdf</a>
                                 <button type="submit" class="btn btn-warning">Ubah</button>
                             </div>
                     </div>

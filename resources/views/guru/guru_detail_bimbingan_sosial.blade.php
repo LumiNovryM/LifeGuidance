@@ -32,18 +32,13 @@
                     <h6>Orang Yang Bersangkutan</h6>
                     <p>{{ $diajukan->name }}, {{ $diajukan->kelas->name }}</p>
                 </div>
-
+                <div class="mt-2">
+                    <h6>Status</h6>
+                    <p>{{ $data->status }}</p>
+                </div>
                 <div class="mt-2">
                     <h6>Alasan Pertemuan</h6>
                     <textarea id="alasan" rows="4" class="form-control" placeholder="" readonly>{{ $data->alasan_pertemuan }}</textarea>
-                </div>
-                <div class="mt-2">
-                    <h6>Tindakan</h6>
-                    <select class="form-control" id="exampleFormControlSelect1" name="status">
-                        <option {{ $data->status == "Diterima" ? 'selected' : '' }} value="Diterima">Terima</option>
-                        <option {{ $data->status == "Ditunda" ? 'selected' : '' }} value="Ditunda">Tunda</option>
-                        <option {{ $data->status == "Selesai" ? 'selected' : '' }} value="Selesai">Selesai</option>
-                    </select>
                 </div>
                 <div class="mt-2">
                     <h6>Tanggal Pertemuan</h6>
@@ -80,7 +75,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('guru_bimbingan_sosial') }}" type="button" class="btn btn-primary">Kembali</a>
-                <button type="submit" type="button" class="btn btn-info">Submit</button>
+                <button type="submit" type="button" class="btn btn-info {{ $data->status == 'Diterima' ? 'disabled' : '' }}">Submit</button>
             </div>
         </form>
 

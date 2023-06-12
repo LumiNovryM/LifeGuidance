@@ -56,7 +56,7 @@
                     onclick="navbarFixed(this)">
             </div>
             <hr class="horizontal dark my-sm-4">
-            <form action="{{ route('logout_guru') }}" method="POST">
+            <form action="{{ route('logout_siswa') }}" method="POST">
                 @csrf
                 <button class="btn bg-gradient-dark w-100">Logout</button>
             </form>

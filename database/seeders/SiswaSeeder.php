@@ -22,6 +22,7 @@ class SiswaSeeder extends Seeder
             ['name' => $faker->name, 'kelas_id' => 1, 'nisn' => '20229232', 'email' => $faker->email(), 'role_id' => 1, 'password' => Hash::make('12345678'),],
             ['name' => $faker->name, 'kelas_id' => 1, 'nisn' => '20229233', 'email' => $faker->email(), 'role_id' => 1, 'password' => Hash::make('12345678'),],
             ['name' => $faker->name, 'kelas_id' => 1, 'nisn' => '20229233', 'email' => $faker->email(), 'role_id' => 1, 'password' => Hash::make('12345678'),],
+            ['name' => "Udin", 'kelas_id' => 1, 'nisn' => '20229233', 'email' => 'udin@gmail.com', 'role_id' => 1, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Loop

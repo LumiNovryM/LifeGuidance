@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
 use App\Exports\PetaExport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
@@ -157,9 +158,21 @@ class WalasController extends Controller
         ]);
     }
 
+    
+    public function export_pdf($id)
+    {
+        $data = Peta_Kerawanan::with('siswa', 'kelas', 'walas', 'guru')->where('id', $id)->first();
+
+        // dd($data);
+    
+        $pdf = Pdf::loadView('pdf.peta_kerawanan', ['data' => $data]);
+    
+        return $pdf->stream('peta_kerawanan.pdf');
+    }
+
     function export_peta_kerawanan($id)
     {
-        
+        // dd($id);
         return Excel::download(new PetaExport($id), 'peta Kerawanan.xlsx');
     }
 

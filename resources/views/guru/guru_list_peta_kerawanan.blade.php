@@ -8,6 +8,7 @@
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                     <h6>Peta Kerawanan Siswa Kelas {{ $kelas }}</h6>
+                    <a class="btn btn-success" href="{{ route('export_excel_guru',$datas[0]->kelas_id) }}">Export Excel</a>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
