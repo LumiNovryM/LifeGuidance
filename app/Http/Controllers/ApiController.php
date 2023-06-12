@@ -53,7 +53,6 @@ class ApiController extends Controller
                 $item->walas_id = $item->walas->name;
                 $item->guru_id = $item->guru->name;
 
-                
                 unset($item->siswa, $item->kelas, $item->walas, $item->guru);
                 return $item;
             });            

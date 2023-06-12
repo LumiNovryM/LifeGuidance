@@ -50,6 +50,7 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
             'introvert' => $this->YesOrNo($data->introvert),
             'tinggal dengan wali' => $this->YesOrNo($data->tinggal_dengan_wali),
             'kemampuan kurang' => $this->YesOrNo($data->kemampuan_kurang),
+            'kesimpulan' => $data->kesimpulan,
         ];
 
         return collect([$exported]);
@@ -73,6 +74,7 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
             'Introvert',
             'Tinggal dengan Wali',
             'Kemampuan Kurang',
+            'Kesimpulan',
         ];
     }
 

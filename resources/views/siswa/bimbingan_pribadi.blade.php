@@ -4,7 +4,7 @@
 
 @section('siswa_content')
 
-@include('layout.modals.bimbingan_pribadi')
+@include('layout.modals.siswa.bimbingan_pribadi')
 @forelse ($datas as $data)
 <div class="card mt-5">
   <div class="card-body">

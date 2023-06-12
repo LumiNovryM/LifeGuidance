@@ -3,7 +3,7 @@
 @section('title-tab', 'LifeGuidance')
 
 @section('siswa_content')
-@include('layout.modals.bimbingan_sosial')
+@include('layout.modals.siswa.bimbingan_sosial')
 
 @forelse ($datas as $data)
 <div class="card mt-5">
