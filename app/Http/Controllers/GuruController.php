@@ -9,9 +9,9 @@ use App\Models\Siswa;
 use App\Models\Walas;
 use App\Exports\PetaExport;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
@@ -123,6 +123,8 @@ class GuruController extends Controller
 
         Bimbingan_Pribadi::where('id', $id)->update($data);
 
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
+
         return redirect()->route('guru_bimbingan_pribadi');
     }
 
@@ -224,6 +226,8 @@ class GuruController extends Controller
         ];
 
         Bimbingan_Belajar::where('id', $id)->update($data);
+
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
 
         return redirect()->route('guru_bimbingan_belajar');
     }
@@ -332,6 +336,8 @@ class GuruController extends Controller
 
         Bimbingan_Sosial::where('id', $id)->update($data);
 
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
+
         return redirect()->route('guru_bimbingan_sosial');
     }
 
@@ -437,6 +443,8 @@ class GuruController extends Controller
         ];
 
         Bimbingan_Karir::where('id', $id)->update($data);
+
+        session()->flash('message', 'Pertemuan Berhasil Diubah');
 
         return redirect()->route('guru_bimbingan_karir');
     }
