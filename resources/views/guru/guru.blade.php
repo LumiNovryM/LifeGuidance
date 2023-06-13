@@ -133,17 +133,20 @@
                             <p class="text-white">Temukan potensi terbaikmu dengan LifeGuidance! Aplikasi inovatif kami
                                 memberikan bimbingan pribadi yang tepat, membantu siswa meraih sukses di sekolah dan
                                 kehidupan. Dapatkan nasihat ahli, atasi tantangan, dan jelajahi peluang baru.</p>
+                            {{-- <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+                                Read More
+                                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- Admin Only --}}
         <div class="row mt-3">
           <div class="col-12">
               <div class="card mb-4">
                   <div class="card-header pb-0">
-                      <h6>Log Akun Siswa</h6>
+                      <h6>Active User</h6>
                   </div>
                   <div class="card-body px-0 pt-0">
                       <div class="table-responsive p-0">
@@ -162,45 +165,44 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                @php
-                                    $users = App\Models\Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-                                @endphp
-                                @if ($users->isNotEmpty())
+                                @if ($online_user->isNotEmpty())
                                 
-                                @forelse ($users as $user)
-                                      <tr>
-                                          <td>
-                                              <div class="ms-3 text-secondary">
-                                                  <p class="text-secondary">{{ $loop->iteration }}</p>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="text-secondary">
-                                                  <p class="text-secondary">{{ $user->name }}</p>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="text-secondary">
-                                                  <p class="text-secondary">{{ $user->email }}</p>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div class="text-secondary">
-                                                  <p class="text-secondary">{{ \Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</p>
-                                              </div>
-                                          </td>
-                                          <td>
-                                            @if (Cache::has('user-is-online-'.$user->id))
-                                                <div class="text-secondary">
-                                                    <p style="color:green;">Online</p>
+                                @forelse ($online_user as $user)
+                                        @if (Cache::has('user-is-online-'.$user->name))
+                                        <tr>
+                                            <td>
+                                                <div class="ms-3 text-secondary">
+                                                    <p class="text-secondary">{{ $loop->iteration }}</p>
                                                 </div>
-                                            @else
+                                            </td>
+                                            <td>
                                                 <div class="text-secondary">
-                                                    <p style="color:red;">Offline</p>
+                                                    <p class="text-secondary">{{ $user->name }}</p>
                                                 </div>
-                                            @endif
-                                          </td>
-                                      </tr>
+                                            </td>
+                                            <td>
+                                                <div class="text-secondary">
+                                                    <p class="text-secondary">{{ $user->email }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-secondary">
+                                                    <p class="text-secondary">{{ \Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                              @if (Cache::has('user-is-online-'.$user->name))
+                                                  <div class="text-secondary">
+                                                      <p style="color:green;">Online</p>
+                                                  </div>
+                                              @else
+                                                  <div class="text-secondary">
+                                                      <p style="color:red;">Offline</p>
+                                                  </div>
+                                              @endif
+                                            </td>
+                                        </tr>
+                                        @endif
                                 @empty
                                 <tr>
                                      <td colspan="5">
@@ -217,7 +219,7 @@
                   </div>
               </div>
           </div>
-      </div>
+        </div>
         <footer class="footer pt-3  ">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
