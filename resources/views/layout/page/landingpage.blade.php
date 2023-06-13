@@ -386,40 +386,30 @@
                         <div class="col-md-6">
                             <a href="./pages/about-us.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="./assets_landing/img/dokumentasi_1.jpg" alt="">
+                                    <img class="w-100" src="./assets_landing/img/guru/Ricky.png" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
-                                    <h6 class="mb-3">Bu Clara & Bu Rose</h6>
+                                    <h6 class="mb-3">Ricky Sudrajat S.Pd</h6>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-6 mt-md-0 mt-5">
                             <a href="./pages/contact-us.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="./assets_landing/img/dokumentasi_2.jpg" alt="">
+                                    <img class="h-100" src="./assets_landing/img/guru/Kasandra.png" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
-                                    <h6 class="mb-3">Bu Dinda & Bu Wong</h6>
+                                    <h6 class="mb-3">Kasandra Fitriani Nurjanah S.Pd</h6>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-6 mt-md-0 mt-6">
                             <a href="./pages/sign-in.html">
                                 <div class="card move-on-hover">
-                                    <img class="w-100" src="./assets_landing/img/dokumentasi_3.jpg" alt="">
+                                    <img class="h-100" src="./assets_landing/img/guru/Heni.png" alt="">
                                 </div>
                                 <div class="mt-2 ms-2">
-                                    <h6 class="mb-3">Bu Reva & Bu Gita</h6>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 mt-md-0 mt-6">
-                            <a href="./pages/author.html">
-                                <div class="card move-on-hover">
-                                    <img class="w-100" src="./assets_landing/img/dokumentasi_4.jpg" alt="">
-                                </div>
-                                <div class="mt-2 ms-2">
-                                    <h6 class="mb-3">Bu Amber & Bu Agatha</h6>
+                                    <h6 class="mb-3">Heni Siswanti S.Psi</h6>
                                 </div>
                             </a>
                         </div>
