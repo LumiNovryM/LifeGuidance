@@ -89,8 +89,18 @@ class GuruController extends Controller
 
         ]);
 
+        $status = "";
+
+        
+        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        {
+            $status = "Selesai";
+        }else if($request->status != "Ditunda"){
+            $status = "Ditunda";
+        }
+        
         $data = [
-            'status' => "Ditunda",
+            'status' => $status,
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
@@ -112,18 +122,6 @@ class GuruController extends Controller
         Bimbingan_Pribadi::where('id', $id)->update($data);
 
         session()->flash('message', 'Pertemuan Berhasil Diterima');
-
-        return redirect()->route('guru_bimbingan_pribadi');
-    }
-    public function guru_finish_bimbingan_pribadi($id)
-    {
-        $data = [
-            'status' => "Selesai",
-        ];
-
-        Bimbingan_Pribadi::where('id', $id)->update($data);
-
-        session()->flash('message', 'Pertemuan Berhasil Diubah');
 
         return redirect()->route('guru_bimbingan_pribadi');
     }
@@ -193,8 +191,18 @@ class GuruController extends Controller
 
         ]);
 
+        $status = "";
+
+        // dd($request->status);
+        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        {
+            $status = "Selesai";
+        }else if($request->status != "Ditunda"){
+            $status = "Ditunda";
+        }
+
         $data = [
-            'status' => 'Ditunda',
+            'status' => $status,
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
@@ -205,7 +213,7 @@ class GuruController extends Controller
 
         session()->flash('message', 'Pertemuan Berhasil Diubah');
 
-        return redirect($request->status)->route('guru_bimbingan_belajar');
+        return redirect()->route('guru_bimbingan_belajar');
     }
     public function guru_accept_bimbingan_belajar($id)
     {
@@ -216,18 +224,6 @@ class GuruController extends Controller
         Bimbingan_Belajar::where('id', $id)->update($data);
 
         session()->flash('message', 'Pertemuan Berhasil Diterima');
-
-        return redirect()->route('guru_bimbingan_belajar');
-    }
-    public function guru_finish_bimbingan_belajar($id)
-    {
-        $data = [
-            'status' => "Selesai",
-        ];
-
-        Bimbingan_Belajar::where('id', $id)->update($data);
-
-        session()->flash('message', 'Pertemuan Berhasil Diubah');
 
         return redirect()->route('guru_bimbingan_belajar');
     }
@@ -302,8 +298,18 @@ class GuruController extends Controller
 
         ]);
 
+        $status = "";
+
+        // dd($request->status);
+        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        {
+            $status = "Selesai";
+        }else if($request->status != "Ditunda"){
+            $status = "Ditunda";
+        }
+
         $data = [
-            'status' => 'Diterima',
+            'status' => $status,
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
@@ -325,18 +331,6 @@ class GuruController extends Controller
         Bimbingan_Sosial::where('id', $id)->update($data);
 
         session()->flash('message', 'Pertemuan Berhasil Diterima');
-
-        return redirect()->route('guru_bimbingan_sosial');
-    }
-    public function guru_finish_bimbingan_sosial($id)
-    {
-        $data = [
-            'status' => "Selesai",
-        ];
-
-        Bimbingan_Sosial::where('id', $id)->update($data);
-
-        session()->flash('message', 'Pertemuan Berhasil Diubah');
 
         return redirect()->route('guru_bimbingan_sosial');
     }
@@ -410,8 +404,18 @@ class GuruController extends Controller
 
         ]);
 
+        $status = "";
+
+        // dd($request->status);
+        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        {
+            $status = "Selesai";
+        }else if($request->status != "Ditunda"){
+            $status = "Ditunda";
+        }
+
         $data = [
-            'status' => 'Diterima',
+            'status' => $status,
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
             'alasan_guru' => $request->alasan_guru,
