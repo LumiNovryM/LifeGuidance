@@ -307,4 +307,11 @@ class SiswaController extends Controller
         ]);
     }
 
+    public function show_profile()
+    {
+        return view('siswa.profile.profile',[
+            "title" => "Profile",
+        ]);
+    }
+
 }

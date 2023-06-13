@@ -38,4 +38,10 @@ class Siswa extends Model
     {
         return $this->belongsToMany(Siswa::class, Peta_Kerawanan::class);
     }
+
+    
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
