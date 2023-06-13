@@ -70,7 +70,7 @@ class AuthController extends Controller
                 setcookie("email", "");
             }
 
-            return redirect()->route('home_guru');
+            return redirect()->route('home_guru')->with('message', 'Berhasil login!');
         }
 
         Session::flash('status', 'Error');
@@ -101,7 +101,7 @@ class AuthController extends Controller
                 setcookie("email", "");
             }
 
-            return redirect()->route('home_siswa');
+            return redirect()->route('home_siswa')->with('message', 'Berhasil login!');
         }
 
         Session::flash('status', 'Error');
@@ -131,7 +131,7 @@ class AuthController extends Controller
                 setcookie("email", "");
             }
 
-            return redirect()->route('home_walas');
+            return redirect()->route('home_walas')->with('message', 'Berhasil login!');
         }
 
         Session::flash('status', 'Error');

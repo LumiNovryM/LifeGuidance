@@ -86,8 +86,7 @@ class AdminController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        Session::flash('status', 'success');
-        Session::flash('message', 'Data Berhasil Di Tambahkan');
+        session()->flash('message', 'Data Berhasil Diubah');
 
         return redirect()->route('show_walas')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -122,11 +121,15 @@ class AdminController extends Controller
 
         Walas::where('id', $id)->update($data);
 
+        session()->flash('message', 'Data Berhasil Diubah');
+
         return redirect()->route('show_walas');
     }
     public function destroy_walas($id)
     {
         Walas::find($id)->delete();
+        session()->flash('message', 'Data Berhasil Dihapus');
+
         return redirect()->route('show_walas');
     }
 
@@ -261,6 +264,8 @@ class AdminController extends Controller
     public function destroy_guru_bk($id)
     {
         Guru::find($id)->delete();
+        session()->flash('message', 'Data Berhasil Dihapus');
+
         return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Dihapus');
     }
 
@@ -344,6 +349,8 @@ class AdminController extends Controller
     public function destroy_siswa($id)
     {
         Siswa::where('id', $id)->delete();
+        session()->flash('message', 'Data Berhasil Dihapus');
+
         return redirect()->route('show_kelas');
     }
 
@@ -387,6 +394,8 @@ class AdminController extends Controller
 
         Kelas::where('id', $id)->update($data);
 
+        session()->flash('message', 'Data Berhasil Diubah');
+
         return redirect('admin/kelas');
     }
     public function edit_kelas($id)
@@ -400,6 +409,8 @@ class AdminController extends Controller
     public function destroy_kelas($id)
     {
         Kelas::find($id)->delete();
+        session()->flash('message', 'Data Berhasil Dihapus');
+
         return redirect()->route('show_kelas');
     }
 

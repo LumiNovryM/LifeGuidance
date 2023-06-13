@@ -71,6 +71,8 @@ class SiswaController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
+
         return redirect()->route('show_bimbingan_pribadi');
     }
     public function detail_bimbingan_pribadi($id)
@@ -131,6 +133,8 @@ class SiswaController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('bimbingan_belajar');
     }
@@ -197,6 +201,8 @@ class SiswaController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
+
         return redirect()->route('bimbingan_sosial');
     }
     public function detail_bimbingan_sosial($id)
@@ -260,6 +266,8 @@ class SiswaController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('bimbingan_karir');
     }

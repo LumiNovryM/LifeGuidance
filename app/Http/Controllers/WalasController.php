@@ -140,7 +140,7 @@ class WalasController extends Controller
     public function walas_peta_kerawanan()
     {
         $walas = Walas::where('id', Auth::guard('walas')->user()->id)->get();
-        $datas = Siswa::where('kelas_id', $walas[0]->kelas_id)->get();
+        $datas = Siswa::where('kelas_id', $walas[0]->kelas_id)->paginate(10);
         
         return view('walas.walas_peta_kerawanan', [
             "title" => "Peta",
@@ -191,6 +191,9 @@ class WalasController extends Controller
             'kemampuan_kurang' => $request->kemampuan_kurang,
             'kesimpulan' => $request->kesimpulan
         ];
+
+        session()->flash('message', 'Peta Kerawanan Berhasil Diubah');
+
 
         Peta_Kerawanan::where('id', $id)->update($data);
 

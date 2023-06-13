@@ -89,5 +89,9 @@
     <div class="mt-6">
         {{ $datas->links() }}
     </div>
-
+    <script>
+        @if (session('message'))
+            toastr.success('{{ session('message') }}', 'Success');
+        @endif
+    </script>
 @endsection
