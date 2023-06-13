@@ -30,7 +30,8 @@
                 </div>
                 <div class="mt-2">
                     <h6>Status</h6>
-                    <p>{{ $data->status }}</p>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Status Pertemuan"
+                        value="{{ $data->status }}" name="status" autocomplete="off" readonly>
                 </div>
 
                 <div class="mt-2">
@@ -70,15 +71,11 @@
                 </div>
 
             </div>
-            <div class="card-footer d-flex justify-content-between" style="width: 25vw">
+            <div class="card-footer d-flex justify-content-between" style="width: 18vw">
                 <a href="{{ route('guru_bimbingan_pribadi') }}" type="button" class="btn btn-primary">Kembali</a>
-                <button type="submit" type="button" class="btn btn-info">Tunda</button>
-            </form>
-            <form action="{{ route('guru_finish_bimbingan_pribadi', $data->id) }}" method="post">
-                @csrf
-                <button type="submit" type="button" class="btn btn-success ">Selesai</button>
-            </form>
+                <button type="submit" type="button" class="btn btn-success {{ $data->status == 'Selesai' ? 'disabled' : '' }}">Ubah</button>
             </div>
+        </form>
 
     </div>
 @endsection

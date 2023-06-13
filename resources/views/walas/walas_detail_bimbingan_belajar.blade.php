@@ -28,7 +28,6 @@
                 <p>{{ $data->walas->name }}</p>
             </div>
 
-            @if ($data->alasan_pertemuan && $data->tanggal_pertemuan && $data->lokasi_pertemuan)
             <div class="mt-2">
                 <h6>Alasan Pertemuan</h6>
                 <textarea id="alasan" rows="4" class="form-control" placeholder="" name="alasan" readonly>{{ $data->alasan_pertemuan }}</textarea>
@@ -40,8 +39,11 @@
             <div class="mt-2">
                 <h6>Lokasi Pertemuan</h6>
                 <p>{{ $data->lokasi_pertemuan }}</p>
-            </div>            
-        @endif
+            </div>
+            <div class="mt-2">
+                <h6>Tanggapan Guru</h6>
+                <textarea id="alasan" rows="4" class="form-control" placeholder="" name="alasan" readonly>{{ $data->solusi_guru }}</textarea>
+            </div>                      
 
         </div>
         <div class="card-footer">

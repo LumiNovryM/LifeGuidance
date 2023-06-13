@@ -41,6 +41,10 @@
         <h6>Lokasi Pertemuan</h6>
         <p>{{ $data->lokasi_pertemuan }}</p>
     </div>
+    <div class="mt-2">
+        <h6>Tanggapan Guru</h6>
+        <textarea id="alasan" rows="4" class="form-control" placeholder="" name="alasan" readonly>{{ $data->solusi_guru }}</textarea>
+    </div>            
 
     <a href="{{ route('walas_list_bimbingan_sosial') }}" type="button" class="btn btn-primary">Kembali</a>
 @endsection
