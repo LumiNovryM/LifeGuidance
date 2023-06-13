@@ -717,6 +717,9 @@
                 </div>
             </div>
         </div> --}}
+        @php
+            $users = App\Models\User::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+        @endphp
         <div class="row mt-3">
           <div class="col-12">
               <div class="card mb-4">
@@ -735,43 +738,58 @@
                                       </th>
                                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email
                                       </th>
-                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NIP</th>
-                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Seen</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
                                       </th>
                                   </tr>
                               </thead>
                               <tbody>
+                                @if ($users->isNotEmpty())
+                                
+                                @forelse ($users as $user)
                                       <tr>
                                           <td>
                                               <div class="ms-3 text-secondary">
-                                                  <p class="text-secondary"></p>
+                                                  <p class="text-secondary">{{ $loop->iteration }}</p>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="text-secondary">
-                                                  <p class="text-secondary"></p>
+                                                  <p class="text-secondary">{{ $user->name }}</p>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="text-secondary">
-                                                  <p class="text-secondary"></p>
+                                                  <p class="text-secondary">{{ $user->email }}</p>
                                               </div>
                                           </td>
                                           <td>
                                               <div class="text-secondary">
-                                                  <p class="text-secondary"></p>
+                                                  <p class="text-secondary">{{ \Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</p>
                                               </div>
                                           </td>
                                           <td>
+                                            @if (Cache::has('user-is-online'.$user->id))
+                                                <div class="text-secondary">
+                                                    <p style="color:green;">Online</p>
+                                                </div>
+                                            @else
+                                                <div class="text-secondary">
+                                                    <p style="color:red;">Offline</p>
+                                                </div>
+                                            @endif
                                           </td>
                                       </tr>
-                                      {{-- <tr>
-                                           <td colspan="5">
-                                               <div class="text-secondary d-flex justify-content-center py-lg-3">
-                                                   <p class="text-secondary">Table Kosong</p>
-                                               </div>
-                                           </td>
-                                      </tr> --}}
+                                @empty
+                                <tr>
+                                     <td colspan="5">
+                                         <div class="text-secondary d-flex justify-content-center py-lg-3">
+                                             <p class="text-secondary">Table Kosong</p>
+                                         </div>
+                                     </td>
+                                </tr>
+                                @endforelse
+                            @endif
                               </tbody>
                           </table>
                       </div>
