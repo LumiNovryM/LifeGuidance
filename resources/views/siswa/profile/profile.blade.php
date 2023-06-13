@@ -44,8 +44,9 @@
         <p class="text-sm">
           {{ Auth::guard('siswa')->user()->motto }}
         </p>
-        <hr class="horizontal gray-light my-4">
+        <hr class="horizontal gray-light">
         <ul class="list-group">
+          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">NISN:</strong> &nbsp; {{ Auth::guard('siswa')->user()->nisn }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ Auth::guard('siswa')->user()->email }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; Indonesia, Jawa Barat, Kota Depok</li>
           <li class="list-group-item border-0 ps-0 pb-0">

@@ -1,4 +1,4 @@
-@extends('layout.template.walas_content')
+@extends('layout.template.walas_dashboard')
 
 @section('title-tab', 'LifeGuidance')
 

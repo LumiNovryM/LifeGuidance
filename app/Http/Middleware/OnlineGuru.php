@@ -23,7 +23,7 @@ class OnlineGuru
             $expireAt = now()->addMinutes(2);
             Cache::put('user-is-online-'.Auth::guard('guru')->user()->name, true, $expireAt);
 
-            Guru::where('id', Auth::guard('guru')->user()->name)->update(['last_seen' => now()]);
+            Guru::where('name', Auth::guard('guru')->user()->name)->update(['last_seen' => now()]);
         }
 
         return $next($request);
