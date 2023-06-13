@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home_admin');
+        return redirect()->route('home_admin')->with('message', 'Berhasil login!');
     }
 
     # Login Handler For Guru
@@ -145,6 +145,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/')->with('message', 'Berhasil Logout');
     }
 }

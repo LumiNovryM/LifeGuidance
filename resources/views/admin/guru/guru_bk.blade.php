@@ -88,5 +88,15 @@
     <div class="mt-6">
         {{ $datas->links() }}
     </div>
-
+    <script>
+        @if (session('message'))
+            toastr.options = {
+                "positionClass": "toast-top-right",
+                "timeOut": 4000,
+                "toastClass": "toast-primary",
+            };
+  
+            toastr.success('{{ session('message') }}');
+        @endif
+    </script>
 @endsection

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('foto')->nullable();
             $table->string('name');
-            $table->string('no_telp')->nullable();
-            $table->string('motto', 225)->nullable();
+            $table->string('no_telp');
+            $table->string('motto', 225);
             $table->string('nip', 18)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

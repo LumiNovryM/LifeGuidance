@@ -29,9 +29,15 @@
 <div class="">
   {{ $datas->links() }}
 </div>
-<script>
-  @if (session('message'))
-      toastr.success('{{ session('message') }}', 'Success');
-  @endif
-</script>
+@if(session('message'))
+    <script>
+        toastr.options = {
+            "positionClass": "toast-top-right",
+            "timeOut": 4000,
+            "toastClass": "toast-primary",
+        };
+
+        toastr.success('{{ session('message') }}');
+    </script>
+@endif
 @endsection

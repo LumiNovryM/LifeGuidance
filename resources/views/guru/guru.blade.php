@@ -357,9 +357,15 @@
         </div>
     </footer>
 </div>
-@if(session('message'))
-    <script>
+<script>
+    @if (session('message'))
+        toastr.options = {
+            "positionClass": "toast-top-right",
+            "timeOut": 4000,
+            "toastClass": "toast-primary",
+        };
+
         toastr.success('{{ session('message') }}');
-    </script>
-@endif
+    @endif
+</script>
 @endsection

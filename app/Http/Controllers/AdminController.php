@@ -88,7 +88,7 @@ class AdminController extends Controller
 
         session()->flash('message', 'Data Berhasil Diubah');
 
-        return redirect()->route('show_walas')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_walas')->with('message', 'Data Berhasil Ditambahkan');
     }
     public function edit_walas($id)
     {
@@ -231,7 +231,7 @@ class AdminController extends Controller
 
 
 
-        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_guru_bk')->with('message', 'Data Berhasil Ditambahkan');
     }
     public function edit_guru_bk($id)
     {
@@ -259,14 +259,14 @@ class AdminController extends Controller
 
         Guru::where('id', $id)->update($data);
 
-        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Diperbarui');
+        return redirect()->route('show_guru_bk')->with('message', 'Data Berhasil Diperbarui');
     }
     public function destroy_guru_bk($id)
     {
         Guru::find($id)->delete();
         session()->flash('message', 'Data Berhasil Dihapus');
 
-        return redirect()->route('show_guru_bk')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('show_guru_bk')->with('message', 'Data Berhasil Dihapus');
     }
 
     # siswa

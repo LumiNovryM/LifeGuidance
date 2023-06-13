@@ -21,15 +21,8 @@
     <link rel="icon" type="image/png" href="./assets_landing/img/favicon.png">
 
     <title>
-
-
-
         LifeGuidance
-
-
     </title>
-
-
 
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -48,13 +41,10 @@
 
     <link id="pagestyle" href="./assets_landing/css/soft-design-system.css?v=1.0.9" rel="stylesheet" />
 
-
-
-
-
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    
 </head>
 
 <body class="index-page">
