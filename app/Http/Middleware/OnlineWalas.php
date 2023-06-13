@@ -2,15 +2,14 @@
 
 namespace App\Http\Middleware;
 
-
 use Closure;
 use Illuminate\Support\Facades\Cache;
-use App\Models\User;
+use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class OnlineUser
+class OnlineWalas
 {
     /**
      * Handle an incoming request.
@@ -20,12 +19,11 @@ class OnlineUser
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(Auth::check()){
+        if (Auth::guard('walas')->check()) {
             $expireAt = now()->addMinutes(2);
-            Cache::put('user-is-online-'.Auth::id(),true,$expireAt);
+            Cache::put('user-is-online-'.Auth::guard('walas')->id(), true, $expireAt);
 
-            User::where('id', Auth::id())->update(['last_seen' => now()]);
-
+            Walas::where('id', Auth::guard('walas')->id())->update(['last_seen' => now()]);
         }
 
         return $next($request);

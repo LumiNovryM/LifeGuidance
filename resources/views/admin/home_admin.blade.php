@@ -718,12 +718,6 @@
             </div>
         </div> --}}
         {{-- Admin Only --}}
-        @php
-            $users = App\Models\User::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-            $siswas = App\Models\Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-            $combined = $users->concat($siswas);
-            dd($combined);
-        @endphp
         <div class="row mt-3">
           <div class="col-12">
               <div class="card mb-4">
@@ -747,9 +741,9 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                @if ($users->isNotEmpty())
+                                @if ($online_user->isNotEmpty())
                                 
-                                @forelse ($users as $user)
+                                @forelse ($online_user as $user)
                                       <tr>
                                           <td>
                                               <div class="ms-3 text-secondary">
@@ -772,7 +766,7 @@
                                               </div>
                                           </td>
                                           <td>
-                                            @if (Cache::has('user-is-online'.$user->id))
+                                            @if (Cache::has('user-is-online-'.$user->id))
                                                 <div class="text-secondary">
                                                     <p style="color:green;">Online</p>
                                                 </div>
