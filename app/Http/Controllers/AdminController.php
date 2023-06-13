@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bimbingan_Belajar;
-use App\Models\Bimbingan_Karir;
-use App\Models\Bimbingan_Pribadi;
-use App\Models\Bimbingan_Sosial;
 use App\Models\Guru;
 use App\Models\Role;
 use App\Models\User;
@@ -15,7 +11,12 @@ use App\Models\Walas;
 use App\Models\GuruKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\Bimbingan_Karir;
+use App\Models\Bimbingan_Sosial;
+use App\Models\Bimbingan_Belajar;
+use App\Models\Bimbingan_Pribadi;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller

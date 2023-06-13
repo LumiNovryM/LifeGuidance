@@ -21,9 +21,9 @@ class OnlineWalas
 
         if (Auth::guard('walas')->check()) {
             $expireAt = now()->addMinutes(2);
-            Cache::put('user-is-online-'.Auth::guard('walas')->id(), true, $expireAt);
+            Cache::put('user-is-online-'.Auth::guard('walas')->user()->name, true, $expireAt);
 
-            Walas::where('id', Auth::guard('walas')->id())->update(['last_seen' => now()]);
+            Walas::where('id', Auth::guard('walas')->user()->name)->update(['last_seen' => now()]);
         }
 
         return $next($request);

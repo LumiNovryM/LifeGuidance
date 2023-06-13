@@ -28,22 +28,22 @@ Route::controller(AuthController::class)->group(function () {
     # Admin
     Route::get('/login_admin', 'login_admin')->name('login_admin');
     Route::post('/login_admin_action', 'login_admin_action')->name('login_admin_action');
-    Route::post('/logout_admin', 'logout')->name('logout_admin');
+    Route::post('/logout_admin', 'logout_admin')->name('logout_admin');
 
     # Guru
     Route::get('/login_guru', 'login_guru')->name('login_guru');
     Route::post('/login_guru_action', 'login_guru_action')->name('login_guru_action');
-    Route::post('/logout_guru', 'logout')->name('logout_guru');
+    Route::post('/logout_guru', 'logout_guru')->name('logout_guru');
 
     # Siswa
     Route::get('/login_siswa', [AuthController::class, 'login_siswa'])->name('login_siswa');
     Route::post('/login_siswa_action', [AuthController::class, 'login_siswa_action'])->name('login_siswa_action');
-    Route::post('/logout_siswa', 'logout')->name('logout_siswa');
+    Route::post('/logout_siswa', 'logout_siswa')->name('logout_siswa');
 
     # Wali Kelas
     Route::get('/login_walas', [AuthController::class, 'login_walas'])->name('login_walas');
     Route::post('/login_walas_action', [AuthController::class, 'login_walas_action'])->name('login_walas_action');
-    Route::post('/logout_walas', 'logout')->name('logout_walas');
+    Route::post('/logout_walas', 'logout_walas')->name('logout_walas');
 
     //profile
     Route::get('/profile', [AuthController::class, 'show_profile'])->name('show_profile');

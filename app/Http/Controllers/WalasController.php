@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\Walas;
 use App\Exports\PetaExport;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
@@ -21,9 +22,34 @@ class WalasController extends Controller
 {
     public function home_walas()
     {
-        return view('walas.walas', [
-            "title" => "Dashboard"
-        ]);
+        # Siswa
+        $siswa = Siswa::all();
+        $totalsiswa = $siswa->count();
+        # Guru
+        $guru = Guru::all();
+        $totalguru = $guru->count();
+        # Kelas
+        $kelas = Kelas::all();
+        $totalkelas = $kelas->count();
+        # Wali Kelas
+        $walas = Walas::all();
+        $totalwalas = $walas->count();
+
+        # Online User
+        $siswas = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+        $guru = Guru::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+        $walas = Walas::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+        $first_combined = $siswas->concat($guru);
+        $second_combined = $first_combined->concat($walas);
+
+       return view('walas.walas', [
+           'title' => 'Dashboard',
+           "siswa" => $totalsiswa,
+           "guru" => $totalguru,
+           "kelas" => $totalkelas,
+           "walas" => $totalwalas,
+           "online_user" => $second_combined
+       ]);
     }
 
     // bimbingan pribadi

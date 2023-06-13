@@ -9,6 +9,7 @@ use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -139,10 +140,40 @@ class AuthController extends Controller
         return redirect()->route('login_walas');
     }
 
-    # Login For All User
-    public function logout(Request $request)
+    public function logout_admin(Request $request)
     {
+        $userId = Auth::id();
+        Cache::forget('user-is-online-'.$userId);
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message', 'Berhasil Logout');
+    }
+
+    public function logout_guru(Request $request)
+    {
+        $userId = Auth::guard('guru')->id();
+        Cache::forget('user-is-online-'.$userId);
+        Auth::guard('guru')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message', 'Berhasil Logout');
+    }
+
+    public function logout_siswa(Request $request)
+    {
+        $userId = Auth::guard('siswa')->id();
+        Cache::forget('user-is-online-'.$userId);
+        Auth::guard('siswa')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message', 'Berhasil Logout');
+    }
+    public function logout_walas(Request $request)
+    {
+        $userId = Auth::guard('walas')->id();
+        Cache::forget('user-is-online-'.$userId);
+        Auth::guard('walas')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/')->with('message', 'Berhasil Logout');
