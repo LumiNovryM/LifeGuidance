@@ -20,14 +20,13 @@ class OnlineUser
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(Auth::check()){
+        if (Auth::check()) {
             $expireAt = now()->addMinutes(2);
-            Cache::put('user-is-online-'.Auth::id(),true,$expireAt);
-
-            User::where('id', Auth::id())->update(['last_seen' => now()]);
-
-        }
-
+            Cache::put('user-is-online-' . Auth::user()->name, true, $expireAt);
+        
+            User::where('name', Auth::user()->name)->update(['last_seen' => now()]);
+        }        
+        
         return $next($request);
     }
 }

@@ -1,8 +1,8 @@
-@extends('layout.template.walas_dashboard')
+@extends('layout.template.dashboard')
 
 @section('title-tab', 'LifeGuidance')
 
-@section('walas_content')
+@section('admin_content')
 <div class="container-fluid">
     <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
       <span class="mask bg-gradient-primary opacity-6"></span>
@@ -11,16 +11,16 @@
       <div class="row gx-4">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-            <img src="../assets_landing/img/guru/None.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="{{ asset('foto_gurubk/None.png') }}" alt="Avatar" class="w-100 mt-5 border-radius-lg shadow-sm">
           </div>
         </div>
         <div class="col-auto my-auto">
           <div class="h-100">
             <h5 class="mb-1">
-              {{ Auth::guard('walas')->user()->name }}
+              {{ Auth::guard('siswa')->user()->name }}
             </h5>
             <p class="mb-0 font-weight-bold text-sm">
-              {{ Auth::guard('walas')->user()->role->name }}
+              {{ Auth::guard('siswa')->user()->role->name }}
             </p>
           </div>
         </div>
@@ -38,12 +38,13 @@
       </div>
       <div class="card-body p-3">
         <p class="text-sm">
-          {{ Auth::guard('walas')->user()->motto }}
+          {{ Auth::guard('siswa')->user()->motto }}
         </p>
+        <hr class="horizontal gray-light my-4">
         <ul class="list-group">
-          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">NIP:</strong> &nbsp; {{ Auth::guard('walas')->user()->nip }}</li>
-          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ Auth::guard('walas')->user()->email }}</li>
-          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{ Auth::guard('walas')->user()->no_telp }}</li>
+          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">NIP:</strong> &nbsp; {{ Auth::guard('siswa')->user()->nip }}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ Auth::guard('siswa')->user()->email }}</li>
+          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{ Auth::guard('siswa')->user()->no_telp }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; Indonesia, Jawa Barat, Kota Depok</li>
           <li class="list-group-item border-0 ps-0 pb-0">
             <strong class="text-dark text-sm">Social:</strong> &nbsp;

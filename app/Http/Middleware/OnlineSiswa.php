@@ -21,9 +21,9 @@ class OnlineSiswa
 
         if (Auth::guard('siswa')->check()) {
             $expireAt = now()->addMinutes(2);
-            Cache::put('user-is-online-'.Auth::guard('siswa')->id(), true, $expireAt);
+            Cache::put('user-is-online-'.Auth::guard('siswa')->user()->name, true, $expireAt);
 
-            Siswa::where('id', Auth::guard('siswa')->id())->update(['last_seen' => now()]);
+            Siswa::where('id', Auth::guard('siswa')->user()->name)->update(['last_seen' => now()]);
         }
 
         return $next($request);
