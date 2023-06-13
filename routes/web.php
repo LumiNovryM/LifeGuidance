@@ -224,3 +224,7 @@ Route::prefix('guru')->middleware('auth:guru')->group(function () {
     //profile
     Route::get('/profile_guru', [GuruController::class, 'show_profile_guru'])->name('show_profile_guru');
 });
+
+# API GOOGLE
+Route::get('login/google/',[AuthController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback',[AuthController::class, 'handleGoogleCallback']);

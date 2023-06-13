@@ -11,7 +11,11 @@
       <div class="row gx-4">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
+            @if (Auth::guard('siswa')->user()->avatar)
+              <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="w-100 mt-5 border-radius-lg shadow-sm">
+            @else  
               <img src="{{ asset('foto_gurubk/None.png') }}" alt="Avatar" class="w-100 mt-5 border-radius-lg shadow-sm">
+            @endif
           </div>
         </div>
         <div class="col-auto my-auto">
@@ -42,20 +46,12 @@
         </p>
         <hr class="horizontal gray-light my-4">
         <ul class="list-group">
-          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">NIP:</strong> &nbsp; {{ Auth::guard('siswa')->user()->nip }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ Auth::guard('siswa')->user()->email }}</li>
-          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{ Auth::guard('siswa')->user()->no_telp }}</li>
           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; Indonesia, Jawa Barat, Kota Depok</li>
           <li class="list-group-item border-0 ps-0 pb-0">
-            <strong class="text-dark text-sm">Social:</strong> &nbsp;
-            <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-              <i class="fab fa-facebook fa-lg"></i>
-            </a>
-            <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-              <i class="fab fa-twitter fa-lg"></i>
-            </a>
-            <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-              <i class="fab fa-instagram fa-lg"></i>
+            <strong class="text-dark text-sm">Hubungkan Dengan Gmail:</strong> &nbsp;
+            <a class="btn btn-google btn-simple mb-0 ps-1 pe-2 py-0" href="{{ route('login.google') }}">
+              <i class="fab fa-google fa-lg"></i>
             </a>
           </li>
         </ul>
