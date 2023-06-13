@@ -11,6 +11,7 @@ use App\Models\Bimbingan_Pribadi;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Karir;
 use App\Models\Bimbingan_Belajar;
+use App\Models\Peta_Kerawanan;
 
 
 class ApiController extends Controller
@@ -45,8 +46,9 @@ class ApiController extends Controller
             $bk = Bimbingan_Karir::with('siswa', 'kelas', 'walas', 'guru')->where('siswa_id', $user->id)->get();
             $bb = Bimbingan_Belajar::with('siswa', 'kelas', 'walas', 'guru')->where('siswa_id', $user->id)->get();
             $bs = Bimbingan_Sosial::with('siswa', 'kelas', 'walas', 'guru')->where('siswa_id', $user->id)->get();
+            $pk = Peta_Kerawanan::with('siswa', 'kelas', 'walas', 'guru')->where('siswa_id', $user->id)->get();
 
-            // Transform IDs to names in Bimbingan Pribadi
+            
             $bp = $bp->map(function ($item) {
                 $item->siswa_id = $item->siswa->name;
                 $item->kelas_id = $item->kelas->name;
@@ -57,7 +59,7 @@ class ApiController extends Controller
                 return $item;
             });            
 
-            // Transform IDs to names in Bimbingan Pribadi
+            
             $bk = $bk->map(function ($item) {
                 $item->siswa_id = $item->siswa->name;
                 $item->kelas_id = $item->kelas->name;
@@ -68,7 +70,7 @@ class ApiController extends Controller
                 return $item;
             });            
 
-            // Transform IDs to names in Bimbingan Pribadi
+            
             $bb = $bb->map(function ($item) {
                 $item->siswa_id = $item->siswa->name;
                 $item->kelas_id = $item->kelas->name;
@@ -79,12 +81,34 @@ class ApiController extends Controller
                 return $item;
             });            
 
-            // Transform IDs to names in Bimbingan Pribadi
+            
             $bs = $bs->map(function ($item) {
                 $item->siswa_id = $item->siswa->name;
                 $item->kelas_id = $item->kelas->name;
                 $item->walas_id = $item->walas->name;
                 $item->guru_id = $item->guru->name;
+
+                unset($item->siswa, $item->kelas, $item->walas, $item->guru);
+                return $item;
+            });            
+
+            
+            $pk = $pk->map(function ($item) {
+                $item->siswa_id = $item->siswa->name;
+                $item->kelas_id = $item->kelas->name;
+                $item->walas_id = $item->walas->name;
+                $item->guru_id = $item->guru->name;
+                
+                $item->sering_sakit = $item->sering_sakit ? 'iya' : 'tidak';
+                $item->sering_izin = $item->sering_izin ? 'iya' : 'tidak';
+                $item->sering_alpha = $item->sering_alpha ? 'iya' : 'tidak';
+                $item->sering_terlambat = $item->sering_terlambat ? 'iya' : 'tidak';
+                $item->bolos = $item->bolos ? 'iya' : 'tidak';
+                $item->kelainan_jasmani = $item->kelainan_jasmani ? 'iya' : 'tidak';
+                $item->minat_belajar_kurang = $item->minat_belajar_kurang ? 'iya' : 'tidak';
+                $item->introvert = $item->introvert ? 'iya' : 'tidak';
+                $item->tinggal_dengan_wali = $item->tinggal_dengan_wali ? 'iya' : 'tidak';
+                $item->kemampuan_kurang = $item->kemampuan_kurang ? 'iya' : 'tidak';
 
                 unset($item->siswa, $item->kelas, $item->walas, $item->guru);
                 return $item;
@@ -96,6 +120,7 @@ class ApiController extends Controller
                 'Bimbingan Karir' => $bk,
                 'Bimbingan Belajar' => $bb,
                 'Bimbingan Sosial' => $bs,
+                'Peta Kerawanan' => $pk,
             ], 200);
         }
 
