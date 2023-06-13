@@ -717,15 +717,18 @@
                 </div>
             </div>
         </div> --}}
+        {{-- Admin Only --}}
         @php
             $users = App\Models\User::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+            $siswas = App\Models\Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+            $combined = $users->concat($siswas);
+            dd($combined);
         @endphp
         <div class="row mt-3">
           <div class="col-12">
               <div class="card mb-4">
                   <div class="card-header pb-0">
                       <h6>Active User</h6>
-                      <h6>5 Minute Ago</h6>
                   </div>
                   <div class="card-body px-0 pt-0">
                       <div class="table-responsive p-0">
