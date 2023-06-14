@@ -11,7 +11,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Bimbingan Pribadi</h5>
-                            <p class="card-text">Some example text.</p>
                         </div>
                     </div>
                 </a>
@@ -21,7 +20,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Bimbingan Belajar</h5>
-                            <p class="card-text">Some example text.</p>
                         </div>
                     </div>
                 </a>
@@ -31,7 +29,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Bimbingan Sosial</h5>
-                            <p class="card-text">Some example text.</p>
                         </div>
                     </div>
                 </a>
@@ -41,7 +38,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Bimbingan Karir</h5>
-                            <p class="card-text">Some example text.</p>
                         </div>
                     </div>
                 </a>
