@@ -144,7 +144,9 @@
         </div>
     @else
         <h4 class="text-center">Peta Kerawanan Pada Murid Ini Belum Tersedia</h4>
-        <a href="{{ route('guru_create_peta_kerawanan', $ids) }}" type="button" class="btn btn-info">Buat Peta Kerawanan</a>
+        <div class="text-center mt-4">
+            <a href="{{ route('guru_create_peta_kerawanan', $ids) }}" type="button" class="btn btn-info">Buat Peta Kerawanan</a>
+        </div>
         @endif
     </div>
 
