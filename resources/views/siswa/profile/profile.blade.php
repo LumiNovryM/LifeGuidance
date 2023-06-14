@@ -1,8 +1,8 @@
-@extends('layout.template.dashboard')
+@extends('layout.template.siswa_dashboard')
 
 @section('title-tab', 'LifeGuidance')
 
-@section('admin_content')
+@section('siswa_content')
 <div class="container-fluid">
     <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
       <span class="mask bg-gradient-primary opacity-6"></span>
