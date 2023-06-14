@@ -13,6 +13,7 @@ use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Bimbingan_Sosial;
+use App\Notifications\Bimbingan;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
 use Illuminate\Support\Facades\Auth;
@@ -94,6 +95,16 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_pribadi');
@@ -196,6 +207,17 @@ class GuruController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_belajar');
@@ -301,6 +323,16 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_sosial');
@@ -409,6 +441,16 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_karir');
