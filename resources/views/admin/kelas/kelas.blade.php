@@ -11,12 +11,12 @@
                     <input type="text" name="name" autocomplete="off" class="form-control"
                         placeholder="Masukkan Nama Kelas" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
-                    <button class="btn bg-gradient-primary mb-0" type="button" id="button-addon2">Submit</button>
+                    <button class="btn bg-gradient-primary mb-0" type="submit" id="button-addon2">Submit</button>
                 </div>
+                @error('name')
+                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                @enderror
             </form>
-            @error('name')
-                <p class="text-danger text-xs mt-2">{{ $message }}</p>
-            @enderror
         </div>
     </div>
 
@@ -28,14 +28,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Kelas {{ $data->name }}</h5>
                         @if (!isset($data->walas))
-                        <p class="card-text">Wali Kelas: -</p>
+                            <p class="card-text">Wali Kelas: -</p>
                         @else
-                        <p class="card-text">Wali Kelas: {{ $data->walas->name }}</p>
+                            <p class="card-text">Wali Kelas: {{ $data->walas->name }}</p>
                         @endif
                         @foreach ($data->guru as $item)
                             @if (!$item->name)
                                 <p class="card-text">Guru BK: -</p>
-                            @else    
+                            @else
                                 <p class="card-text">Guru BK: {{ $item->name }}</p>
                             @endif
                         @endforeach
@@ -71,7 +71,7 @@
                 "timeOut": 4000,
                 "toastClass": "toast-primary",
             };
-  
+
             toastr.success('{{ session('message') }}');
         @endif
     </script>

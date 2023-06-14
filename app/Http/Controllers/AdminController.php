@@ -396,6 +396,8 @@ class AdminController extends Controller
             'name' => $request->name,
         ]);
 
+        session()->flash('message', 'Data Berhasil Ditambahkan');
+
         return redirect('admin/kelas');
     }
     public function update_kelas(Request $request, $id)

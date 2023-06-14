@@ -604,6 +604,8 @@ class GuruController extends Controller
             'kemampuan_kurang' => $request->kemampuan_kurang,
         ]);
 
+        session()->flash('message', 'Data Berhasil Diatambahkan');
+
         return redirect()->route('guru_peta_kerawanan', $request->kelas_id);
     }
 
