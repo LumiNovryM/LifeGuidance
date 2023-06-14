@@ -612,6 +612,7 @@ class GuruController extends Controller
     }
     public function guru_store_peta_kerawanan(Request $request)
     {
+        # Validate
         $request->validate([
             'siswa_id' => 'required',
             'guru_id' => 'required',
