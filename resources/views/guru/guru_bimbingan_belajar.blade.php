@@ -23,7 +23,7 @@
 
                 </p>
                 @if ($data->status == 'Menunggu')
-                    <div class="d-flex justify-content-between" style="width: 30vw">
+                    <div class="d-flex justify-content-between" style="width: 15vw">
                         <a href="{{ route('guru_detail_bimbingan_belajar', $data->id) }}" class="btn btn-danger">Tunda</a>
                         <form action="{{ route('guru_accept_bimbingan_belajar', $data->id) }}" method="post">
                             @csrf

@@ -21,6 +21,7 @@ class SiswaSeeder extends Seeder
          $data = [
             # X PPLG 1
             ['name' => "Udin", 'kelas_id' => 1, 'nisn' => '20229233', 'email' => 'udin@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
+            ['name' => "Ali Farid", 'kelas_id' => 1, 'nisn' => '20229233', 'email' => 'alifareedlocal@gmail.com', 'role_id' => 2, 'password' => Hash::make('12345678'),],
         ];
 
         # Run Seeder Only For Demo Acc
