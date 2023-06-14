@@ -85,10 +85,12 @@ class AdminController extends Controller
             'nip' => 'required',
             'kelas_id' => 'required',
             'password' => 'required|min:8',
+            'no_telp' => 'required',
         ]);
 
         Walas::insert([
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
             'role_id' => 4,
             'nip' => $request->nip,
@@ -121,10 +123,12 @@ class AdminController extends Controller
             'nip' => 'required',
             'kelas_id' => 'required',
             'password' => 'required|min:8',
+            'no_telp' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
             'kelas_id' => $request->kelas_id,
             'nip' => $request->nip,
