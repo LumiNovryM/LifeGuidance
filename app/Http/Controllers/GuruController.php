@@ -95,7 +95,7 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
-        $guru = Guru::find($request->guru_id);
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
         $siswa = Siswa::find($request->siswa_id);
         
         $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
@@ -208,7 +208,7 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        $guru = Guru::find($request->guru_id);
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
         $siswa = Siswa::find($request->siswa_id);
         
         $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
@@ -323,7 +323,7 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
-        $guru = Guru::find($request->guru_id);
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
         $siswa = Siswa::find($request->siswa_id);
         
         $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
@@ -441,7 +441,7 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
-        $guru = Guru::find($request->guru_id);
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
         $siswa = Siswa::find($request->siswa_id);
         
         $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
