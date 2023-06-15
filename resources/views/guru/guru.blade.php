@@ -142,6 +142,109 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Active User</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0">
+                        <div class="table-responsive p-0">
+
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Kelas
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Email
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last
+                                            Seen</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($online_users->isNotEmpty())
+
+
+                                        @forelse ($online_users as $user)
+                                            <tr>
+                                                <td>
+                                                    <div class="ms-3 text-secondary">
+                                                        <p class="text-secondary">{{ $loop->iteration }}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-secondary">
+                                                        <p class="text-secondary">{{ $user->name }}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-secondary">
+                                                            <p class="text-secondary">{{ $user->kelas->name }}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-secondary">
+                                                        <p class="text-secondary">{{ $user->email }}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-secondary">
+                                                        <p class="text-secondary">
+                                                            {{ \Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @if (Cache::has('admin-is-online-' . $user->id) && $user->role_id === 1)
+                                                        <div class="text-secondary">
+                                                            <p style="color:green;">Online</p>
+                                                        </div>
+                                                    @elseif (Cache::has('guru-is-online-' . $user->id) && $user->role_id === 3)
+                                                        <div class="text-secondary">
+                                                            <p style="color:green;">Online</p>
+                                                        </div>
+                                                    @elseif (Cache::has('siswa-is-online-' . $user->id) && $user->role_id === 2)
+                                                        <div class="text-secondary">
+                                                            <p style="color:green;">Online</p>
+                                                        </div>
+                                                    @elseif (Cache::has('walas-is-online-' . $user->id) && $user->role_id === 4)
+                                                        <div class="text-secondary">
+                                                            <p style="color:green;">Online</p>
+                                                        </div>
+                                                    @else
+                                                        <div class="text-secondary">
+                                                            <p style="color:red;">Offline</p>
+                                                        </div>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="text-secondary d-flex justify-content-center py-lg-3">
+                                                        <p class="text-secondary">Table Kosong</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer class="footer pt-3  ">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">

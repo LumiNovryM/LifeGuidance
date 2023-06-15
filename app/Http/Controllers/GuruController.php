@@ -16,6 +16,7 @@ use App\Models\Bimbingan_Sosial;
 use App\Notifications\Bimbingan;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
+use App\Models\GuruKelas;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -36,12 +37,19 @@ class GuruController extends Controller
         $walas = Walas::all();
         $totalwalas = $walas->count();
 
+        $guru_id = Auth::guard('guru')->user()->id;
+        $kelas_id_guru = GuruKelas::where('guru_id', $guru_id)->get();
+
+        $siswa = Siswa::whereNotNull('last_seen')->whereIn('kelas_id', $kelas_id_guru->pluck('kelas_id'))->orderBy('last_seen','desc')->with('kelas')->get();
+
+
         return view('guru.guru', [
             'title' => 'Dashboard',
             "siswa" => $totalsiswa,
             "guru" => $totalguru,
             "kelas" => $totalkelas,
             "walas" => $totalwalas,
+            "online_users" => $siswa
         ]);
     }
 
