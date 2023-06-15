@@ -35,20 +35,12 @@ class SiswaController extends Controller
         $walas = Walas::all();
         $totalwalas = $walas->count();
 
-        # Online User
-        $siswas = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $guru = Guru::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $walas = Walas::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $first_combined = $siswas->concat($guru);
-        $second_combined = $first_combined->concat($walas);
-
        return view('siswa.siswa', [
            'title' => 'Dashboard',
            "siswa" => $totalsiswa,
            "guru" => $totalguru,
            "kelas" => $totalkelas,
            "walas" => $totalwalas,
-           "online_user" => $second_combined
        ]);
     }
 

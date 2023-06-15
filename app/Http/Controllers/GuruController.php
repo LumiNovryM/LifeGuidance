@@ -36,20 +36,12 @@ class GuruController extends Controller
         $walas = Walas::all();
         $totalwalas = $walas->count();
 
-         # Online User
-         $siswas = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-         $guru = Guru::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-         $walas = Walas::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-         $first_combined = $siswas->concat($guru);
-         $second_combined = $first_combined->concat($walas);
-
         return view('guru.guru', [
             'title' => 'Dashboard',
             "siswa" => $totalsiswa,
             "guru" => $totalguru,
             "kelas" => $totalkelas,
             "walas" => $totalwalas,
-            "online_user" => $second_combined
         ]);
     }
 
