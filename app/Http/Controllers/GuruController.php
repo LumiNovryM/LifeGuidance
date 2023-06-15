@@ -120,7 +120,7 @@ class GuruController extends Controller
         $status = "";
 
         
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -233,7 +233,7 @@ class GuruController extends Controller
         $status = "";
 
         // dd($request->status);
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -350,7 +350,7 @@ class GuruController extends Controller
         $status = "";
 
         // dd($request->status);
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -466,7 +466,7 @@ class GuruController extends Controller
         $status = "";
 
         // dd($request->status);
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
