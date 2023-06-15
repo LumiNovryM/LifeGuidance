@@ -22,9 +22,9 @@ class OnlineUser
 
         if (Auth::check()) {
             $expireAt = now()->addMinutes(2);
-            Cache::put('user-is-online-' . Auth::user()->name, true, $expireAt);
+            Cache::put('admin-is-online-' . Auth::id(), true, $expireAt);
         
-            User::where('name', Auth::user()->name)->update(['last_seen' => now()]);
+            User::where('id', Auth::id())->update(['last_seen' => now()]);
         }        
         
         return $next($request);
