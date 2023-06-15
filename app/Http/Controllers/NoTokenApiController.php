@@ -14,7 +14,7 @@ class NoTokenApiController extends Controller
     //list
     public function bimbingan_pribadi($id)
     {
-        $datas = Bimbingan_Pribadi::where('siswa_id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Pribadi::with('siswa', 'guru', 'walas', 'kelas')->where('siswa_id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -23,7 +23,7 @@ class NoTokenApiController extends Controller
     }
     public function bimbingan_belajar($id)
     {
-        $datas = Bimbingan_Belajar::where('siswa_id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Belajar::with('siswa', 'guru', 'walas', 'kelas')->where('siswa_id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -32,7 +32,7 @@ class NoTokenApiController extends Controller
     }
     public function bimbingan_sosial($id)
     {
-        $datas = Bimbingan_Sosial::where('siswa_id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Sosial::with('siswa', 'guru', 'walas', 'kelas')->where('siswa_id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -41,7 +41,7 @@ class NoTokenApiController extends Controller
     }
     public function bimbingan_karir($id)
     {
-        $datas = Bimbingan_Karir::where('siswa_id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Karir::with('siswa', 'guru', 'walas', 'kelas')->where('siswa_id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -55,7 +55,7 @@ class NoTokenApiController extends Controller
     // detail api
     public function detail_bimbingan_pribadi($id)
     {
-        $datas = Bimbingan_Pribadi::where('id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Pribadi::with('siswa', 'guru', 'walas', 'kelas')->where('id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -64,7 +64,7 @@ class NoTokenApiController extends Controller
     }
     public function detail_bimbingan_belajar($id)
     {
-        $datas = Bimbingan_Belajar::where('id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Belajar::with('siswa', 'guru', 'walas', 'kelas')->where('id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -73,7 +73,7 @@ class NoTokenApiController extends Controller
     }
     public function detail_bimbingan_sosial($id)
     {
-        $datas = Bimbingan_Sosial::where('id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Sosial::with('siswa', 'guru', 'walas', 'kelas')->where('id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
@@ -82,7 +82,7 @@ class NoTokenApiController extends Controller
     }
     public function detail_bimbingan_karir($id)
     {
-        $datas = Bimbingan_Karir::where('id', $id)->where('status', 'Selesai')->get();
+        $datas = Bimbingan_Karir::with('siswa', 'guru', 'walas', 'kelas')->where('id', $id)->where('status', 'Selesai')->get();
         if ($datas) {
             return ApiFormatter::createApi(200, 'Success', $datas);
         } else {
