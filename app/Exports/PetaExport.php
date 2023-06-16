@@ -40,8 +40,8 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
             $exported[] = [
                 'id' => $item->id,
                 'nama siswa' => $item->siswa->name,
-                'nama guru' => $item->guru->name,
-                'nama walas' => $item->walas->name,
+                // 'nama guru' => $item->guru->name,
+                // 'nama walas' => $item->walas->name,
                 'nama kelas' => $item->kelas->name,
                 'sering sakit' => $this->YesOrNo($item->sering_sakit),
                 'sering izin' => $this->YesOrNo($item->sering_izin),
@@ -67,8 +67,8 @@ class PetaExport implements FromCollection, WithHeadings, WithStyles
         return [
             'No',
             'Nama Siswa',
-            'Nama Guru',
-            'Nama Walas',
+            // 'Nama Guru',
+            // 'Nama Walas',
             'Nama Kelas',
             'Sering Sakit',
             'Sering Izin',
