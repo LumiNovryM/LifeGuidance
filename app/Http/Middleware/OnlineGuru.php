@@ -21,9 +21,9 @@ class OnlineGuru
 
         if (Auth::guard('guru')->check()) {
             $expireAt = now()->addMinutes(2);
-            Cache::put('user-is-online-'.Auth::guard('guru')->user()->name, true, $expireAt);
+            Cache::put('guru-is-online-'.Auth::guard('guru')->user()->id, true, $expireAt);
 
-            Guru::where('name', Auth::guard('guru')->user()->name)->update(['last_seen' => now()]);
+            Guru::where('id', Auth::guard('guru')->user()->id)->update(['last_seen' => now()]);
         }
 
         return $next($request);

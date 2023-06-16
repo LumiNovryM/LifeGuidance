@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WalasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +21,13 @@ use App\Http\Controllers\WalasController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.page.landingpage');
-})->name('dashboard');
+Route::controller(DashboardController::class)->group(function () {
+
+    # ID
+    Route::get('/', 'indonesia')->name('dashboard');
+    Route::get('/jp', 'japanese');
+
+});
 
 # Login Handler
 Route::controller(AuthController::class)->group(function () {

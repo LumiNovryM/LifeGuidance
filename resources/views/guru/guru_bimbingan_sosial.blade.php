@@ -11,10 +11,11 @@
             <div class="card-body">
                 <h5 class="card-title">Permohonan Bimbingan Sosial</h5>
                 <p class="card-text">
-                    <strong>Tema:</strong> {{ $data->alasan_pertemuan }}<br>
-                    <strong>Kelas:</strong> {{ $data->kelas->name }}<br>
-                    <strong>Wali Kelas:</strong> {{ $data->walas->name }}<br>
-                    <strong>Status:</strong> {{ $data->status }}<br>
+                    <strong>Nama Murid :</strong> {{ $data->siswa->name }}<br>
+                    <strong>Tema :</strong> {{ $data->alasan_pertemuan }}<br>
+                    <strong>Kelas :</strong> {{ $data->kelas->name }}<br>
+                    <strong>Wali Kelas :</strong> {{ $data->walas->name }}<br>
+                    <strong>Status :</strong> {{ $data->status }}<br>
 
                     @if ($data->status != 'Menunggu')
                         <strong>Tanggal dan Tempat:</strong> {{ $data->lokasi_pertemuan }}, {{ $data->tanggal_pertemuan }}

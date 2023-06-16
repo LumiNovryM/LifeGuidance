@@ -14,6 +14,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
+use App\Notifications\Bimbingan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,20 +35,12 @@ class SiswaController extends Controller
         $walas = Walas::all();
         $totalwalas = $walas->count();
 
-        # Online User
-        $siswas = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $guru = Guru::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $walas = Walas::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $first_combined = $siswas->concat($guru);
-        $second_combined = $first_combined->concat($walas);
-
        return view('siswa.siswa', [
            'title' => 'Dashboard',
            "siswa" => $totalsiswa,
            "guru" => $totalguru,
            "kelas" => $totalkelas,
            "walas" => $totalwalas,
-           "online_user" => $second_combined
        ]);
     }
 
@@ -97,6 +90,16 @@ class SiswaController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$siswa->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $guru->notify(new Bimbingan($message));
 
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
@@ -160,6 +163,16 @@ class SiswaController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Belajar : {$siswa->name}";
+        $message['alasan'] = "Request Bimbingan Belajar : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Belajar : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Belajar : {$request->lokasi_pertemuan}";
+
+        $guru->notify(new Bimbingan($message));
 
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
@@ -228,6 +241,16 @@ class SiswaController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Sosial : {$siswa->name}";
+        $message['alasan'] = "Request Bimbingan Sosial : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Sosial : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Sosial : {$request->lokasi_pertemuan}";
+
+        $guru->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('bimbingan_sosial');
@@ -293,6 +316,16 @@ class SiswaController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $guru = Guru::find($request->guru_id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Karir : {$siswa->name}";
+        $message['alasan'] = "Request Bimbingan Karir : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Karir : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Karir : {$request->lokasi_pertemuan}";
+
+        $guru->notify(new Bimbingan($message));
 
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 

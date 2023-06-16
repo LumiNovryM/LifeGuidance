@@ -37,13 +37,15 @@ class AdminController extends Controller
         $totalwalas = $walas->count();
 
         # Online User
-        $users = User::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $siswas = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+        $admin = User::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
         $guru = Guru::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
+        $siswa = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
         $walas = Walas::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-        $first_combined = $users->concat($siswas);
-        $second_combined = $first_combined->concat($guru);
-        $third_combined = $second_combined->concat($walas);
+
+        $combined = $admin->concat($guru);
+        $combined_second = $combined->concat($siswa);
+        $combined_third = $combined_second->concat($walas);
+
 
         return view('admin.home_admin', [
             "title" => "Dashboard",
@@ -51,7 +53,7 @@ class AdminController extends Controller
             "guru" => $totalguru,
             "kelas" => $totalkelas,
             "walas" => $totalwalas,
-            "online_user" => $third_combined,
+            "online_users" => $combined_third
         ]);
     }
 
@@ -85,10 +87,12 @@ class AdminController extends Controller
             'nip' => 'required',
             'kelas_id' => 'required',
             'password' => 'required|min:8',
+            'no_telp' => 'required',
         ]);
 
         Walas::insert([
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
             'role_id' => 4,
             'nip' => $request->nip,
@@ -121,10 +125,12 @@ class AdminController extends Controller
             'nip' => 'required',
             'kelas_id' => 'required',
             'password' => 'required|min:8',
+            'no_telp' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
             'kelas_id' => $request->kelas_id,
             'nip' => $request->nip,
@@ -391,6 +397,8 @@ class AdminController extends Controller
         Kelas::create([
             'name' => $request->name,
         ]);
+
+        session()->flash('message', 'Data Berhasil Ditambahkan');
 
         return redirect('admin/kelas');
     }

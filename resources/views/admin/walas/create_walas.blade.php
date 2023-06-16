@@ -20,6 +20,14 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">No Telp.</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" autocomplete="off"
+                placeholder="Masukkan No Telp." name="no_telp">
+            @error('no_telp')
+                <p class="text-danger text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">NIP</label>
             <input type="number" class="form-control" id="exampleFormControlInput1" autocomplete="off" placeholder="Masukkan NIP" name="nip">
             @error('nip')

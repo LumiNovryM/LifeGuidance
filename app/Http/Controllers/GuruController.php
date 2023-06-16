@@ -13,8 +13,10 @@ use App\Models\Peta_Kerawanan;
 use App\Models\Bimbingan_Karir;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Bimbingan_Sosial;
+use App\Notifications\Bimbingan;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
+use App\Models\GuruKelas;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -35,12 +37,11 @@ class GuruController extends Controller
         $walas = Walas::all();
         $totalwalas = $walas->count();
 
-         # Online User
-         $siswas = Siswa::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-         $guru = Guru::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-         $walas = Walas::whereNotNull('last_seen')->orderBy('last_seen','desc')->get();
-         $first_combined = $siswas->concat($guru);
-         $second_combined = $first_combined->concat($walas);
+        $guru_id = Auth::guard('guru')->user()->id;
+        $kelas_id_guru = GuruKelas::where('guru_id', $guru_id)->get();
+
+        $siswa = Siswa::whereNotNull('last_seen')->whereIn('kelas_id', $kelas_id_guru->pluck('kelas_id'))->orderBy('last_seen','desc')->with('kelas')->get();
+
 
         return view('guru.guru', [
             'title' => 'Dashboard',
@@ -48,7 +49,7 @@ class GuruController extends Controller
             "guru" => $totalguru,
             "kelas" => $totalkelas,
             "walas" => $totalwalas,
-            "online_user" => $second_combined
+            "online_users" => $siswa
         ]);
     }
 
@@ -94,6 +95,16 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_pribadi');
@@ -117,7 +128,7 @@ class GuruController extends Controller
         $status = "";
 
         
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -196,6 +207,17 @@ class GuruController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_belajar');
@@ -219,7 +241,7 @@ class GuruController extends Controller
         $status = "";
 
         // dd($request->status);
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -301,6 +323,16 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_sosial');
@@ -326,7 +358,7 @@ class GuruController extends Controller
         $status = "";
 
         // dd($request->status);
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -409,6 +441,16 @@ class GuruController extends Controller
             'updated_at' => Carbon::now()
         ]);
         
+        $guru = Guru::find(Auth::guard("guru")->user()->id);
+        $siswa = Siswa::find($request->siswa_id);
+        
+        $message['pengirim'] = "Request Bimbingan Pribadi : {$guru->name}";
+        $message['alasan'] = "Request Bimbingan Pribadi : {$request->alasan_pertemuan}";
+        $message['tanggal'] = "Tanggal Pertemuan Pribadi : {$request->tanggal_pertemuan}";
+        $message['tempat'] = "Tempat Pertemuan Pribadi : {$request->lokasi_pertemuan}";
+
+        $siswa->notify(new Bimbingan($message));
+
         session()->flash('message', 'Pertemuan Berhasil Ditambahkan');
 
         return redirect()->route('guru_bimbingan_karir');
@@ -432,7 +474,7 @@ class GuruController extends Controller
         $status = "";
 
         // dd($request->status);
-        if($request->status == "Ditunda" || $request->status == "Panggilan")
+        if($request->status == "Ditunda" || $request->status == "Panggilan" || $request->status == "Diterima")
         {
             $status = "Selesai";
         }else if($request->status != "Ditunda"){
@@ -570,6 +612,7 @@ class GuruController extends Controller
     }
     public function guru_store_peta_kerawanan(Request $request)
     {
+        # Validate
         $request->validate([
             'siswa_id' => 'required',
             'guru_id' => 'required',
@@ -603,6 +646,8 @@ class GuruController extends Controller
             'tinggal_dengan_wali' => $request->tinggal_dengan_wali,
             'kemampuan_kurang' => $request->kemampuan_kurang,
         ]);
+
+        session()->flash('message', 'Data Berhasil Diatambahkan');
 
         return redirect()->route('guru_peta_kerawanan', $request->kelas_id);
     }
