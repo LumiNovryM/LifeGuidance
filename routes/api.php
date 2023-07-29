@@ -24,11 +24,6 @@ Route::get('/bimbingan_sosial/{id}', [NoTokenApiController::class, 'bimbingan_so
 Route::get('/bimbingan_karir/{id}', [NoTokenApiController::class, 'bimbingan_karir']);
 
 
-Route::get('/detail_bimbingan_pribadi/{id}', [NoTokenApiController::class, 'detail_bimbingan_pribadi']);
-Route::get('/detail_bimbingan_belajar/{id}', [NoTokenApiController::class, 'detail_bimbingan_belajar']);
-Route::get('/detail_bimbingan_sosial/{id}', [NoTokenApiController::class, 'detail_bimbingan_sosial']);
-Route::get('/detail_bimbingan_karir/{id}', [NoTokenApiController::class, 'detail_bimbingan_karir']);
-
 Route::post('/tambah_bimbingan_pribadi', [NoTokenApiController::class, 'tambah_bimbingan_pribadi']);
 Route::post('/tambah_bimbingan_belajar', [NoTokenApiController::class, 'tambah_bimbingan_belajar']);
 Route::post('/tambah_bimbingan_sosial', [NoTokenApiController::class, 'tambah_bimbingan_sosial']);
