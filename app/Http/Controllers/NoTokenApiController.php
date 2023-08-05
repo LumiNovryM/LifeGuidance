@@ -9,6 +9,9 @@ use App\Models\Bimbingan_Karir;
 use App\Models\Bimbingan_Sosial;
 use App\Models\Bimbingan_Belajar;
 use App\Models\Bimbingan_Pribadi;
+use App\Models\Guru;
+use App\Models\Siswa;
+use App\Models\Walas;
 
 class NoTokenApiController extends Controller
 {
@@ -79,7 +82,6 @@ class NoTokenApiController extends Controller
             'kelas_id' => $request->kelas_id,
             'walas_id' => $request->walas_id,
             'guru_id' => $request->guru_id,
-            'diajukan' => $request->diajukan,
             'alasan_pertemuan' => $request->alasan_pertemuan,
             'tanggal_pertemuan' => $request->tanggal_pertemuan,
             'lokasi_pertemuan' => $request->lokasi_pertemuan,
@@ -334,5 +336,39 @@ class NoTokenApiController extends Controller
         }
     }
 
+
+
+
+
+    // get data walas dan guru
+    public function get_guru() {
+        $datas = Guru::get();
+
+        if ($datas) {
+        return ApiFormatter::createApi(200, 'Success', $datas);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
+
+    public function get_walas() {
+        $datas = Walas::get();
+
+        if ($datas) {
+        return ApiFormatter::createApi(200, 'Success', $datas);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
+
+    public function get_siswa() {
+        $datas = Siswa::get();
+
+        if ($datas) {
+        return ApiFormatter::createApi(200, 'Success', $datas);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
+    }
 
 }

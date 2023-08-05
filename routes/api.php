@@ -46,3 +46,8 @@ Route::get('/count_bimbingan_pribadi/{id}', [NoTokenApiController::class, 'count
 Route::get('/count_bimbingan_belajar/{id}', [NoTokenApiController::class, 'count_bimbingan_belajar']);
 Route::get('/count_bimbingan_sosial/{id}', [NoTokenApiController::class, 'count_bimbingan_sosial']);
 Route::get('/count_bimbingan_karir/{id}', [NoTokenApiController::class, 'count_bimbingan_karir']);
+
+Route::get('/get_guru', [NoTokenApiController::class, 'get_guru']);
+Route::get('/get_walas', [NoTokenApiController::class, 'get_walas']);
+Route::get('/get_siswa', [NoTokenApiController::class, 'get_siswa']);
+
