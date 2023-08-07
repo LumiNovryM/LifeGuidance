@@ -29,6 +29,16 @@ class ApiController extends Controller
                  'user' => $user
                 ], 200);
         }
+        
+        if (Auth::guard('guru')->attempt($credentials)) {
+            $user = Auth::guard('guru')->user();
+            $token = $user->createToken('GuruToken')->plainTextToken;
+    
+            return response()->json([
+                'token' => $token,
+                 'user' => $user
+                ], 200);
+        }
     
         // Invalid credentials
         return response()->json(['error' => 'Invalid credentials'], 401);
@@ -116,6 +126,7 @@ class ApiController extends Controller
 
             return response()->json([
                 'data' => $user,
+                'role' => $user["role_id"] === 3 ? 'guru' : 'siswa',
                 'Bimbingan Pribadi' => $bp,
                 'Bimbingan Karir' => $bk,
                 'Bimbingan Belajar' => $bb,
