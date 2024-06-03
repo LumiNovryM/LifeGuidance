@@ -16,6 +16,7 @@ LifeGuidance is a web-based guidance and counseling service application as the m
 - CSS
 - JavaScript
 - Laravel
-- TailwindCSS
+- Bootstrap
+- SCSS
 - MySQL
 - Github
